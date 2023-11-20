@@ -28,9 +28,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      ORGANIZATIONS_DIR_PATH: organizations
-      ORGANIZATIONS_SLUG_FIELD_NAME: slug
     steps:
       - name: Checkout
         uses: actions/checkout@v4
