@@ -46,8 +46,8 @@ jobs:
           pip install -r site/requirements.txt
       - name: Build with Flask Frozen
         run: |
-          export ORGANIZATIONS_DIR_PATH=$ORGANIZATIONS_DIR_PATH 
-          export ORGANIZATIONS_SLUG_FIELD_NAME=$ORGANIZATIONS_SLUG_FIELD_NAME
+          export ORGANIZATIONS_DIR_PATH=${{ vars.ORGANIZATIONS_DIR_PATH }} 
+          export ORGANIZATIONS_SLUG_FIELD_NAME=${{ vars.$ORGANIZATIONS_SLUG_FIELD_NAME }}
           python site/server.py build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
