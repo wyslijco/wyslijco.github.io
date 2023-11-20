@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ data.nazwa }}</h1>
+
+    <h2>Adres wysyłki</h2>
+    <ul>
+        <li>{{ data.dostawa.ulica }}</li>
+        <li>{{ data.dostawa.kod }}</li>
+        <li>{{ data.dostawa.miasto }}</li>
+    </ul>
+
+    <p>Telefon dla kuriera: {{ data.dostawa.telefon }}</p>
+
+    <h2>Produkty</h2>
+
+    <ul>
+        {% for produkt in data.produkty %}
+            <li><a href="{{ produkt.link}} ">{{ produkt.nazwa }}</a>{% if produkt.opis %} - {{ produkt.opis }}{% endif %}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

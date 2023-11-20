@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Anup Bhande">
+    <meta name="description" content="Anup tech Blog">
+    <title>Tech Blog</title>
+</head>
+<body>
+    <h1><a href="{{ url_for('index') }}">Tech blog</a></h1>
+    <div>
+        {% block content %}
+        <p>Default Content</p>
+        {% endblock content %}
+    </div>
+</body>

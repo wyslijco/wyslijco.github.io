@@ -1,0 +1,23 @@
+name: Testowa organizacja
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: testowej
+
+strona: http://testowa.pl
+krs: 0000000000
+
+dostawa:
+  ulica: Testowa 1
+  kod: 00-000
+  miasto: Warszawa
+  telefon: 22 000 00 00
+
+produkty:
+  - nazwa: Testowy produkt
+    link: http://testowy.pl
+  - nazwa: Testowy produkt 2
+    link: http://testowy2.pl
+    opis: Opcjonalny opis
+  - nazwa: Testowy produkt 3
+    link: http://testowy3.pl
+    opis:
