@@ -30,7 +30,7 @@ jobs:
       ORGANIZATIONS_SLUG_FIELD_NAME: slug
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Setup Python
