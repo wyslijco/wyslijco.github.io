@@ -1,0 +1,5 @@
+<h1>{{ page.nazwa }}</h1>
+
+{% for produkt in page.produkty %}
+  <a href="{{ produkt.link }}">{{ produkt.nazwa }}</a> - {{ produkt.cena }}<br/>
+{% endfor %}

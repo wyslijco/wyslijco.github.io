@@ -33,6 +33,7 @@ github_username:  jekyll
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll_custom_permalink
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -53,3 +54,18 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+collections:
+  orgs:
+    output: true
+    custom_permalink_placeholders: ["adres"]
+    permalink: :adres
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "orgs"
+    values:
+      layout: "org"
