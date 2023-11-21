@@ -1,4 +1,0 @@
-Flask
-Frozen-Flask
-Flask-FlatPages
-pyyaml
