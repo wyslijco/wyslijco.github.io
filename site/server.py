@@ -2,7 +2,7 @@ import os
 import sys
 
 import yaml
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory, url_for
 from flask_frozen import Freezer  # Added
 
 from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME
@@ -16,16 +16,39 @@ freezer = Freezer(app)
 
 
 def get_organizations() -> dict[str, str]:
-    organization_files = filter(lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH))
+    organization_files = filter(
+        lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH)
+    )
     organizations = dict()
     for organization_file in organization_files:
         with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
             organization = yaml.safe_load(org)
-            organizations[organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)] = organization_file
+            organizations[organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)] = (
+                organization_file
+            )
     return organizations
 
 
 organizations: dict[str, str] = get_organizations()
+
+
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(
+        os.path.join(app.root_path, "static"),
+        "favicon.ico",
+        mimetype="image/vnd.microsoft.icon",
+    )
+
+
+# Generated css
+@app.route("/output.css")
+def outputCss():
+    print("---", os.path.join(app.root_path, "static"))
+    return send_from_directory(
+        app.root_path,
+        "output.css",
+    )
 
 
 @app.route("/")
@@ -43,11 +66,13 @@ def organization_page(org_name):
 
 @freezer.register_generator
 def organization_page():
-    organization_files = filter(lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH))
+    organization_files = filter(
+        lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH)
+    )
     for organization_file in organization_files:
         with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
             organization = yaml.safe_load(org)
-            yield {'org_name': organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)}
+            yield {"org_name": organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)}
 
 
 # Main Function, Runs at http://0.0.0.0:8000

@@ -1,15 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Wyślij.co</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <link href="../output.css" rel="stylesheet" />
     <title></title>
-</head>
-<body>
-    <h1><a href="{{ url_for('index') }}">Wyślij.co</a></h1>
-    <div>
-        {% block content %}
-        {% endblock content %}
-    </div>
-</body>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Top Bar -->
+    <nav class="bg-blue-500 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-white font-bold text-xl">Logo</div>
+        <div>
+          <a href="#" class="text-white text-lg">Link</a>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-3xl font-bold underline">
+      <a href="{{ url_for('index') }}">Wyślij.co</a>
+    </h1>
+    <div>{% block content %} {% endblock content %}</div>
+  </body>
+</html>
