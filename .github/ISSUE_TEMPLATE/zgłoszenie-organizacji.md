@@ -11,7 +11,7 @@ Wypełnij poniższe pola informacjami o swojej organizacji, żeby zgłosić ją 
 
 ```yaml
 nazwa: 
-adres: 
+www: 
 
 dostawa:
   ulica:
@@ -21,11 +21,15 @@ dostawa:
 
 produkty:
   - nazwa: 
+    opis:
     link: 
   - nazwa: 
+    opis:
     link:
-  - nazwa: 
+  - nazwa:
+    opis: 
     link:
-  - nazwa: 
+  - nazwa:
+    opis:
     link:
 ```
