@@ -7,19 +7,18 @@
     <link href="../output.css" rel="stylesheet" />
     <title></title>
   </head>
-  <body class="bg-gray-100">
-    <!-- Top Bar -->
-    <nav class="bg-blue-500 p-4">
+  <body class="bg-background">
+    <nav class="bg-white p-4 shadow-sm">
       <div class="container mx-auto flex justify-between items-center">
-        <div class="text-white font-bold text-xl">Logo</div>
+        <div class="text-sectionTitle font-bold text-xl">
+          <a href="{{ url_for('index') }}">Wyślij.co</a>
+        </div>
         <div>
-          <a href="#" class="text-white text-lg">Link</a>
+          <a href="#" class="text-black text-xs">Jak to działa?</a>
         </div>
       </div>
     </nav>
-    <h1 class="text-3xl font-bold underline">
-      <a href="{{ url_for('index') }}">Wyślij.co</a>
-    </h1>
-    <div>{% block content %} {% endblock content %}</div>
+
+    {% block content %} {% endblock content %}
   </body>
 </html>

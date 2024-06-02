@@ -1,22 +1,53 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-    <h1>{{ data.nazwa }}</h1>
+<main class="container mx-auto mt-10">
+  <div class="">
+    <div class="px-6 pb-4">
+      <h1 class="text-black">{{ data.nazwa }}</h1>
+    </div>
 
-    <h2>Adres wysyłki</h2>
-    <ul>
-        <li>{{ data.dostawa.ulica }}</li>
-        <li>{{ data.dostawa.kod }}</li>
-        <li>{{ data.dostawa.miasto }}</li>
-    </ul>
+    <div class="px-6 pb-4">
+      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
 
-    <p>Telefon dla kuriera: {{ data.dostawa.telefon }}</p>
+      <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
+        {{ data.dostawa.ulica }}
+      </div>
+      <div class="bg-white p-2 mt-1 shadow-md">{{ data.dostawa.kod }}</div>
+      <div class="bg-white rounded-b-md p-2 mt-1 shadow-md">
+        {{ data.dostawa.miasto }}
+      </div>
+    </div>
 
-    <h2>Produkty</h2>
+    <div class="px-6 pb-4">
+      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
+      <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
+        {{ data.dostawa.telefon }}
+      </div>
+    </div>
 
-    <ul>
+    <div class="px-6 pb-4">
+      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Numer KRS</h2>
+      <div class="bg-white p-2 mt-1 shadow-md">{{ data.krs }}</div>
+    </div>
+
+    <div class="px-6 pb-4">
+      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
+      <div class="bg-white p-2 mt-1 shadow-md">{{ data.strona }}</div>
+    </div>
+
+    <div class="bg-gray-100">
+      <h2>Produkty</h2>
+
+      <div>
         {% for produkt in data.produkty %}
-            <li><a href="{{ produkt.link}} ">{{ produkt.nazwa }}</a>{% if produkt.opis %} - {{ produkt.opis }}{% endif %}</li>
+        <div>
+          <a href="{{ produkt.link}} ">{{ produkt.nazwa }}</a>{% if produkt.opis
+          %} - {{ produkt.opis }}{% endif %}
+        </div>
         {% endfor %}
-    </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
 {% endblock content %}

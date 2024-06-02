@@ -1,11 +1,11 @@
-name: Testowa organizacja
+nazwa: Testowa organizacja
 slug: testowa
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: testowej
 
 strona: http://testowa.pl
-krs: 0000000000
+krs: 123456789
 
 dostawa:
   ulica: Testowa 1
