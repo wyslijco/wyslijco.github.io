@@ -4,6 +4,21 @@
     <title>Wyślij.co</title>
     <meta charset="utf-8" />
     <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function copyText(element) {
+        const textarea = document.createElement("textarea");
+        textarea.value = element.innerText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        // textarea.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        // TODO: inform user that element has been copied
+      }
+    </script>
+
     <link href="../output.css" rel="stylesheet" />
     <title></title>
   </head>

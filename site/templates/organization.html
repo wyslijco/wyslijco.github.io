@@ -12,7 +12,7 @@
         <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
 
         <div
-          class="flex justify-between bg-white rounded-t-md p-2 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
           onclick="copyText(this)"
         >
           {{ data.dostawa.ulica }}
@@ -32,7 +32,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white p-2 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white p-3 mt-1 shadow-md cursor-pointer"
           onclick="copyText(this)"
         >
           {{ data.dostawa.kod }}
@@ -52,7 +52,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white rounded-b-md p-2 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white rounded-b-md p-3 mt-1 shadow-md cursor-pointer"
           onclick="copyText(this)"
         >
           {{ data.dostawa.miasto }}
@@ -76,7 +76,7 @@
       <div class="pb-4">
         <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
         <div
-          class="flex justify-between bg-white rounded-t-md p-2 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
           onclick="copyText(this)"
         >
           {{ data.dostawa.telefon }}
@@ -105,7 +105,7 @@
       <div class="pb-4">
         <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
         <a
-          class="flex justify-between bg-white px-2 py-3 mt-1 shadow-md"
+          class="flex justify-between bg-white p-3 mt-1 shadow-md"
           href="{{data.strona}}"
           target="_blank"
         >
@@ -142,7 +142,27 @@
           <p class="text-justify">{{ produkt.opis }}</p>
           {% endif %}
         </div>
-        <div class="mx-5">
+
+        <div class="flex md:hidden self-start text-sectionTitle">
+          <a href="{{ produkt.link }}" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 ml-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <div class="hidden md:flex md:mx-5">
           <a
             class="inline-block text-center bg-buttonPrimary text-white rounded-lg shadow-md py-4 px-12"
             href="{{ produkt.link }}"
