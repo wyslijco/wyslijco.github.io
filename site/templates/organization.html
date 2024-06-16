@@ -1,46 +1,47 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="mx-auto mt-10">
-  <div class="flex-row w-11/12">
-    <!--FIXME: flex-->
-    <div class="px-6 pb-4">
-      <h1 class="text-black">{{ data.nazwa }}</h1>
-    </div>
-
-    <div class="px-6 pb-4">
-      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
-
-      <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
-        {{ data.dostawa.ulica }}
+  <!-- ORGANIZATION INFO -->
+  <div class="flex justify-center">
+    <div class="w-4/5">
+      <div class="pb-4">
+        <h1 class="text-black text-xl">{{ data.nazwa }}</h1>
       </div>
-      <div class="bg-white p-2 mt-1 shadow-md">{{ data.dostawa.kod }}</div>
-      <div class="bg-white rounded-b-md p-2 mt-1 shadow-md">
-        {{ data.dostawa.miasto }}
+
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
+
+        <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
+          {{ data.dostawa.ulica }}
+        </div>
+        <div class="bg-white p-2 mt-1 shadow-md">{{ data.dostawa.kod }}</div>
+        <div class="bg-white rounded-b-md p-2 mt-1 shadow-md">
+          {{ data.dostawa.miasto }}
+        </div>
       </div>
-    </div>
 
-    <div class="px-6 pb-4">
-      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
-      <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
-        {{ data.dostawa.telefon }}
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
+        <div class="bg-white rounded-t-md p-2 mt-1 shadow-md">
+          {{ data.dostawa.telefon }}
+        </div>
       </div>
-    </div>
 
-    <div class="px-6 pb-4">
-      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Numer KRS</h2>
-      <div class="bg-white p-2 mt-1 shadow-md">{{ data.krs }}</div>
-    </div>
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Numer KRS</h2>
+        <div class="bg-white p-2 mt-1 shadow-md">{{ data.krs }}</div>
+      </div>
 
-    <div class="px-6 pb-4">
-      <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
-      <div class="bg-white p-2 mt-1 shadow-md">{{ data.strona }}</div>
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
+        <div class="bg-white p-2 mt-1 shadow-md">{{ data.strona }}</div>
+      </div>
     </div>
   </div>
 
-  <div class="flex justify-center bg-background w-11/12">
-    <!-- <h2>Produkty</h2> -->
-
-    <div class="w-5/6">
+  <!-- PRODUCTS -->
+  <div class="flex justify-center bg-background">
+    <div class="w-4/5">
       {% for produkt in data.produkty %}
       <div
         class="flex items-center justify-between bg-product my-4 rounded-md p-4"
