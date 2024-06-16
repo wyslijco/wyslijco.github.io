@@ -45,19 +45,17 @@
       <div
         class="flex items-center justify-between bg-product my-4 rounded-md p-4"
       >
-        <div class="px-5">
+        <div class="px-5 my-5">
           <h2 class="text-sectionTitle my-2">{{ produkt.nazwa }}</h2>
           {% if produkt.opis %}
           <p class="text-justify">{{ produkt.opis }}</p>
           {% endif %}
         </div>
         <div class="mx-5">
-          <!-- TODO: change button to link -->
-          <button
-            class="bg-buttonPrimary text-white rounded-lg shadow-md py-4 px-12"
-            type="button"
-            onclick="{{produkt.link}}"
-            href="{{ produkt.link}} "
+          <a
+            class="inline-block text-center bg-buttonPrimary text-white rounded-lg shadow-md py-4 px-12"
+            href="{{ produkt.link }}"
+            target="_blank"
           >
             <div class="flex">
               Zamów
@@ -76,7 +74,7 @@
                 />
               </svg>
             </div>
-          </button>
+          </a>
         </div>
       </div>
       {% endfor %}
