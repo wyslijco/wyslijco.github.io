@@ -49,7 +49,7 @@ jobs:
         run: npm install
       - name: Build theme
         run: |
-          npm run css
+          npm run build
       - name: Build with Flask Frozen
         run: |
           export ORGANIZATIONS_DIR_PATH=${{ vars.ORGANIZATIONS_DIR_PATH }} 
