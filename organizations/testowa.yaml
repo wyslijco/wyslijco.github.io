@@ -1,10 +1,11 @@
-name: Testowa organizacja
+nazwa: Testowa organizacja
+slug: testowa
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: testowej
 
 strona: http://testowa.pl
-krs: 0000000000
+krs: 123456789
 
 dostawa:
   ulica: Testowa 1
@@ -17,7 +18,7 @@ produkty:
     link: http://testowy.pl
   - nazwa: Testowy produkt 2
     link: http://testowy2.pl
-    opis: Opcjonalny opis
+    opis: Opcjonalny opis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras vehicula, urna sit amet tincidunt tincidunt, neque tellus egestas libero, nec convallis sem sapien ut nulla.
   - nazwa: Testowy produkt 3
     link: http://testowy3.pl
     opis:

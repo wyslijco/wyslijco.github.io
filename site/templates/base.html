@@ -1,15 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Wyślij.co</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function copyText(element) {
+        const textarea = document.createElement("textarea");
+        textarea.value = element.innerText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        // textarea.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        // TODO: inform user that element has been copied
+      }
+    </script>
+
+    <link href="../output.css" rel="stylesheet" />
     <title></title>
-</head>
-<body>
-    <h1><a href="{{ url_for('index') }}">Wyślij.co</a></h1>
-    <div>
-        {% block content %}
-        {% endblock content %}
-    </div>
-</body>
+  </head>
+  <body class="bg-background">
+    <nav class="bg-white p-4 shadow-sm">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-sectionTitle font-bold text-xl">
+          <a href="{{ url_for('index') }}">Wyślij.co</a>
+        </div>
+        <div>
+          <a href="#" class="text-black text-xs">Jak to działa?</a>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock content %}
+  </body>
+</html>
