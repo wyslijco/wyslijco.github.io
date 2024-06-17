@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "css": "npx tailwindcss -i ./site/input.css -o ./site/output.css --watch"
+    "css": "npx tailwindcss -i ./site/input.css -o ./site/output.css --watch",
+    "build": "npx tailwindcss -i ./site/input.css -o ./site/output.css"
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
