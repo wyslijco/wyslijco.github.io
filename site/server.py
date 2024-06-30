@@ -32,31 +32,46 @@ def get_organizations() -> dict[str, str]:
 organizations: dict[str, str] = get_organizations()
 
 
-@app.route("/favicon.ico")
-def favicon():
+def static_file(name: str):
+    dir_path = os.path.join(app.root_path, "statics")
     return send_from_directory(
-        os.path.join(app.root_path, "static"),
-        "favicon.ico",
-        mimetype="image/vnd.microsoft.icon",
+        dir_path,
+        name,
     )
+
+
+def get_static_files_list():
+    current_file_directory = os.path.dirname(os.path.abspath(__file__))
+    return os.listdir(os.path.join(current_file_directory, "statics"))
+
+
+for filename in get_static_files_list():
+    app.route(f"/{filename}", strict_slashes=False, endpoint=filename)(lambda f=filename: static_file(f))
+
+
+@freezer.register_generator
+def generate_favicon_statics():
+    path = os.path.join(app.root_path, "statics")
+    files = os.listdir(path)
+    for static in files:
+        yield url_for(static)
 
 
 # Generated css
 @app.route("/output.css")
 def outputCss():
-    print("---", os.path.join(app.root_path, "static"))
     return send_from_directory(
         app.root_path,
         "output.css",
     )
 
 
-@app.route("/")
+@app.route("/", strict_slashes=False)
 def index():
     return render_template("index.html")
 
 
-@app.route("/<string:org_name>/")
+@app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
     filename = organizations.get(org_name)
     with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
