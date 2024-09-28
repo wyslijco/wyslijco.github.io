@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Usuwanie produktu
+    url: https://github.com/wyslijco/wyslijco.github.io/wiki
+    about: Zobacz, jak możesz usunąć produkt ze strony swojej organizacji w Wyślij.co
+  - name: Usuwanie organizacji
+    url: https://github.com/wyslijco/wyslijco.github.io/wiki
+    about: Zobacz, jak usunąć swoją organizację z Wyślij.co
