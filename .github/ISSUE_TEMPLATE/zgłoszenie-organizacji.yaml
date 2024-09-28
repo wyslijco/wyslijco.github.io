@@ -15,5 +15,6 @@ body:
     id: nazwa
     attributes:
       label: Nazwa Twojej organizacji
+      description: Podaj nazwę organizacji.
     validations:
       required: true
