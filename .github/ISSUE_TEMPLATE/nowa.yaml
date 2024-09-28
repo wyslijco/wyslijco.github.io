@@ -1,6 +1,6 @@
 name: Zgoszenie organizacji
 description: Zgłoś swoją organizację do programu Wyślij.co
-title: "[Organizacja] Nazwa Twojej Organizacji"
+title: "[Nowa Organizacja]"
 labels: ["organizacje", "nowa-organizacja"]
 assignees: 
   - ivellios
