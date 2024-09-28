@@ -1,5 +1,5 @@
----
 name: Zgoszenie organizacji
+about: Szablon do zgłaszania nowych organizacji
 description: Szablon do zgłaszania nowych organizacji
 title: "[Organizacja] Nazwa Twojej Organizacji"
 labels: ["organizacje", "nowa-organizacja"]
@@ -57,4 +57,3 @@ body:
       label: Telefon kontaktowy dla kuriera
     validations:
       required: true
----
