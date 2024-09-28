@@ -65,7 +65,7 @@ body:
   - type: input
     id: nazwa_strony
     attributes:
-      label: Nazwa Twojej strony w wyślij co
+      label: Nazwa Twojej strony w Wyślij.co
       description: Wprowadź nazwę bez polskich znaków diakrytycznych, oraz spacjami zmienionymi na `-`
       placeholder: mojej-organizacji
     validations:
