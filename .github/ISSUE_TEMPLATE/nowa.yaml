@@ -32,6 +32,49 @@ body:
   - type: markdown
     attributes:
       value: |
+        # Konfiguracja strony w Wyślij.co
+        Strona Twojej organizacji w Wyślij.co będzie dostępna pod adresem `wyslij.co/TWOJA_NAZWA`. 
+        W tym celu potrzebujemy od Ciebie uproszczonej nazwy organizacji, ze spacjami zamienionymi na myśliniki oraz bez polskich znaków diakrytycznych.
+        Najlepiej, jeżeli nazwa będzie wyrażona w celowniku tak, aby można było wypowiedzieć zdanie "Wyślij co NAZWA_W_CELOWNIKU"; np. "Wyślij co testowej", "Wyślij co opiekunom potrzebujących". 
+        Ułatwi to promowanie strony Twojej organizacji w programie Wyślij.co.
+
+        **Oto kilka przykładów:**
+
+        - Nazwa organizacji "Testowa"
+          Nazwa w celowniku: testowej
+          Adres: `wyslij.co/testowej`
+          Można czytać: "Wyślij co testowej"
+        - Nazwa organizacji "Wsparcie dla milusińskich" 
+          Nazwa w celowniku: wspierajacym-milusinskich 
+          Adres: `wyslij.co/wspierajacym-milusinskich`
+          Można czytać: "Wyślj co wspierającym milusińskich"
+        - Nazwa organizacji "Zrób coś dobrego dla innych" 
+          Nazwa w celowniku "robiacym-cos-dobrego-dla-innych" 
+          Adres: `wyslij.co/robiacym-cos-dobrego-dla-innych`
+          Można czytać: "Wyślij co robiącym coś dobrego dla innych"
+
+        Możesz zostać też po prostu przy nazwie organizacji i uprościć ją (sprawdzimy, czy nie pokrywa się z inną organizacją):
+
+        - Nazwa organizacji "Zrób coś dobrego dla innych"
+          Nazwa w celowniku: zrob-cos-dobrego
+          Adres: `wyslij.co/zrob-cos-dobrego`
+        - Nazwa organizacji "Wesprzyj potrzebujące grupy"
+          Nazwa w celowniku: wesprzyj-grupy
+          Adres: `wyslij.co/wesprzyj-grupy`
+
+        **Uwaga!** Zastrzegamy sobie prawo do zmiany tej wartości w celu równego traktowania wszystkich organizacji korzystających z programu Wyślij.co.
+
+  - type: input
+    attributes:
+      label: Nazwa Twojej strony w wyślij co
+      description: Wprowadź nazwę bez polskich znaków diakrytycznych, oraz spacjami zmienionymi na `-`
+      placeholder: mojej-organizacji
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
         # Dane teleadresowe do dostaw
   - type: input
     id: ulica
