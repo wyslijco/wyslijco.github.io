@@ -1,7 +1,7 @@
-name: Zgoszenie organizacji
-description: Zgłoś swoją organizację do programu Wyślij.co
-title: "[Organizacja] Nazwa Twojej Organizacji"
-labels: ["organizacje", "nowa-organizacja"]
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug"]
 assignees: 
   - ivellios
 
