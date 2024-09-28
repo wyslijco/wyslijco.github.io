@@ -1,4 +1,3 @@
----
 name: Zgoszenie organizacji
 description: Zgłoś swoją organizację do programu Wyślij.co
 title: "[Organizacja] Nazwa Twojej Organizacji"
@@ -58,4 +57,3 @@ body:
       label: Telefon kontaktowy dla kuriera
     validations:
       required: true
----
