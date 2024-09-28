@@ -1,8 +1,7 @@
-name: Extra Bug Report
-description: File a bug report.
-title: "[Bug]: "
-labels: ["bug"]
-# projects: ["octo-org/1", "octo-org/44"]
+name: Zgoszenie organizacji
+description: Zgłoś swoją organizację do programu Wyślij.co
+title: "[Organizacja] Nazwa Twojej Organizacji"
+labels: ["organizacje", "nowa-organizacja"]
 assignees: 
   - ivellios
 
@@ -10,56 +9,51 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Dziękujemy za zainteresowanie dołączeniem do programu Wyślij.co. Wypełnij poniższe pola informacjami o swojej organizacji, żeby zgłosić ją do programu.
+        # Podstawowe informacje
   - type: input
-    id: contact
+    id: nazwa
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: Nazwa Twojej organizacji
     validations:
       required: true
-  - type: dropdown
-    id: version
+  - type: input
+    id: www
     attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
+      label: Adres strony internetowej Twojej organizacji
     validations:
       required: true
-  - type: dropdown
-    id: browsers
+  - type: input
+    id: krs
     attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-  - type: textarea
-    id: logs
+      label: KRS przypisany do Twojej organizacji
+    validations:
+      required: true
+  - type: markdown
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
+      value: |
+        # Dane teleadresowe do dostaw
+  - type: input
+    id: ulica
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com). 
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: Ulica i numer budynku/lokalu
+    validations:
+      required: true
+  - type: input
+    id: kod_pocztowy
+    attributes:
+      label: Kod Pocztowy
+    validations:
+      required: true
+  - type: input
+    id: miasto
+    attributes:
+      label: Miasto
+    validations:
+      required: true
+  - type: input
+    id: telefon
+    attributes:
+      label: Telefon kontaktowy dla kuriera
+    validations:
+      required: true
