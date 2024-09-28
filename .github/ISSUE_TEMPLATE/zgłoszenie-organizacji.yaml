@@ -9,16 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Dziękujemy za zainteresowanie dołączeniem do programu Wyślij.co. Wypełnij poniższe pola informacjami o swojej organizacji, żeby zgłosić ją do programu.
-        # Podstawowe informacje
-  - type: input
-    id: nazwa
-    attributes:
-      label: Nazwa Twojej organizacji
-      description: Podaj nazwę organizacji.
-      placeholder: Organizacja
-    validations:
-      required: true
+        Thanks for taking the time to fill out this bug report!
   - type: input
     id: contact
     attributes:
