@@ -1,5 +1,5 @@
 name: Dodanie produktu
-description: Zgłoś swoją organizację do programu Wyślij.co
+description: Dodaj produkt do strony swojej organizacji.
 title: "[Dodanie produktu]"
 labels: ["organizacje", "nowy-produkt"]
 assignees: 
