@@ -1,4 +1,6 @@
-<img width="119" alt="image" src="https://github.com/wyslijco/wyslijco.github.io/assets/200957/65435e0b-d446-4a5c-b174-27e37c16e783"># Pomoc w rozwoju wyslij.co
+<img width="119" alt="image" src="https://github.com/wyslijco/wyslijco.github.io/assets/200957/65435e0b-d446-4a5c-b174-27e37c16e783">
+
+# Pomoc w rozwoju wyslij.co
 
 Nasza strona powstała z myślą o wspieraniu organizacji charytatywnych w Polsce. 
 Od początku za najwazniejsze założenia przyjęliśmy pełną transparentność, otwartość kodu, 
