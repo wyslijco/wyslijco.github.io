@@ -13,7 +13,7 @@ body:
   - type: dropdown
     id: nazwa_organizacji
     attributes:
-      label: Nazwa Twojej organizacji
+      label: Twoja organizacja
       options:
         - Testowa
     validations:
