@@ -1,10 +1,10 @@
 ---
 name: Zgoszenie organizacji
-about: Szablon do zgłaszania nowych organizacji
 description: Zgłoś swoją organizację do programu Wyślij.co
 title: "[Organizacja] Nazwa Twojej Organizacji"
 labels: ["organizacje", "nowa-organizacja"]
-assignees: ''
+assignees: 
+  - ivellios
 
 body:
   - type: markdown
