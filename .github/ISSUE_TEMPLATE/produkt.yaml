@@ -11,7 +11,7 @@ body:
       value: |
         Ten formularz pomoże Ci w dodaniu produktu do strony Twojej organizacji w Wyślij.co
   - type: dropdown
-    id: nazwa
+    id: nazwa_organizacji
     attributes:
       label: Nazwa Twojej organizacji
       options:
