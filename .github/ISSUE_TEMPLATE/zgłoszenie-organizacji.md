@@ -1,6 +1,7 @@
+---
 name: Zgoszenie organizacji
 about: Szablon do zgłaszania nowych organizacji
-description: Szablon do zgłaszania nowych organizacji
+description: Zgłoś swoją organizację do programu Wyślij.co
 title: "[Organizacja] Nazwa Twojej Organizacji"
 labels: ["organizacje", "nowa-organizacja"]
 assignees: ''
@@ -57,3 +58,4 @@ body:
       label: Telefon kontaktowy dla kuriera
     validations:
       required: true
+---
