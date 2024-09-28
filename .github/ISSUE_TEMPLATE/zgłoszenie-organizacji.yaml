@@ -11,3 +11,9 @@ body:
       value: |
         Dziękujemy za zainteresowanie dołączeniem do programu Wyślij.co. Wypełnij poniższe pola informacjami o swojej organizacji, żeby zgłosić ją do programu.
         # Podstawowe informacje
+  - type: input
+    id: nazwa
+    attributes:
+      label: Nazwa Twojej organizacji
+    validations:
+      required: true
