@@ -1,4 +1,4 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: Usuwanie produktu
     url: https://github.com/wyslijco/wyslijco.github.io/wiki
