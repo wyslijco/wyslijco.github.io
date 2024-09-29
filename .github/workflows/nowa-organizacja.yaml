@@ -1,0 +1,46 @@
+name: Przetworzenie organizacji
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        type: string
+        required: true
+env:
+  GH_TOKEN: ${{ github.token }}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch the issue
+        id: read_issue_body
+        run:
+          echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
+          github.repo }} --json body --jq '.body')" >> $GITHUB_OUTPUT
+
+      - name: Issue Forms Body Parser
+        id: parse
+        uses: zentered/issue-forms-body-parser@v2.0.0
+        with:
+          body: ${{ steps.read_issue_body.output.body }}
+
+      - name: Debug issue data
+        run: echo ${{ toJSON(steps.parse.outputs.data) }}
+
+      - name: Ekstrakcja nazwy zgłoszenia 
+        id: name_extraction
+        run: |
+          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
+
+      - name: Aktualizacja nazwy
+        env:
+          name: ${{ github.event.inputs.NAME }}
+          GITHUB_TOKEN: ${{ github.token }}
+        if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == "[Nowa Organizacja]"
+        run: |
+          gh issue edit --repo "$GITHUB_REPOSITORY" 1 --title "$name - ${{ steps.parse.outputs.data.nazwa }}"
