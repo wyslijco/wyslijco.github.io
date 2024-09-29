@@ -1,6 +1,8 @@
 name: Przetworzenie organizacji
 
 on:
+  issues:
+    types: [opened]
   workflow_dispatch:
     inputs:
       issue_number:
@@ -15,8 +17,19 @@ permissions:
 
 jobs:
   process:
+    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
+    name: Process new organization
     runs-on: ubuntu-latest
     steps:
+
+      - name: Ekstrakcja nazwy zgłoszenia 
+        id: name_extraction
+        run: |
+          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
+          github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
+
+      - name: Check 
+
       - name: Parse issue
         id: parse
         uses: onmax/issue-form-parser@v1.5
@@ -31,13 +44,8 @@ jobs:
 
           echo "${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
 
-      - name: Ekstrakcja nazwy zgłoszenia 
-        id: name_extraction
-        run: |
-          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
 
-      - name: Aktualizacja nazwy
+      - name: Aktualizacja nazwy zgłoszenia
         env:
           name: ${{ github.event.inputs.NAME }}
           GITHUB_TOKEN: ${{ github.token }}
