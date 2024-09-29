@@ -21,14 +21,11 @@ jobs:
     name: Process new organization
     runs-on: ubuntu-latest
     steps:
-
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
         run: |
           echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
           github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
-
-      - name: Check 
 
       - name: Parse issue
         id: parse
@@ -43,7 +40,6 @@ jobs:
           echo '${{ steps.parse.outputs.payload }}'
 
           echo "${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
-
 
       - name: Aktualizacja nazwy zgłoszenia
         env:
