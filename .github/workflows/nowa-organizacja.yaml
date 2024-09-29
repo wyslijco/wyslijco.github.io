@@ -61,10 +61,15 @@ jobs:
     name: Sprawdzanie numeru KRS
     runs-on: ubuntu-latest
     steps:
+      - name: Wyciąganie KRS
+        id: krs_pick
+        run: | 
+          TMP_KRS=${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }}
+          echo "KRS=${TMP_KRS//[[:blank:]]/}" >> $GITHUB_OUTPUT
       - name: Wyciąganie długości KRS
         id: krs_length
-        run: 
-          echo "KRS_LENGTH=$(v=${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }}; echo ${#v})" >> $GITHUB_OUTPUT
+        run: |
+          echo "KRS_LENGTH=$(v=${{ steps.krs_pick.outputs.KRS }}; echo ${#v})" >> $GITHUB_OUTPUT
       - name: Sprawdzanie numeru KRS
         if: steps.krs_length.outputs.KRS_LENGTH != '10'
         run: exit 1
