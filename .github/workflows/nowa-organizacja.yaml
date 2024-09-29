@@ -64,7 +64,7 @@ jobs:
       - name: Wyciąganie KRS
         id: krs_pick
         run: | 
-          TMP_KRS=${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }}
+          TMP_KRS="${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }}"
           echo "KRS=${TMP_KRS//[[:blank:]]/}" >> $GITHUB_OUTPUT
       - name: Wyciąganie długości KRS
         id: krs_length
