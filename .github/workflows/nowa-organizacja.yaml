@@ -25,7 +25,7 @@ jobs:
             gh issue view ${{ inputs.issue_number }} --repo ${{
           github.repository }} --json body --template '{{.body}}'
             echo EOF
-          } >> $GITHUB_OUTPUT
+          } >> "$GITHUB_OUTPUT"
         # echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
         # github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
 
