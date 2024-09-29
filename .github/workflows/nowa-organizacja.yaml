@@ -19,9 +19,15 @@ jobs:
     steps:
       - name: Fetch the issue
         id: read_issue_body
-        run:
-          echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
+        run: |
+          {
+            echo 'body<<EOF'
+            $(gh issue view ${{ inputs.issue_number }} --repo ${{
+          github.repository }} --json body --template '{{.body}}')
+            aecho EOF
+          } >> $GITHUB_OUTPUT
+        # echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
+        # github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
 
       - name: Issue Forms Body Parser
         id: parse
