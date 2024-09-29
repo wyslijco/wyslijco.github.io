@@ -21,7 +21,7 @@ jobs:
         id: read_issue_body
         run:
           echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repo }} --json body --jq '.body')" >> $GITHUB_OUTPUT
+          github.repository }} --json body --jq '.body')" >> $GITHUB_OUTPUT
 
       - name: Issue Forms Body Parser
         id: parse
@@ -35,7 +35,8 @@ jobs:
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
         run: |
-          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
+          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
+          github.repo }}--json title --template '{{.title}}')" >> $GITHUB_OUTPUT
 
       - name: Aktualizacja nazwy
         env:
