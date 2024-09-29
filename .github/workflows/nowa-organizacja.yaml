@@ -41,6 +41,6 @@ jobs:
         env:
           name: ${{ github.event.inputs.NAME }}
           GITHUB_TOKEN: ${{ github.token }}
-        if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == "[Nowa Organizacja]"
+        if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
         run: |
           gh issue edit --repo "$GITHUB_REPOSITORY" 1 --title "$name - ${{ steps.parse.outputs.data.nazwa }}"
