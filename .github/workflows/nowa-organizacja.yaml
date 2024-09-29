@@ -29,7 +29,7 @@ jobs:
           # them from being treated as special characters (e.g. $ or `)
           echo '${{ steps.parse.outputs.payload }}'
 
-          echo '${{ fromJson(steps.parse.outputs.payload)["Nazwa Twojej organizacji"] }}'
+          echo "${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
 
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
