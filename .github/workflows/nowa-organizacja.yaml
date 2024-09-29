@@ -29,7 +29,7 @@ jobs:
           # them from being treated as special characters (e.g. $ or `)
           echo '${{ steps.parse.outputs.payload }}'
 
-          echo '${{ steps.parse.outputs.payload.nazwa }}'
+          echo '${{ fromJson(steps.parse.outputs.payload)["Nazwa Twojej organizacji"] }}'
 
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
@@ -43,4 +43,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
         run: |
-          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ inputs.issue_number }} --title "$name - ${{ fromJson(steps.parse.outputs.payload)['nazwa'] }}"
+          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ inputs.issue_number }} --title "$name - ${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
