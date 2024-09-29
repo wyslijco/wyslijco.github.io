@@ -17,26 +17,22 @@ jobs:
   process:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch the issue
-        id: read_issue_body
-        run: |
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "body<<$EOF" >> $GITHUB_OUTPUT
-          echo "$(gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
-          echo "$EOF" >> $GITHUB_OUTPUT
-
-        # echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
-        # github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
-
-      - name: Issue Forms Body Parser
+      - name: Parse issue
         id: parse
-        uses: zentered/issue-forms-body-parser@v2.0.0
+        uses: onmax/issue-form-parser@v1.5
         with:
-          body: ${{ steps.read_issue_body.output.body }}
+          issue_number: ${{ inputs.issue_number }}
+
+      - name: Show parsed payload data
+        run: |
+          # Using the character `'` to prevent all characters enclosed within
+          # them from being treated as special characters (e.g. $ or `)
+          echo '${{ steps.parse.outputs.payload }}'
+
+          echo '${{ fromJson(steps.parse.outputs.payload)["nazwa"] }}'
 
       - name: Debug issue data
-        run: echo ${{ toJSON(steps.parse.outputs.data) }}
+        run: echo ${{ steps.parse.outputs.payload }}
 
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
@@ -50,4 +46,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
         run: |
-          gh issue edit --repo "$GITHUB_REPOSITORY" 1 --title "$name - ${{ steps.parse.outputs.data.nazwa }}"
+          gh issue edit --repo "$GITHUB_REPOSITORY" 1 --title "$name - ${{ fromJson(steps.parse.outputs.payload)['nazwa'] }}"
