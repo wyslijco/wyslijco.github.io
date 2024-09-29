@@ -20,12 +20,12 @@ jobs:
       - name: Fetch the issue
         id: read_issue_body
         run: |
-          {
-            echo 'body<<EOF'
-            gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repository }} --json body --template '{{.body}}'
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "body<<$EOF" >> $GITHUB_OUTPUT
+          echo "$(gh issue view ${{ inputs.issue_number }} --repo ${{
+          github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+
         # echo "body=$(gh issue view ${{ inputs.issue_number }} --repo ${{
         # github.repository }} --json body --template '{{.body}}')" >> $GITHUB_OUTPUT
 
