@@ -13,8 +13,13 @@ permissions:
   issues: write
 
 jobs:
-  process:
+
+  check-if-new-org:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
+    name: Check if this is new org issue
+
+  process-issue-title:
+    needs: [check-if-new-org]
     name: Process new organization
     runs-on: ubuntu-latest
     steps:
