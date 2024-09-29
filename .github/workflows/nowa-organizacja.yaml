@@ -66,7 +66,7 @@ jobs:
         run: 
           echo "KRS_LENGTH=$(echo ${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }} | jq '. | legth')" >> $GITHUB_OUTPUT
       - name: Sprawdzanie numeru KRS
-        if: ${{ steps.krs_length.outputs.KRS_LENGTH }} != 10
+        if: steps.krs_length.outputs.KRS_LENGTH != '10'
         run: exit 1
       - name: Sprawdzanie z bazami
         run: |
