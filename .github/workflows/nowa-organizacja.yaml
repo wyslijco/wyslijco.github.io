@@ -3,6 +3,11 @@ name: Przetworzenie organizacji
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        type: string
+        required: true
 
 
 env:
@@ -19,12 +24,11 @@ jobs:
     name: Sprawdzanie poprawności danych
     runs-on: ubuntu-latest
     steps:
-      
       - name: Parsowanie treści zgłoszenia
         id: parse
         uses: onmax/issue-form-parser@v1.5
         with:
-          issue_number: ${{ github.event.issue.number }}
+          issue_number: ${{ inputs.issue_number }}
 
 
   process-issue-title:
@@ -36,7 +40,7 @@ jobs:
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
         run: |
-          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ github.event.issue.number }} --repo ${{
+          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
           github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
 
       - name: Show parsed payload data
@@ -52,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
         run: |
-          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ github.event.issue.number }} --title "[Nowa Organizacja] ${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
+          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ inputs.issue_number }} --title "[Nowa Organizacja] ${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
 
   check-krs:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
