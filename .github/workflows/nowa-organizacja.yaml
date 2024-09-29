@@ -35,7 +35,7 @@ jobs:
         id: name_extraction
         run: |
           echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ inputs.issue_number }} --repo ${{
-          github.repository }}--json title --template '{{.title}}')" >> $GITHUB_OUTPUT
+          github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
 
       - name: Aktualizacja nazwy
         env:
