@@ -14,14 +14,24 @@ permissions:
 
 jobs:
 
-  check-if-new-org:
+  validate-form:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
-    name: Check if this is new org issue
+    name: Sprawdzanie poprawności danych
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Parsowanie treści zgłoszenia
+        id: parse
+        uses: onmax/issue-form-parser@v1.5
+        with:
+          issue_number: ${{ github.event.issue.number }}
+
 
   process-issue-title:
-    needs: [check-if-new-org]
-    name: Process new organization
+    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
+    name: Sprawdzanie tytułu zgłoszenia
     runs-on: ubuntu-latest
+    needs: [validate-form]
     steps:
       - name: Ekstrakcja nazwy zgłoszenia 
         id: name_extraction
@@ -29,23 +39,29 @@ jobs:
           echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ github.event.issue.number }} --repo ${{
           github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
 
-      - name: Parse issue
-        id: parse
-        uses: onmax/issue-form-parser@v1.5
-        with:
-          issue_number: ${{ github.event.issue.number }}
-
       - name: Show parsed payload data
         run: |
           # Using the character `'` to prevent all characters enclosed within
           # them from being treated as special characters (e.g. $ or `)
-          echo '${{ steps.parse.outputs.payload }}'
+          echo '${{ needs.validate-form.outputs.payload }}'
 
-          echo "${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
+          echo "${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
 
       - name: Aktualizacja nazwy zgłoszenia
         env:
           GITHUB_TOKEN: ${{ github.token }}
         if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
         run: |
-          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ github.event.issue.number }} --title "[Nowa Organizacja] ${{ fromJson(steps.parse.outputs.payload)['Nazwa Twojej organizacji'] }}"
+          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ github.event.issue.number }} --title "[Nowa Organizacja] ${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
+
+  check-krs:
+    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
+    needs: [validate-form]
+    name: Sprawdzanie numeru KRS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sprawdzanie z bazami
+        run: |
+          echo "TODO: Sprawdzanie z bazami..."
+
+  
