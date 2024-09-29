@@ -18,6 +18,8 @@ jobs:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
     name: Sprawdzanie poprawności danych
     runs-on: ubuntu-latest
+    outputs:
+      payload: ${{ steps.parse.outputs.payload }}
     steps:
       - name: Parsowanie treści zgłoszenia
         id: parse
