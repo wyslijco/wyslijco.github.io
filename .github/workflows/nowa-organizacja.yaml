@@ -1,12 +1,12 @@
-name: Przetworzenie organizacji
+name: Przetwarzenie zgłoszenia organizacji
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 
 env:
-  GH_TOKEN: ${{ github.token }}
+  GITHUB_TOKEN: ${{ github.token }}
 
 permissions:
   contents: read
@@ -16,7 +16,7 @@ jobs:
 
   validate-form:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
-    name: Sprawdzanie poprawności danych
+    name: Ekstrakcja danych z formularza
     runs-on: ubuntu-latest
     outputs:
       payload: ${{ steps.parse.outputs.payload }}
@@ -27,52 +27,23 @@ jobs:
         with:
           issue_number: ${{ github.event.issue.number }}
 
-
-  process-issue-title:
+  processing:
     if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
-    name: Sprawdzanie tytułu zgłoszenia
-    runs-on: ubuntu-latest
     needs: [validate-form]
+    name: Przetwarzenie zgłoszenia
+    runs-on: ubuntu-latest
     steps:
-      - name: Ekstrakcja nazwy zgłoszenia 
-        id: name_extraction
-        run: |
-          echo "GITHUB_ISSUE_TITLE=$(gh issue view ${{ github.event.issue.number }} --repo ${{
-          github.repository }} --json title --template '{{.title}}')" >> $GITHUB_OUTPUT
-
-      - name: Show parsed payload data
-        run: |
-          # Using the character `'` to prevent all characters enclosed within
-          # them from being treated as special characters (e.g. $ or `)
-          echo '${{ needs.validate-form.outputs.payload }}'
-
-          echo "${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
-
-      - name: Aktualizacja nazwy zgłoszenia
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip' # caching pip dependencies
+      - name: Install dependencies
+        working-directory: ./github/scripts
+        run: pip install -r requirements.txt
+      - name: Run script
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-        if: steps.name_extraction.outputs.GITHUB_ISSUE_TITLE == '[Nowa Organizacja]'
-        run: |
-          gh issue edit --repo "$GITHUB_REPOSITORY" ${{ github.event.issue.number }} --title "[Nowa Organizacja] ${{ fromJson(needs.validate-form.outputs.payload)['Nazwa Twojej organizacji'] }}"
-
-  check-krs:
-    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
-    needs: [validate-form]
-    name: Sprawdzanie numeru KRS
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wyciąganie KRS
-        id: krs_pick
-        run: | 
-          TMP_KRS="${{ fromJson(needs.validate-form.outputs.payload )['KRS przypisany do Twojej organizacji'] }}"
-          echo "KRS=${TMP_KRS//[[:blank:]]/}" >> $GITHUB_OUTPUT
-      - name: Wyciąganie długości KRS
-        id: krs_length
-        run: |
-          echo "KRS_LENGTH=$(v=${{ steps.krs_pick.outputs.KRS }}; echo ${#v})" >> $GITHUB_OUTPUT
-      - name: Sprawdzanie numeru KRS
-        if: steps.krs_length.outputs.KRS_LENGTH != '10'
-        run: exit 1
-      - name: Sprawdzanie z bazami
-        run: |
-          echo "TODO: Sprawdzanie z bazami..."
+          GITHUB_ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GITHUB_FORM_JSON: ${{ needs.validate-form.outputs.payload }}
+        working-directory: ./github/scripts
+        run: python process.py
