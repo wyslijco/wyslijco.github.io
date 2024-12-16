@@ -27,6 +27,7 @@ class OrgDataPuller:
 
     @staticmethod
     def get_org_by_krs(issue: Issue, krs: str) -> Optional["OrgDataPuller"]:
+
         # Downloading official org data
         try:
             org = OrgDataPuller(krs)

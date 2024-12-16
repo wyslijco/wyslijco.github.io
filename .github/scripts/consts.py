@@ -13,3 +13,6 @@ class OrgSchemaIds(enum.StrEnum):
 
 NEW_ORG_ISSUE_DEFAULT_TITLE = "[Nowa Organizacja]"
 NEW_ORG_SCHEMA_FILENAME = "nowa.yaml"
+
+
+ORG_SCHEMA_SLUG_FIELD = "adres"

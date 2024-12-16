@@ -2,6 +2,7 @@ import json
 import logging
 import os
 
+import yaml
 from github import Auth, Github, Issue
 
 from consts import OrgSchemaIds, NEW_ORG_ISSUE_DEFAULT_TITLE, NEW_ORG_SCHEMA_FILENAME
@@ -26,22 +27,9 @@ def process_new_org_issue(issue: Issue, data: FormDataParser):
     if has_label(issue, Label.AUTO_VERIFIED):
         issue.remove_from_labels(Label.AUTO_VERIFIED)
 
-    validator = OrgValidator(data)
-    validation_results = validator.validate()
-
-    if not all(validation_results.values()):
-        for field, is_valid in validation_results.items():
-            if not is_valid:
-                issue.add_to_labels(INVALID_FIELD_TO_LABEL[field])
-
-        invalid_fields_text = ", ".join([data.get_label(field) for field, is_valid in validation_results.items() if not is_valid])
-        issue.create_comment(f"Wprowadzone dane są nieprawidłowe. Prosimy poprawić: {invalid_fields_text}")
+    validator = OrgValidator(data, issue)
+    if not validator.validate():
         return
-    else:
-        # Make sure to remove invalid labels if their values have been corrected
-        for field in validation_results.keys():
-            if has_label(issue, INVALID_FIELD_TO_LABEL[field]):
-                issue.remove_from_labels(INVALID_FIELD_TO_LABEL[field])
 
     if not (org := OrgDataPuller.get_org_by_krs(issue, data.get(OrgSchemaIds.krs))):
         return
