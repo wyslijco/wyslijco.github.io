@@ -1,4 +1,4 @@
-from label import Label
+from labels import Label
 
 
 def has_label(issue, label: Label):

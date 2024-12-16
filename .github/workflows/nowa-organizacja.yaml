@@ -45,5 +45,6 @@ jobs:
         env:
           GITHUB_ISSUE_NUMBER: ${{ github.event.issue.number }}
           GITHUB_FORM_JSON: ${{ needs.validate-form.outputs.payload }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         working-directory: ./.github/scripts
         run: python process.py

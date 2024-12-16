@@ -85,6 +85,8 @@ body:
     id: kod_pocztowy
     attributes:
       label: Kod Pocztowy
+      description: Wprowadź kod pocztowy w formacie `00-000`
+      placeholder: 00-000
     validations:
       required: true
   - type: input
@@ -97,5 +99,7 @@ body:
     id: telefon
     attributes:
       label: Telefon kontaktowy dla kuriera
+      description: Wprowadź numer telefonu w formacie `000 000 000`
+      placeholder: 000 000 000
     validations:
       required: true
