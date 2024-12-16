@@ -39,11 +39,11 @@ jobs:
           python-version: '3.12'
           cache: 'pip' # caching pip dependencies
       - name: Install dependencies
-        working-directory: ./github/scripts
+        working-directory: ./.github/scripts
         run: pip install -r requirements.txt
       - name: Run script
         env:
           GITHUB_ISSUE_NUMBER: ${{ github.event.issue.number }}
           GITHUB_FORM_JSON: ${{ needs.validate-form.outputs.payload }}
-        working-directory: ./github/scripts
+        working-directory: ./.github/scripts
         run: python process.py
