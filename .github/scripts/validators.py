@@ -5,7 +5,7 @@ import yaml
 from github import Issue
 
 from consts import OrgSchemaIds, ORG_SCHEMA_SLUG_FIELD
-from labels import INVALID_FIELD_TO_LABEL, Label
+from labels import INVALID_FIELD_TO_LABEL
 from parsers import FormDataParser
 from utils import has_label
 
@@ -47,7 +47,7 @@ class OrgValidator:
 
         return True, ""
 
-    def validate(self) -> dict[str, bool]:
+    def validate(self) -> bool:
         """
         Validates the organization data.
 
@@ -78,3 +78,6 @@ class OrgValidator:
             for field, error in errors:
                 msg += f"- **{self.data.get_label(field)}**: {error}\n"
             self.issue.create_comment(msg)
+            return False
+
+        return True

@@ -2,11 +2,10 @@ import json
 import logging
 import os
 
-import yaml
 from github import Auth, Github, Issue
 
 from consts import OrgSchemaIds, NEW_ORG_ISSUE_DEFAULT_TITLE, NEW_ORG_SCHEMA_FILENAME
-from labels import Label, INVALID_FIELD_TO_LABEL
+from labels import Label
 from parsers import FormDataParser
 from pullers import OrgDataPuller
 from utils import has_label
@@ -29,9 +28,11 @@ def process_new_org_issue(issue: Issue, data: FormDataParser):
 
     validator = OrgValidator(data, issue)
     if not validator.validate():
+        logger.error("Validation failed")
         return
 
     if not (org := OrgDataPuller.get_org_by_krs(issue, data.get(OrgSchemaIds.krs))):
+        logger.error("KRS db validation failed")
         return
 
     # Update issue title
@@ -40,6 +41,7 @@ def process_new_org_issue(issue: Issue, data: FormDataParser):
         issue.edit(title=f"{NEW_ORG_ISSUE_DEFAULT_TITLE} {org.name or data.get(OrgSchemaIds.name)}")
 
     if not has_label(issue, Label.AUTO_VERIFIED):
+        logger.info("Adding auto-verified label")
         issue.create_comment(f"@{issue.user.login}, dziękujemy za podanie informacji. "
                              f"Przyjęliśmy zgłoszenie dodania nowej organizacji. "
                              f"Wkrótce skontaktujemy się celem weryfikacji zgłoszenia.")
