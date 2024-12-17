@@ -5,6 +5,7 @@ import os
 from github import Auth, Github, Issue
 
 from consts import OrgFormSchemaIds, NEW_ORG_ISSUE_DEFAULT_TITLE, NEW_ORG_FORM_SCHEMA_FILENAME
+from exceptions import BranchModifiedError
 from git_managers import create_organization_yaml_pr
 from labels import Label
 from parsers import GithubIssueFormDataParser
@@ -60,7 +61,15 @@ def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
 
     # create organization yaml file and add to the Pull Request
     yaml_string = render_organization_yaml(data)
-    create_organization_yaml_pr(issue, yaml_string, data)
+
+    try:
+        create_organization_yaml_pr(issue, yaml_string, data)
+    except BranchModifiedError:
+        logger.error("Branch was modified by someone else")
+        issue.create_comment(
+            f"Aktualizacja pliku organizacji na podstawie opisu zgłoszenia niemożliwa. "
+            f"Plik organizacji został już zmodyfikowany przez innego użytkownika."
+        )
 
 
 def main():

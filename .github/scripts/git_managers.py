@@ -1,4 +1,5 @@
 import logging
+from multiprocessing.managers import Value
 
 from github import GithubException, InputGitTreeElement
 from github.GitCommit import GitCommit
@@ -8,6 +9,7 @@ from github.PullRequest import PullRequest
 from github.Repository import Repository
 
 from consts import OrgFormSchemaIds
+from exceptions import BranchModifiedError
 from parsers import GithubIssueFormDataParser
 
 
@@ -24,6 +26,8 @@ class GitManager:
         self, branch_ref: GitRef, file_path: str, contents: str, commit_message: str
     ) -> GitCommit:
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
+        if not latest_commit.commit.message.startswith("[automat] "):
+            raise BranchModifiedError()
         blob = self.repo.create_git_blob(contents, "utf-8")
         tree_element = InputGitTreeElement(
             path=file_path, mode="100644", type="blob", sha=blob.sha
@@ -112,7 +116,7 @@ def create_organization_yaml_pr(
     new_branch_name = f"nowa-organizacja-zgloszenie-{issue.number}"
 
     commit_message = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
-    pr_title = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
+    pr_title = f"[automat] Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
     pr_body = f"Automatycznie dodana nowa organizacja na podstawie zgłoszenia z issue #{issue.number}.\n\n Closes #{issue.number}"
 
     file_path = "organizations/organization.yaml"
