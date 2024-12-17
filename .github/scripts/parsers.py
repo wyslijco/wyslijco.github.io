@@ -3,7 +3,11 @@ from typing import Any
 import yaml
 
 
-class FormDataParser:
+class GithubIssueFormDataParser:
+    """
+    Parses data comming from a Github issue form converted
+    to a dictionary and provides methods to access the data
+    """
 
     def __init__(self, form_data: dict[str, Any], form_schema_filename: str):
         self.form_data = form_data

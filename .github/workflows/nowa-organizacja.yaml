@@ -11,6 +11,7 @@ env:
 permissions:
   contents: read
   issues: write
+  pull-requests: write
 
 jobs:
 
@@ -47,4 +48,5 @@ jobs:
           GITHUB_FORM_JSON: ${{ needs.validate-form.outputs.payload }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         working-directory: ./.github/scripts
-        run: python process.py
+        run: python cli.py
+

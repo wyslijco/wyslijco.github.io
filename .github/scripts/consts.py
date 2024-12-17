@@ -1,9 +1,9 @@
 import enum
 
 
-class OrgSchemaIds(enum.StrEnum):
+class OrgFormSchemaIds(enum.StrEnum):
     name = "nazwa"
-    www = "www"
+    website = "www"
     krs = "krs"
     slug = "nazwa_strony"
     street = "ulica"
@@ -11,8 +11,9 @@ class OrgSchemaIds(enum.StrEnum):
     city = "miasto"
     phone_number = "telefon"
 
+
 NEW_ORG_ISSUE_DEFAULT_TITLE = "[Nowa Organizacja]"
-NEW_ORG_SCHEMA_FILENAME = "nowa.yaml"
+NEW_ORG_FORM_SCHEMA_FILENAME = "nowa.yaml"
 
 
 ORG_SCHEMA_SLUG_FIELD = "adres"
