@@ -26,8 +26,6 @@ class GitManager:
         self, branch_ref: GitRef, file_path: str, contents: str, commit_message: str
     ) -> GitCommit:
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
-        if not latest_commit.commit.message.startswith("[automat] "):
-            raise BranchModifiedError()
         blob = self.repo.create_git_blob(contents, "utf-8")
         tree_element = InputGitTreeElement(
             path=file_path, mode="100644", type="blob", sha=blob.sha
@@ -40,13 +38,13 @@ class GitManager:
         return new_commit
 
     def get_or_create_branch(self, source_branch: str, new_branch_name: str) -> GitRef:
+        source = self.repo.get_branch(source_branch)
         try:
             branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
             print(f"Branch '{new_branch_name}' already exists.")
         except GithubException as e:
             if e.status == 404:
                 # Branch does not exist, create it from the source branch
-                source = self.repo.get_branch(source_branch)
                 self.repo.create_git_ref(
                     ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
                 )
@@ -54,6 +52,12 @@ class GitManager:
                 print(f"Branch '{new_branch_name}' created from '{source_branch}'.")
             else:
                 raise e
+
+        latest_commit = self.repo.get_commit(branch_ref.object.sha)
+        if latest_commit.sha != source.commit.sha and not latest_commit.commit.message.startswith("[auto] "):
+            logger.error(f"Branch was modified: {latest_commit.commit.message}")
+            raise BranchModifiedError()
+
         return branch_ref
 
     def get_or_create_pr(
@@ -74,6 +78,11 @@ class GitManager:
             return self.repo.create_pull(
                 title=pr_title, body=pr_body, head=new_branch_name, base=target_branch
             )
+
+    def was_branch_modified(self, source_branch, branch: GitRef) -> bool:
+        latest_commit = self.repo.get_commit(branch.object.sha)
+        source = self.repo.get_branch(source_branch)
+
 
     def create_or_update_remote_branch_with_file_commit(
         self,
@@ -115,8 +124,8 @@ def create_organization_yaml_pr(
     source_branch = "main"
     new_branch_name = f"nowa-organizacja-zgloszenie-{issue.number}"
 
-    commit_message = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
-    pr_title = f"[automat] Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
+    commit_message = f"[auto] Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
+    pr_title = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
     pr_body = f"Automatycznie dodana nowa organizacja na podstawie zgłoszenia z issue #{issue.number}.\n\n Closes #{issue.number}"
 
     file_path = "organizations/organization.yaml"

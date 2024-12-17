@@ -32,36 +32,42 @@ repo = g.get_repo(GITHUB_REPOSITORY)
 
 
 def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
+    validation_warnings = []
+
+    org_name = data.get(OrgFormSchemaIds.name)
+
     if has_label(issue, Label.AUTO_VERIFIED):
         issue.remove_from_labels(Label.AUTO_VERIFIED)
 
     validator = OrgValidator(data, issue)
     if not validator.validate():
-        logger.error("Validation failed")
+        logger.error("Validation failed - not continuing")
         return
 
     if not (org := KRSDataPuller.get_org_by_krs(issue, data.get(OrgFormSchemaIds.krs))):
         logger.error("KRS db validation failed")
-        return
+        validation_warnings.append("Nie można zweryfikować KRS")
+    else:
+        org_name = org.name
 
     # Update issue title
     if issue.title == NEW_ORG_ISSUE_DEFAULT_TITLE:
         logger.info("Updating issue title")
         issue.edit(
-            title=f"{NEW_ORG_ISSUE_DEFAULT_TITLE} {org.name or data.get(OrgFormSchemaIds.name)}"
+            title=f"{NEW_ORG_ISSUE_DEFAULT_TITLE} {org_name}"
         )
 
     logger.info("Adding auto-verified label")
-    if not has_label(issue, Label.WAITING):
-        issue.add_to_labels(Label.WAITING)
-        issue.create_comment(
-            f"@{issue.user.login}, dziękujemy za podanie informacji. "
-            f"Przyjęliśmy zgłoszenie dodania nowej organizacji. "
-            f"Wkrótce skontaktujemy się celem weryfikacji zgłoszenia."
-        )
+    if not validation_warnings:
+        issue.add_to_labels(Label.AUTO_VERIFIED)
 
-    # mark as verified
-    issue.add_to_labels(Label.AUTO_VERIFIED)
+        if not has_label(issue, Label.WAITING):
+            issue.add_to_labels(Label.WAITING)
+            issue.create_comment(
+                f"@{issue.user.login}, dziękujemy za podanie informacji. "
+                f"Przyjęliśmy zgłoszenie dodania nowej organizacji. "
+                f"Wkrótce skontaktujemy się celem weryfikacji zgłoszenia."
+            )
 
     # create organization yaml file and add to the Pull Request
     yaml_string = render_organization_yaml(data)

@@ -57,7 +57,6 @@ class KRSDataPuller:
                 f"Nie udało się pobrać danych o organizacji z KRS. "
                 f"Proszę sprawdzić, czy podany numer jest poprawny"
             )
-            issue.add_to_labels(Label.INVALID_KRS)
             return
 
         if has_label(issue, Label.INVALID_KRS):
