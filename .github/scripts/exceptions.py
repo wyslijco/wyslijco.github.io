@@ -1,5 +1,3 @@
-
-
 class BranchModifiedError(ValueError):
     pass
 

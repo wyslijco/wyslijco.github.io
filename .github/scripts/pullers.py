@@ -1,5 +1,3 @@
-import re
-from json import JSONDecoder
 from typing import Optional
 
 import requests
@@ -7,8 +5,8 @@ from github import Issue
 from requests import JSONDecodeError
 
 from exceptions import KRSMaintenanceError
-from utils import has_label
 from labels import Label
+from utils import has_label
 
 
 class KRSDataPuller:
@@ -51,9 +49,7 @@ class KRSDataPuller:
         try:
             org = KRSDataPuller(krs)
         except KRSMaintenanceError as e:
-            issue.create_comment(
-                str(e)
-            )
+            issue.create_comment(str(e))
             issue.add_to_labels(Label.INVALID_KRS)
             return
         except requests.HTTPError as e:

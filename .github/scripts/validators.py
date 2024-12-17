@@ -24,7 +24,11 @@ class OrgValidator:
 
     def validate_postal_code(self) -> tuple[bool, str]:
         return (
-            bool(re.fullmatch(r"\d{2}-\d{3}", self.data.get(OrgFormSchemaIds.postal_code))),
+            bool(
+                re.fullmatch(
+                    r"\d{2}-\d{3}", self.data.get(OrgFormSchemaIds.postal_code)
+                )
+            ),
             "niepoprawny kod pocztowy",
         )
 

@@ -4,7 +4,11 @@ import os
 
 from github import Auth, Github, Issue
 
-from consts import OrgFormSchemaIds, NEW_ORG_ISSUE_DEFAULT_TITLE, NEW_ORG_FORM_SCHEMA_FILENAME
+from consts import (
+    OrgFormSchemaIds,
+    NEW_ORG_ISSUE_DEFAULT_TITLE,
+    NEW_ORG_FORM_SCHEMA_FILENAME,
+)
 from exceptions import BranchModifiedError
 from git_managers import create_organization_yaml_pr
 from labels import Label
