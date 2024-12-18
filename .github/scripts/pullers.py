@@ -10,7 +10,6 @@ from utils import has_label
 
 
 class KRSDataPuller:
-
     def __init__(self, krs: str):
         self.krs = krs
         self.data = self.pull_data()
@@ -29,6 +28,7 @@ class KRSDataPuller:
                         f"Proszę [zweryfikować KRS ręcznie]"
                         f"(https://api-krs.ms.gov.pl/api/krs/OdpisAktualny/{self.krs}?rejestr=S&format=json)."
                     )
+                raise
         else:
             raise requests.HTTPError(f"Failed to fetch data for KRS {self.krs}")
 
@@ -44,7 +44,6 @@ class KRSDataPuller:
 
     @staticmethod
     def get_org_by_krs(issue: Issue, krs: str) -> Optional["KRSDataPuller"]:
-
         # Downloading official org data
         try:
             org = KRSDataPuller(krs)
@@ -52,10 +51,10 @@ class KRSDataPuller:
             issue.create_comment(str(e))
             issue.add_to_labels(Label.INVALID_KRS)
             return
-        except requests.HTTPError as e:
+        except requests.HTTPError:
             issue.create_comment(
-                f"Nie udało się pobrać danych o organizacji z KRS. "
-                f"Proszę sprawdzić, czy podany numer jest poprawny"
+                "Nie udało się pobrać danych o organizacji z KRS. "
+                "Proszę sprawdzić, czy podany numer jest poprawny"
             )
             return
 

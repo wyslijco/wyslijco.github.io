@@ -1,5 +1,5 @@
 import logging
-from multiprocessing.managers import Value
+from dataclasses import dataclass
 
 from github import GithubException, InputGitTreeElement
 from github.GitCommit import GitCommit
@@ -16,11 +16,11 @@ from parsers import GithubIssueFormDataParser
 logger = logging.getLogger(__file__)
 
 
+@dataclass
 class GitManager:
     """Manager for creating a new branch and pull request with a file commit in the repo."""
 
-    def __init__(self, repo: Repository):
-        self.repo = repo
+    repo: Repository
 
     def commit_file_contents_to_branch(
         self, branch_ref: GitRef, file_path: str, contents: str, commit_message: str
@@ -41,7 +41,7 @@ class GitManager:
         source = self.repo.get_branch(source_branch)
         try:
             branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
-            print(f"Branch '{new_branch_name}' already exists.")
+            logger.info(f"Found existing branch '{new_branch_name}'.")
         except GithubException as e:
             if e.status == 404:
                 # Branch does not exist, create it from the source branch
@@ -49,12 +49,17 @@ class GitManager:
                     ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
                 )
                 branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
-                print(f"Branch '{new_branch_name}' created from '{source_branch}'.")
+                logger.info(
+                    f"Branch '{new_branch_name}' created from '{source_branch}'."
+                )
             else:
                 raise e
 
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
-        if latest_commit.sha != source.commit.sha and not latest_commit.commit.message.startswith("[auto] "):
+        if (
+            latest_commit.sha != source.commit.sha
+            and not latest_commit.commit.message.startswith("[auto] ")
+        ):
             logger.error(f"Branch was modified: {latest_commit.commit.message}")
             raise BranchModifiedError()
 
@@ -73,16 +78,11 @@ class GitManager:
                 f"Pull request already exists for branch '{new_branch_name}': {pulls[0].html_url}"
             )
             return pulls[0]
-        else:
-            logger.info(f"Creating pull request for branch '{new_branch_name}'")
-            return self.repo.create_pull(
-                title=pr_title, body=pr_body, head=new_branch_name, base=target_branch
-            )
 
-    def was_branch_modified(self, source_branch, branch: GitRef) -> bool:
-        latest_commit = self.repo.get_commit(branch.object.sha)
-        source = self.repo.get_branch(source_branch)
-
+        logger.info(f"Creating pull request for branch '{new_branch_name}'")
+        return self.repo.create_pull(
+            title=pr_title, body=pr_body, head=new_branch_name, base=target_branch
+        )
 
     def create_or_update_remote_branch_with_file_commit(
         self,

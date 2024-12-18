@@ -1,5 +1,6 @@
 import os
 import re
+from dataclasses import dataclass
 
 import yaml
 from github import Issue
@@ -10,11 +11,10 @@ from parsers import GithubIssueFormDataParser
 from utils import has_label
 
 
+@dataclass
 class OrgValidator:
-
-    def __init__(self, data: GithubIssueFormDataParser, issue: Issue):
-        self.data = data
-        self.issue = issue
+    data: GithubIssueFormDataParser
+    issue: Issue
 
     def validate_krs(self) -> tuple[bool, str]:
         return (
@@ -29,7 +29,7 @@ class OrgValidator:
                     r"\d{2}-\d{3}", self.data.get(OrgFormSchemaIds.postal_code)
                 )
             ),
-            "niepoprawny kod pocztowy",
+            "niepoprawny kod pocztowy (oczekiwany format: 00-000)",
         )
 
     def validate_phone_number(self) -> tuple[bool, str]:

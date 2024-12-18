@@ -53,9 +53,7 @@ def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
     # Update issue title
     if issue.title == NEW_ORG_ISSUE_DEFAULT_TITLE:
         logger.info("Updating issue title")
-        issue.edit(
-            title=f"{NEW_ORG_ISSUE_DEFAULT_TITLE} {org_name}"
-        )
+        issue.edit(title=f"{NEW_ORG_ISSUE_DEFAULT_TITLE} {org_name}")
 
     logger.info("Adding auto-verified label")
     if not validation_warnings:
@@ -77,8 +75,8 @@ def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
     except BranchModifiedError:
         logger.error("Branch was modified by someone else")
         issue.create_comment(
-            f"Aktualizacja pliku organizacji na podstawie opisu zgłoszenia niemożliwa. "
-            f"Plik organizacji został już zmodyfikowany przez innego użytkownika."
+            "Aktualizacja pliku organizacji na podstawie opisu zgłoszenia niemożliwa. "
+            "Plik organizacji został już zmodyfikowany przez innego użytkownika."
         )
 
 
