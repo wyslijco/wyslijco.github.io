@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Self
 
 import requests
 from github import Issue
@@ -42,8 +42,8 @@ class KRSDataPuller:
             .get("nazwa")
         )
 
-    @staticmethod
-    def get_org_by_krs(issue: Issue, krs: str) -> Optional["KRSDataPuller"]:
+    @classmethod
+    def get_org_by_krs(cls, issue: Issue, krs: str) -> Self | None:
         # Downloading official org data
         try:
             org = KRSDataPuller(krs)
