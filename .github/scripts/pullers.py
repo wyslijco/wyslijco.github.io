@@ -46,7 +46,7 @@ class KRSDataPuller:
     def get_org_by_krs(cls, issue: Issue, krs: str) -> Self | None:
         # Downloading official org data
         try:
-            org = KRSDataPuller(krs)
+            org = cls(krs)
         except KRSMaintenanceError as e:
             issue.create_comment(str(e))
             issue.add_to_labels(Label.INVALID_KRS)
