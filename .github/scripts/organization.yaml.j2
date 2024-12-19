@@ -1,0 +1,18 @@
+nazwa: {{ organization.name }}
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: {{ organization.slug }}
+
+strona: {{ organization.website }}
+krs: {{ organization.krs }}
+
+dostawa:
+  ulica: {{ organization.street }}
+  kod: {{ organization.postal_code }}
+  miasto: {{ organization.city }}
+  telefon: {{ organization.phone_number }}
+
+produkty:
+  - nazwa: Testowy produkt
+    link: http://example.com
+

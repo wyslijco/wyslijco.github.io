@@ -103,3 +103,8 @@ body:
       placeholder: 000 000 000
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+        # Następne kroki
+        Po wypełnieniu formularza, Twój wniosek zostanie zweryfikowany przez nasz zespół. W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji lub w rejestrze KRS. W przypadku pozytywnej weryfikacji, otrzymasz od nas informację o dalszych krokach w komentarzu do tego zgłoszenia (zakładka Issues).
