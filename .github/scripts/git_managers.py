@@ -115,8 +115,7 @@ class GitManager:
         self.create_or_update_remote_branch_with_file_commit(
             source_branch, new_branch, file_path, file_contents, commit_message
         )
-        pr = self.get_or_create_pr(source_branch, new_branch, pr_title, pr_body)
-        self.dispatch_workflow()
+        return self.get_or_create_pr(source_branch, new_branch, pr_title, pr_body)
 
 
 def create_organization_yaml_pr(
