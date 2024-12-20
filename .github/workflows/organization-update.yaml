@@ -1,10 +1,12 @@
-name: Walidacja zmian plików organizacji
+name: Walidacja zmiany plików organizacji
 
 on:
-  pull_request:
+  push:
     paths:
       - 'organizations/**'
-
+  pull_request:
+    branches:
+      - main
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
