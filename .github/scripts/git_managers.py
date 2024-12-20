@@ -98,8 +98,9 @@ class GitManager:
 
     def dispatch_workflow(self, commit: GitCommit):
         github_commit = self.repo.get_commit(commit.sha)
+        main_branch = self.repo.get_branch("main")
         workflow = self.repo.get_workflow("organization-update.yaml")
-        workflow.create_dispatch(ref=github_commit)
+        workflow.create_dispatch(ref=main_branch)
 
     def create_or_update_pr_with_file(
         self,
