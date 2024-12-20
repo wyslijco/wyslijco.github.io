@@ -1,7 +1,7 @@
 import logging
 from dataclasses import dataclass
 
-from github import GithubException, InputGitTreeElement
+from github import InputGitTreeElement, UnknownObjectException
 from github.GitCommit import GitCommit
 from github.GitRef import GitRef
 from github.Issue import Issue
@@ -11,7 +11,6 @@ from github.Repository import Repository
 from consts import OrgFormSchemaIds
 from exceptions import BranchModifiedError
 from parsers import GithubIssueFormDataParser
-
 
 logger = logging.getLogger(__file__)
 
@@ -42,8 +41,8 @@ class GitManager:
         try:
             branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
             logger.info(f"Found existing branch '{new_branch_name}'.")
-        except GithubException as e:
-            if e.status == 404:
+        except UnknownObjectException as e:
+            if e.status == "404":
                 # Branch does not exist, create it from the source branch
                 self.repo.create_git_ref(
                     ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
