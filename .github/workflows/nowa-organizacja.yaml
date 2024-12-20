@@ -4,15 +4,11 @@ on:
   issues:
     types: [opened, edited]
 
-
-env:
-  GITHUB_TOKEN: ${{ github.token }}
-
 permissions:
   contents: write
   issues: write
   pull-requests: write
-  
+
 jobs:
 
   validate-form:
@@ -47,6 +43,7 @@ jobs:
           GITHUB_ISSUE_NUMBER: ${{ github.event.issue.number }}
           GITHUB_FORM_JSON: ${{ needs.validate-form.outputs.payload }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_PAT: ${{ secrets.CUSTOM_GITHUB_PAT }}
         working-directory: ./.github/scripts
         run: python cli.py
 
