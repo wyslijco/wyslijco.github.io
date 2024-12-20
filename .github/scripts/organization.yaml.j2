@@ -1,3 +1,4 @@
+---
 nazwa: {{ organization.name }}
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
@@ -11,6 +12,9 @@ dostawa:
   kod: {{ organization.postal_code }}
   miasto: {{ organization.city }}
   telefon: {{ organization.phone_number }}
+  email: {{ organization.email }}
+  kod_paczkomatu:{% if organization.package_box_code %} {{ organization.package_box_code }}{% endif %}
+  dodatkowe_informacje:{% if organization.additional_info %} {{ organization.additional_info }}{% endif %}
 
 produkty:
   - nazwa: Testowy produkt

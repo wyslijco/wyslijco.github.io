@@ -14,17 +14,26 @@ class GithubIssueFormDataParser:
         self.form_schema_filename = form_schema_filename
         self.form_schema = self.get_form_schema(form_schema_filename)
 
+        self.field_label_map = self._create_field_label_map()
+
+    def _create_field_label_map(self):
+        field_label_map = {}
+        for field in self.form_schema.get("body", []):
+            if "id" in field:
+                field_label_map[field["id"]] = field["attributes"]["label"]
+        return field_label_map
+
     @staticmethod
     def get_form_schema(template_filename):
         with open(f"../ISSUE_TEMPLATE/{template_filename}") as f:
             return yaml.safe_load(f)
 
     def get_label(self, identifier: str) -> str | None:
-        for field in self.form_schema.get("body", []):
-            if "id" in field and field["id"] == identifier:
-                return field["attributes"]["label"]
-        return None
+        return self.field_label_map.get(identifier)
 
     def get(self, identifier: str) -> str | None:
         label = self.get_label(identifier)
-        return self.form_data.get(label, "")
+        value = self.form_data.get(label, "")
+        if value == "_No response_":
+            return ""
+        return value

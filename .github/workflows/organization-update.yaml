@@ -1,0 +1,23 @@
+name: Walidacja zmiany plików organizacji
+
+on:
+  push:
+    paths:
+      - 'organizations/*.yaml'
+  pull_request:
+    paths:
+      - 'organizations/*.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+
+  yaml-linting:
+    name: Walidacja pliku organizacji
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: organizations/*.yaml

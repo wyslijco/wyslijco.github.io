@@ -25,8 +25,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  yaml-linting:
+    name: Walidacja plików organizacji
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: organizations/*.yaml
+
   # Build job
   build:
+    needs: [yaml-linting]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

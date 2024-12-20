@@ -2,14 +2,17 @@ import enum
 
 
 class OrgFormSchemaIds(enum.StrEnum):
-    name = "nazwa"
-    website = "www"
+    name = "name"
+    website = "website"
     krs = "krs"
-    slug = "nazwa_strony"
-    street = "ulica"
-    postal_code = "kod_pocztowy"
-    city = "miasto"
-    phone_number = "telefon"
+    slug = "slug"
+    street = "street"
+    postal_code = "postal_code"
+    city = "city"
+    phone_number = "phone_number"
+    email = "email"
+    package_box_code = "package_box_code"
+    additional_info = "additional_info"
 
 
 NEW_ORG_ISSUE_DEFAULT_TITLE = "[Nowa Organizacja]"
