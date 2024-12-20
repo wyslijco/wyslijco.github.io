@@ -47,9 +47,7 @@ class GitManager:
             branch_ref = self.repo.create_git_ref(
                 ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
             )
-            logger.info(
-                f"Branch '{new_branch_name}' created from '{source_branch}'."
-            )
+            logger.info(f"Branch '{new_branch_name}' created from '{source_branch}'.")
 
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
         if (
@@ -124,7 +122,7 @@ def create_organization_yaml_pr(
     pr_title = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
     pr_body = f"Automatycznie dodana nowa organizacja na podstawie zgłoszenia z issue #{issue.number}.\n\n Closes #{issue.number}"
 
-    file_path = "organizations/organization.yaml"
+    file_path = f"organizations/{data.get(OrgFormSchemaIds.slug)}.yaml"
 
     manager = GitManager(repo)
     manager.create_or_update_pr_with_file(

@@ -2,11 +2,7 @@ name: Walidacja zmiany plików organizacji
 
 on:
   push:
-    paths:
-      - './organizations/**'
   pull_request:
-    branches:
-      - main
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
@@ -21,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Show changed files
+        run: git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+      - name: Print GitHub Context
+        run: echo "${{ toJson(github) }}"
       - uses: ibiqlik/action-yamllint@v3
         with:
           file_or_dir: organizations/*.yaml

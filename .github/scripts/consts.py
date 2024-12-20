@@ -14,6 +14,7 @@ class OrgFormSchemaIds(enum.StrEnum):
     package_box_code = "package_box_code"
     additional_info = "additional_info"
 
+
 NEW_ORG_ISSUE_DEFAULT_TITLE = "[Nowa Organizacja]"
 NEW_ORG_FORM_SCHEMA_FILENAME = "nowa.yaml"
 

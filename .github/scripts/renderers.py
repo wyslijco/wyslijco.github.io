@@ -12,6 +12,9 @@ def render_organization_yaml(data: GithubIssueFormDataParser):
 
     template = env.get_template("organization.yaml.j2")
 
-    org_data = {field: data.get(field) for field in OrgFormSchemaIds}
+    org_data = {
+        field: data.get(str(OrgFormSchemaIds[field]))
+        for field in OrgFormSchemaIds.__members__.keys()
+    }
 
     return template.render(organization=org_data)
