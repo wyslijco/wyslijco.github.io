@@ -2,7 +2,6 @@ import logging
 from dataclasses import dataclass
 
 from github import InputGitTreeElement
-from github.Commit import Commit
 from github.GithubException import UnknownObjectException
 from github.GitCommit import GitCommit
 from github.GitRef import GitRef
