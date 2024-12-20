@@ -130,7 +130,7 @@ body:
       placeholder: WAW01M
     validations:
       required: false
-  - type: textarea
+  - type: input
     id: dodatkowe_informacje
     attributes:
       label: Dodatkowe informacje dla dostawcy
