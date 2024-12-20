@@ -27,4 +27,7 @@ class GithubIssueFormDataParser:
 
     def get(self, identifier: str) -> str | None:
         label = self.get_label(identifier)
-        return self.form_data.get(label, "")
+        value = self.form_data.get(label, "")
+        if value == "_No response_":
+            return ""
+        return value
