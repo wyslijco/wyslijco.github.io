@@ -41,17 +41,14 @@ class GitManager:
         try:
             branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
             logger.info(f"Found existing branch '{new_branch_name}'.")
-        except UnknownObjectException as e:
-            if e.status == "404":
-                # Branch does not exist, create it from the source branch
-                branch_ref = self.repo.create_git_ref(
-                    ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
-                )
-                logger.info(
-                    f"Branch '{new_branch_name}' created from '{source_branch}'."
-                )
-            else:
-                raise e
+        except UnknownObjectException:
+            # Branch does not exist, create it from the source branch
+            branch_ref = self.repo.create_git_ref(
+                ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
+            )
+            logger.info(
+                f"Branch '{new_branch_name}' created from '{source_branch}'."
+            )
 
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
         if (
