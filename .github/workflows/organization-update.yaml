@@ -1,4 +1,4 @@
-name: Przetwarzenie zgłoszenia organizacji
+name: Walidacja zmian plików organizacji
 
 on:
   pull_request:
