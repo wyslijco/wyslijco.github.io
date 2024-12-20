@@ -14,8 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history to ensure all commits are accessible
       - name: Show changed files
-        run: git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+        run: |
+          if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
+            echo "Initial commit or new branch. Listing all files:"
+            git ls-files
+          else
+            echo "Changed files since previous commit:"
+            git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          fi
       - name: Print GitHub Context
         run: echo "${{ toJson(github) }}"
       - uses: ibiqlik/action-yamllint@v3
