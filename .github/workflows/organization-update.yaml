@@ -3,7 +3,7 @@ name: Walidacja zmiany plików organizacji
 on:
   push:
     paths:
-      - 'organizations/**'
+      - './organizations/**'
   pull_request:
     branches:
       - main
