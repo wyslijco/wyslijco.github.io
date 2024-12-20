@@ -129,16 +129,15 @@ body:
         Kod paczkomatu możesz znaleźć na stronie [Znajdź Paczkomat](https://inpost.pl/znajdz-paczkomat).
       placeholder: WAW01M
     validations:
-      required: true
+      required: false
   - type: textarea
     id: dodatkowe_informacje
     attributes:
       label: Dodatkowe informacje dla dostawcy
       description: |
-        Jeżeli to konieczne, podaj dodatkowe informacje do przekazania dla firmy dostawczej. asd
-      placeholder: WAW01M
+        Jeżeli to konieczne, podaj dodatkowe informacje do przekazania dla firmy dostawczej.
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |
