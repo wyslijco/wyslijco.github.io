@@ -2,6 +2,7 @@ import logging
 from dataclasses import dataclass
 
 from github import InputGitTreeElement
+from github.Commit import Commit
 from github.GithubException import UnknownObjectException
 from github.GitCommit import GitCommit
 from github.GitRef import GitRef
@@ -92,7 +93,13 @@ class GitManager:
             branch, file_path, file_contents, commit_message
         )
         branch.edit(commit.sha)
+        self.dispatch_workflow(commit)
         return branch
+
+    def dispatch_workflow(self, commit: GitCommit):
+        github_commit = self.repo.get_commit(commit.sha)
+        workflow = self.repo.get_workflow("organization-update.yaml")
+        workflow.create_dispatch(ref=github_commit)
 
     def create_or_update_pr_with_file(
         self,
@@ -107,7 +114,8 @@ class GitManager:
         self.create_or_update_remote_branch_with_file_commit(
             source_branch, new_branch, file_path, file_contents, commit_message
         )
-        return self.get_or_create_pr(source_branch, new_branch, pr_title, pr_body)
+        pr = self.get_or_create_pr(source_branch, new_branch, pr_title, pr_body)
+        self.dispatch_workflow()
 
 
 def create_organization_yaml_pr(
