@@ -44,10 +44,9 @@ class GitManager:
         except UnknownObjectException as e:
             if e.status == "404":
                 # Branch does not exist, create it from the source branch
-                self.repo.create_git_ref(
+                branch_ref = self.repo.create_git_ref(
                     ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
                 )
-                branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
                 logger.info(
                     f"Branch '{new_branch_name}' created from '{source_branch}'."
                 )
