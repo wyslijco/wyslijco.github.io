@@ -143,4 +143,5 @@ body:
       value: |
         # Następne kroki
         Po wypełnieniu formularza, Twój wniosek zostanie zweryfikowany przez nasz zespół. W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji lub w rejestrze KRS. W przypadku pozytywnej weryfikacji, otrzymasz od nas informację o dalszych krokach w komentarzu do tego zgłoszenia (zakładka Issues).
-        Pamiętaj, że przekazane przez Ciebie dane powinny być informacjami oficjalnymi Twojej organizacji i będą dostępne publicznie w zgłoszeniu, kodzie oraz na stronach Wyślij.co.
+
+        **Pamiętaj, że przekazane przez Ciebie dane powinny być informacjami oficjalnymi Twojej organizacji i będą dostępne publicznie w zgłoszeniu, kodzie oraz na stronach Wyślij.co.**
