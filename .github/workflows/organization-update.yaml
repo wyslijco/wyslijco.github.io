@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-env:
-  GITHUB_TOKEN: ${{ github.token }}
-
 permissions:
   contents: read
 
