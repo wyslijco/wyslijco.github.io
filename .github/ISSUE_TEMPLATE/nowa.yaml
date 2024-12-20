@@ -75,6 +75,10 @@ body:
     attributes:
       value: |
         # Dane teleadresowe do dostaw
+
+        Podaj dane dla dostaw przesyłek do Twojej organizacji. Powinny to być oficjalne dane teleadresowe.
+        Pamiętaj, że przekazane tutaj informacje będą publicznie dostępne na stronie Twojej organizacji
+        w Wyślij.co.
   - type: input
     id: ulica
     attributes:
@@ -96,11 +100,43 @@ body:
     validations:
       required: true
   - type: input
+    id: email
+    attributes:
+      label: Adres email dla firmy kurierskiej
+      description: |
+        Podaj oficjalny adres email, na który firma kurierska wyśle powiadomienia dotyczące przesyłki.
+        Pamiętaj, że ten adres będzie publicznie widoczny w internecie.
+      placeholder: nazwa@example.com
+    validations:
+      required: true
+  - type: input
     id: telefon
     attributes:
       label: Telefon kontaktowy dla kuriera
-      description: Wprowadź numer telefonu w formacie `000 000 000`
+      description: |
+        Wprowadź numer telefonu w formacie `000 000 000`
+        Podaj oficjalny numer telefonu, na który firma kurierska wyśle powiadomienia dotyczące przesyłki.
+        Pamiętaj, że ten numer będzie publicznie widoczny w internecie.
       placeholder: 000 000 000
+    validations:
+      required: true
+  - type: input
+    id: kod_paczkomatu
+    attributes:
+      label: Kod paczkomatu
+      description: |
+        Podaj kod paczkomatu, w którym możesz odebrać przesyłki wysłane za pośrednictwem firmy InPost.
+        Kod paczkomatu możesz znaleźć na stronie [Znajdź Paczkomat](https://inpost.pl/znajdz-paczkomat).
+      placeholder: WAW01M
+    validations:
+      required: true
+  - type: textarea
+    id: dodatkowe_informacje
+    attributes:
+      label: Dodatkowe informacje dla dostawcy
+      description: |
+        Jeżeli to konieczne, podaj dodatkowe informacje do przekazania dla firmy dostawczej. asd
+      placeholder: WAW01M
     validations:
       required: true
   - type: markdown
@@ -108,3 +144,4 @@ body:
       value: |
         # Następne kroki
         Po wypełnieniu formularza, Twój wniosek zostanie zweryfikowany przez nasz zespół. W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji lub w rejestrze KRS. W przypadku pozytywnej weryfikacji, otrzymasz od nas informację o dalszych krokach w komentarzu do tego zgłoszenia (zakładka Issues).
+        Pamiętaj, że przekazane przez Ciebie dane powinny być informacjami oficjalnymi Twojej organizacji i będą dostępne publicznie w zgłoszeniu, kodzie oraz na stronach Wyślij.co.

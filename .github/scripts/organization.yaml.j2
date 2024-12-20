@@ -11,6 +11,10 @@ dostawa:
   kod: {{ organization.postal_code }}
   miasto: {{ organization.city }}
   telefon: {{ organization.phone_number }}
+  email: {{ organization.email }}
+  kod_paczkomatu: {{ organization.package_box_code }}
+  dodatkowe_informacje: |
+    {{ organization.additional_info }}
 
 produkty:
   - nazwa: Testowy produkt
