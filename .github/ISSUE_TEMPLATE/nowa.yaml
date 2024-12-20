@@ -12,13 +12,13 @@ body:
         Dziękujemy za zainteresowanie dołączeniem do programu Wyślij.co. Wypełnij poniższe pola informacjami o swojej organizacji, żeby zgłosić ją do programu.
         # Podstawowe informacje
   - type: input
-    id: nazwa
+    id: name
     attributes:
       label: Nazwa Twojej organizacji
     validations:
       required: true
   - type: input
-    id: www
+    id: website
     attributes:
       label: Adres strony internetowej Twojej organizacji
     validations:
@@ -63,7 +63,7 @@ body:
         **Uwaga!** Zastrzegamy sobie prawo do zmiany tej wartości w celu zapewnienia równego traktowania wszystkich organizacji korzystających z programu Wyślij.co.
 
   - type: input
-    id: nazwa_strony
+    id: slug
     attributes:
       label: Nazwa Twojej strony w Wyślij.co
       description: Wprowadź nazwę bez polskich znaków diakrytycznych, oraz spacjami zmienionymi na `-`
@@ -80,13 +80,13 @@ body:
         Pamiętaj, że przekazane tutaj informacje będą publicznie dostępne na stronie Twojej organizacji
         w Wyślij.co.
   - type: input
-    id: ulica
+    id: street
     attributes:
       label: Ulica i numer budynku/lokalu
     validations:
       required: true
   - type: input
-    id: kod_pocztowy
+    id: postal_code
     attributes:
       label: Kod Pocztowy
       description: Wprowadź kod pocztowy w formacie `00-000`
@@ -94,7 +94,7 @@ body:
     validations:
       required: true
   - type: input
-    id: miasto
+    id: city
     attributes:
       label: Miasto
     validations:
@@ -110,7 +110,7 @@ body:
     validations:
       required: true
   - type: input
-    id: telefon
+    id: phone_number
     attributes:
       label: Telefon kontaktowy dla kuriera
       description: |
@@ -121,7 +121,7 @@ body:
     validations:
       required: true
   - type: input
-    id: kod_paczkomatu
+    id: package_box_code
     attributes:
       label: Kod paczkomatu
       description: |
@@ -131,7 +131,7 @@ body:
     validations:
       required: false
   - type: input
-    id: dodatkowe_informacje
+    id: additional_info
     attributes:
       label: Dodatkowe informacje dla dostawcy
       description: |
