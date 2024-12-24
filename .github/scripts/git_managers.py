@@ -1,7 +1,8 @@
 import logging
 from dataclasses import dataclass
 
-from github import GithubException, InputGitTreeElement
+from github import InputGitTreeElement
+from github.GithubException import UnknownObjectException
 from github.GitCommit import GitCommit
 from github.GitRef import GitRef
 from github.Issue import Issue
@@ -11,7 +12,6 @@ from github.Repository import Repository
 from consts import OrgFormSchemaIds
 from exceptions import BranchModifiedError
 from parsers import GithubIssueFormDataParser
-
 
 logger = logging.getLogger(__file__)
 
@@ -42,18 +42,12 @@ class GitManager:
         try:
             branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
             logger.info(f"Found existing branch '{new_branch_name}'.")
-        except GithubException as e:
-            if e.status == 404:
-                # Branch does not exist, create it from the source branch
-                self.repo.create_git_ref(
-                    ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
-                )
-                branch_ref = self.repo.get_git_ref(f"heads/{new_branch_name}")
-                logger.info(
-                    f"Branch '{new_branch_name}' created from '{source_branch}'."
-                )
-            else:
-                raise e
+        except UnknownObjectException:
+            # Branch does not exist, create it from the source branch
+            branch_ref = self.repo.create_git_ref(
+                ref=f"refs/heads/{new_branch_name}", sha=source.commit.sha
+            )
+            logger.info(f"Branch '{new_branch_name}' created from '{source_branch}'.")
 
         latest_commit = self.repo.get_commit(branch_ref.object.sha)
         if (
@@ -128,7 +122,7 @@ def create_organization_yaml_pr(
     pr_title = f"Dodana nowa organizacja: {data.get(OrgFormSchemaIds.name)} | Zgłoszenie: #{issue.number}"
     pr_body = f"Automatycznie dodana nowa organizacja na podstawie zgłoszenia z issue #{issue.number}.\n\n Closes #{issue.number}"
 
-    file_path = "organizations/organization.yaml"
+    file_path = f"organizations/{data.get(OrgFormSchemaIds.slug)}.yaml"
 
     manager = GitManager(repo)
     manager.create_or_update_pr_with_file(
