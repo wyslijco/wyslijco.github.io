@@ -2,7 +2,7 @@ import os
 import sys
 
 import yaml
-from flask import Flask, render_template, send_from_directory, url_for
+from flask import Flask, abort, render_template, send_from_directory, url_for
 from flask_frozen import Freezer  # Added
 
 from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME
@@ -46,7 +46,9 @@ def get_static_files_list():
 
 
 for filename in get_static_files_list():
-    app.route(f"/{filename}", strict_slashes=False, endpoint=filename)(lambda f=filename: static_file(f))
+    app.route(f"/{filename}", strict_slashes=False, endpoint=filename)(
+        lambda f=filename: static_file(f)
+    )
 
 
 @freezer.register_generator
@@ -55,6 +57,11 @@ def generate_favicon_statics():
     files = os.listdir(path)
     for static in files:
         yield url_for(static)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 # Generated css
@@ -74,6 +81,8 @@ def index():
 @app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
     filename = organizations.get(org_name)
+    if not filename:
+        abort(404)
     with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
         data = yaml.safe_load(org)
         return render_template("organization.html", data=data)
