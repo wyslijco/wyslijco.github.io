@@ -26,7 +26,6 @@ def get_organizations() -> dict[str, str]:
             organizations[organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)] = (
                 organization_file
             )
-    print(organizations)
     return organizations
 
 
