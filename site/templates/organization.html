@@ -4,19 +4,31 @@
 
 {% block content %}
 
-<div class="mx-auto mt-10">
+<div class="mx-auto mt-6">
   <!-- ORGANIZATION INFO -->
   <div class="flex justify-center">
-    <div class="w-4/5">
+    <div class="w-11/12">
+      <div class="pb-4 flex justify-between items-center">
+        <span class="text-sm font-bold"><span class="text-sectionTitle">wyślij.co/</span><span class="text-black">{{ data.adres }}</span></span>
+        <a href="https://wyslij.co/{{ data.adres }}" target="_blank" class="text-sectionTitle">
+          <svg
+            fill="none"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5"
+          >
+            <use href="#icon-external-link"></use>
+          </svg>
+        </a>
+      </div>
       <div class="pb-4">
-        <h1 class="text-black text-xl">{{ data.nazwa }}</h1>
+        <h1 class="text-black text-3xl">{{ data.nazwa }}</h1>
       </div>
 
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dane do dostawy</h1>
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
-
         <div
-          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-t-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -34,7 +46,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -52,7 +64,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white rounded-b-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-b-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -73,9 +85,9 @@
 
       {% if data.dostawa.kod_paczkomatu %}
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Kod paczkomatu</h2>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Kod paczkomatu</h2>
         <div
-          class="flex justify-between bg-white rounded-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -97,9 +109,9 @@
       {% endif %}
 
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Telefon dla kuriera</h2>
         <div
-          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -118,15 +130,74 @@
         </div>
       </div>
 
+      {% if data.dostawa.dodatkowe_informacje %}
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Numer KRS</h2>
-        <div class="bg-white p-2 mt-1 shadow-md">{{ data.krs }}</div>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Uwagi do dostawy</h2>
+        <div 
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
+          role="button"
+          tabindex="0"
+          onclick="copyText(this)"
+          onkeydown="handleCopyKeydown(event, this)"
+        >
+          {{ data.dostawa.dodatkowe_informacje }}
+          <svg
+            fill="none"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <use href="#icon-copy"></use>
+          </svg>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="flex justify-center">
+    <div class="w-11/12">
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h1>
+      {% for produkt in data.produkty %}
+      <div class="flex justify-between items-start py-4 p-3 mb-2">
+        <div class="flex-1">
+          <a href="{{ produkt.link }}" target="_blank" class="block">
+            <h2 class="text-sectionTitle text-lg font-medium mb-1">{{ produkt.nazwa }}</h2>
+            {% if produkt.opis %}
+            <p class="text-black text-sm leading-relaxed">{{ produkt.opis }}</p>
+            {% endif %}
+          </a>
+        </div>
+        <div class="ml-4 flex-shrink-0">
+          <a href="{{ produkt.link }}" target="_blank" class="text-sectionTitle">
+            <svg
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-7"
+            >
+              <use href="#icon-external-link"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-11/12">
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h1>
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h2>
+        <div class="bg-white border-solid border border-gray-400 rounded-lg p-2 mt-1">{{ data.krs }}</div>
       </div>
 
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h2>
         <a
-          class="flex justify-between bg-white p-3 mt-1 shadow-md"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1"
           href="{{data.strona}}"
           target="_blank"
         >
@@ -142,59 +213,6 @@
           </svg>
         </a>
       </div>
-    </div>
-  </div>
-
-  <!-- PRODUCTS -->
-  <div class="flex justify-center bg-background">
-    <div class="w-4/5">
-      {% for produkt in data.produkty %}
-      <div
-        class="flex items-center justify-between bg-product my-4 rounded-md p-4"
-      >
-        <div class="px-5 my-5">
-          <h2 class="text-sectionTitle my-2">{{ produkt.nazwa }}</h2>
-          {% if produkt.opis %}
-          <p class="text-justify">{{ produkt.opis }}</p>
-          {% endif %}
-        </div>
-
-        <div class="flex md:hidden self-start text-sectionTitle">
-          <a href="{{ produkt.link }}" target="_blank">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6 ml-2"
-            >
-              <use href="#icon-external-link"></use>
-            </svg>
-          </a>
-        </div>
-
-        <div class="hidden md:flex md:mx-5">
-          <a
-            class="inline-block text-center bg-buttonPrimary text-white rounded-lg shadow-md py-4 px-12"
-            href="{{ produkt.link }}"
-            target="_blank"
-          >
-            <div class="flex">
-              Zamów
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 ml-2"
-              >
-                <use href="#icon-external-link"></use>
-              </svg>
-            </div>
-          </a>
-        </div>
-      </div>
-      {% endfor %}
     </div>
   </div>
 </div>

@@ -45,5 +45,5 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_PAT: ${{ secrets.CUSTOM_GITHUB_PAT }}
         working-directory: ./.github/scripts
-        run: python cli.py
+        run: python cli.pys
 
