@@ -16,8 +16,8 @@ dostawa:
   dodatkowe_informacje: Dostawa tylko w godzinach 9:00-17:00, proszę dzwonić przed przyjściem
 
 produkty:
-  - nazwa: Testowy produkt
-    link: http://testowy.pl
+  - nazwa: Rękawiczki lateksowe
+    link: https://allegro.pl/oferta/rekawiczki-nitrylowe-czarne-kingfa-100-szt-l-17475314755
   - nazwa: Testowy produkt 2
     link: http://testowy2.pl
     opis: Opcjonalny, krótki opis, Lorem ipsum dolor sit amet.
