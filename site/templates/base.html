@@ -26,7 +26,7 @@
       }
 
       function handleCopyKeydown(event, element) {
-        if (event.key === 'Enter' || event.key === ' ' || event.keyCode === 13 || event.keyCode === 32) {
+        if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           copyText(element);
         }
