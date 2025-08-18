@@ -31,6 +31,124 @@
           copyText(element);
         }
       }
+
+      function isInAppBrowser() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        return (ua.indexOf('Instagram') > -1) || 
+               (ua.indexOf('FBAN') > -1) || 
+               (ua.indexOf('FBAV') > -1) ||
+               (ua.indexOf('Twitter') > -1) ||
+               (ua.indexOf('Line/') > -1);
+      }
+
+      function forceExternalBrowser(url) {
+        if (isInAppBrowser()) {
+          const intent = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.android.chrome;end`;
+          const fallback = url;
+          
+          if (/Android/i.test(navigator.userAgent)) {
+            window.location.href = intent;
+            setTimeout(() => {
+              window.location.href = fallback;
+            }, 500);
+          } else if (/iPhone|iPad/i.test(navigator.userAgent)) {
+            window.location.href = `x-web-search://?url=${encodeURIComponent(url)}`;
+            setTimeout(() => {
+              window.location.href = url;
+            }, 500);
+          } else {
+            window.open(url, '_blank');
+          }
+          return true;
+        }
+        return false;
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        if (isInAppBrowser()) {
+          // Show banner for in-app browsers
+          showInAppBrowserBanner();
+          
+          // Handle external links
+          document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              forceExternalBrowser(this.href);
+            });
+          });
+        }
+      });
+
+      function showInAppBrowserBanner() {
+        const banner = document.createElement('div');
+        banner.className = 'bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 cursor-pointer hover:bg-amber-100 transition-colors';
+        banner.innerHTML = `
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-3 flex-1">
+              <p class="text-sm text-amber-700">
+                <strong>Otwórz w przeglądarce</strong> - Aby uzyskać najlepsze doświadczenie, zalecamy otwarcie tej strony w zewnętrznej przeglądarce.
+              </p>
+            </div>
+            <div class="flex-shrink-0 ml-4">
+              <svg class="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+              </svg>
+            </div>
+          </div>
+        `;
+        
+        banner.addEventListener('click', function() {
+          forceExternalBrowser(window.location.href);
+        });
+        
+        const nav = document.querySelector('nav');
+        nav.insertAdjacentElement('afterend', banner);
+      }
+
+      function shareCurrentPage() {
+        // Check if Web Share API is available and we're on HTTPS (required for mobile)
+        if (navigator.share && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href
+          }).catch(err => {
+            console.log('Share failed:', err);
+            // Fallback if share fails
+            copyUrlFallback(window.location.href);
+          });
+        } else {
+          // For HTTP or browsers without Web Share API
+          const url = window.location.href;
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(url).then(() => {
+              alert('Link skopiowany do schowka!');
+            }).catch(() => {
+              copyUrlFallback(url);
+            });
+          } else {
+            copyUrlFallback(url);
+          }
+        }
+      }
+
+      function copyUrlFallback(url) {
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          alert('Link skopiowany do schowka!');
+        } catch (err) {
+          alert('Link: ' + url);
+        }
+        document.body.removeChild(textarea);
+      }
     </script>
 
     <link href="../output.css" rel="stylesheet" />
@@ -52,6 +170,13 @@
             stroke-linecap="round"
             stroke-linejoin="round"
             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+          />
+        </symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"
           />
         </symbol>
       </defs>
