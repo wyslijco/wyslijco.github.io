@@ -71,7 +71,7 @@ jobs:
           export ORGANIZATIONS_SLUG_FIELD_NAME=${{ vars.ORGANIZATIONS_SLUG_FIELD_NAME }}
           uv run python site/server.py build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v4.0.0
 
   # Deployment job
   deploy:
