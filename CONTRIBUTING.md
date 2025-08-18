@@ -51,18 +51,44 @@ Część frontendowa napisana jest przede wszystkim z wykorzystaniem frameworka 
 
 ## Wymagania
 
-Aby uruchomić projekt będziesz potrzebować przede wszystkim zainstalowanego na komputerze interpretera
-języka Python. Dobrym narzędziem do tego może być [pyenv](https://github.com/pyenv/pyenv)  
-wraz z pluginem [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv).
+Aby uruchomić projekt będziesz potrzebować:
 
-Z ich pomocą utwórz virtualenv, w którym bedziesz instalować zależności projektu. 
+1. **uv** - nowoczesne narzędzie do zarządzania Pythonem i zależnościami:
+   ```sh
+   # Instalacja uv (Linux/macOS)
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   
+   # Instalacja uv (Windows)
+   powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
+   uv automatycznie zainstaluje odpowiednią wersję Pythona jeśli będzie potrzebna.
+
+2. **Node.js** - do budowania stylów CSS z Tailwind:
+   - Wersja 18+ (rekomendowana: najnowsza LTS)
+   - Można zainstalować przez [nvm](https://github.com/nvm-sh/nvm) lub pobrać z [nodejs.org](https://nodejs.org/) 
 
 ## Instalacja zależności
 
-Mając aktywny virtualenv zainstaluj zależności z użyciem `pip` z poziomu głownego folderu repozytorium kodu:
+Z poziomu głównego folderu repozytorium wykonaj:
 
 ```sh
-pip install -r requirements.txt
+# Instalacja zależności Python (automatycznie tworzy virtualenv)
+uv sync
+
+# Instalacja zależności Node.js
+npm install
+```
+
+## Budowanie stylów CSS
+
+Aby zbudować style CSS z Tailwind:
+
+```sh
+# Jednorazowe zbudowanie stylów
+npm run build
+
+# Tryb obserwacji zmian (zalecany podczas developmentu)
+npm run css
 ```
 
 ## Uruchomienie lokalnego serwera
@@ -70,7 +96,7 @@ pip install -r requirements.txt
 Aby uruchomić deweloperski serwer:
 
 ```sh
-ORGANIZATIONS_DIR_PATH=organizations ORGANIZATIONS_SLUG_FIELD_NAME=adres python site/server.py
+ORGANIZATIONS_DIR_PATH=organizations ORGANIZATIONS_SLUG_FIELD_NAME=adres uv run python site/server.py
 ```
 
 ## Konwencje nazewnicze
