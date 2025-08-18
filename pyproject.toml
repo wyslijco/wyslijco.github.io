@@ -1,5 +1,5 @@
 [project]
-name = "wyslijco-github-io"
+name = "wyślij.co"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
