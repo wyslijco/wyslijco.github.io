@@ -193,7 +193,7 @@ wheels = [
 ]
 
 [[package]]
-name = "wyslijco-github-io"
+name = "wyslij-co"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
