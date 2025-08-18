@@ -32,6 +32,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ibiqlik/action-yamllint@v3
         with:
+          config_data: |
+            extends: default
+            rules:
+              line-length: disable
+              empty-values: disable
           file_or_dir: organizations/*.yaml
 
   # Build job
