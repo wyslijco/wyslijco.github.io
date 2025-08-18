@@ -7,16 +7,15 @@
 <div class="mx-auto mt-10">
   <!-- ORGANIZATION INFO -->
   <div class="flex justify-center">
-    <div class="w-4/5">
+    <div class="w-11/12">
       <div class="pb-4">
-        <h1 class="text-black text-xl">{{ data.nazwa }}</h1>
+        <h1 class="text-black text-3xl">{{ data.nazwa }}</h1>
       </div>
 
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dane do dostawy</h1>
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Adres wysyłki</h2>
-
         <div
-          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-t-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -34,7 +33,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -52,7 +51,7 @@
           </svg>
         </div>
         <div
-          class="flex justify-between bg-white rounded-b-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-b-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -73,9 +72,9 @@
 
       {% if data.dostawa.kod_paczkomatu %}
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Kod paczkomatu</h2>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Kod paczkomatu</h2>
         <div
-          class="flex justify-between bg-white rounded-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -97,9 +96,9 @@
       {% endif %}
 
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Telefon dla kuriera</h2>
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Telefon dla kuriera</h2>
         <div
-          class="flex justify-between bg-white rounded-t-md p-3 mt-1 shadow-md cursor-pointer"
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -118,36 +117,35 @@
         </div>
       </div>
 
+      {% if data.dostawa.dodatkowe_informacje %}
       <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Numer KRS</h2>
-        <div class="bg-white p-2 mt-1 shadow-md">{{ data.krs }}</div>
-      </div>
-
-      <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-2 text-sm">Strona internetowa</h2>
-        <a
-          class="flex justify-between bg-white p-3 mt-1 shadow-md"
-          href="{{data.strona}}"
-          target="_blank"
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Uwagi do dostawy</h2>
+        <div 
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
+          role="button"
+          tabindex="0"
+          onclick="copyText(this)"
+          onkeydown="handleCopyKeydown(event, this)"
         >
-          {{ data.strona }}
+          {{ data.dostawa.dodatkowe_informacje }}
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6 ml-2"
+            class="size-6"
           >
-            <use href="#icon-external-link"></use>
+            <use href="#icon-copy"></use>
           </svg>
-        </a>
+        </div>
       </div>
+      {% endif %}
     </div>
   </div>
 
   <!-- PRODUCTS -->
-  <div class="flex justify-center bg-background">
-    <div class="w-4/5">
+  <div class="flex justify-center">
+    <div class="w-11/12">
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h1>
       {% for produkt in data.produkty %}
       <div
         class="flex items-center justify-between bg-product my-4 rounded-md p-4"
@@ -195,6 +193,36 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-11/12">
+      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h1>
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h2>
+        <div class="bg-white border-solid border border-gray-400 rounded-lg p-2 mt-1">{{ data.krs }}</div>
+      </div>
+
+      <div class="pb-4">
+        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h2>
+        <a
+          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1"
+          href="{{data.strona}}"
+          target="_blank"
+        >
+          {{ data.strona }}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 ml-2"
+          >
+            <use href="#icon-external-link"></use>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </div>
