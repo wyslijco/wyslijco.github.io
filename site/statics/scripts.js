@@ -7,7 +7,34 @@ function copyText(element) {
   document.execCommand("copy");
   document.body.removeChild(textarea);
 
-  // TODO: inform user that element has been copied
+  showCopyNotification(element);
+}
+
+function showCopyNotification(element) {
+  const svgIcon = element.querySelector('svg');
+  const originalUseHref = svgIcon.querySelector('use').getAttribute('href');
+  
+  // Change icon to checkmark
+  svgIcon.querySelector('use').setAttribute('href', '#icon-check');
+  svgIcon.style.color = '#16a34a'; // green-600
+  
+  // Create and show notification bubble
+  const notification = document.createElement('div');
+  notification.className = 'absolute -top-10 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-sm px-3 py-1 rounded-md shadow-lg z-10 whitespace-nowrap';
+  notification.textContent = 'Skopiowane!';
+  
+  // Position relative to the element
+  element.style.position = 'relative';
+  element.appendChild(notification);
+  
+  // Restore original icon and remove notification after 3 seconds
+  setTimeout(() => {
+    svgIcon.querySelector('use').setAttribute('href', originalUseHref);
+    svgIcon.style.color = '';
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
 }
 
 function handleCopyKeydown(event, element) {
