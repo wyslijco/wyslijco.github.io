@@ -56,7 +56,7 @@
 }
 
 .products-grid {
-  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4;
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4;
 }
 
 .product-tile {
@@ -116,4 +116,77 @@
 
 .zobacz-wiecej {
   @apply transition-all duration-200;
+}
+
+/* Info page styles */
+.info-container {
+  @apply mx-auto w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12 py-8;
+}
+
+.info-section {
+  @apply mb-16;
+}
+
+.info-section-title {
+  @apply text-3xl font-medium text-sectionTitle mb-6;
+}
+
+.info-grid-4 {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.info-grid-3 {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.info-grid-2-3 {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.info-card-title {
+  @apply text-2xl font-medium text-sectionTitle mb-3;
+}
+
+.info-card-text {
+  @apply text-gray-700 text-lg leading-relaxed mb-4;
+}
+
+.info-card-link {
+  @apply inline-block text-sectionTitle font-medium text-lg border-b;
+}
+
+.info-step-number {
+  @apply w-6 h-6 rounded-full bg-white border-2 border-sectionTitle text-sectionTitle font-medium text-sm flex items-center justify-center flex-shrink-0 mt-1;
+}
+
+.info-step-title {
+  @apply font-medium text-gray-900 mb-2 text-xl;
+}
+
+.info-step-text {
+  @apply text-gray-700 text-lg leading-relaxed mb-3;
+}
+
+.info-step-link {
+  @apply inline-block text-sectionTitle font-medium text-lg border-b;
+}
+
+.info-step-header {
+  @apply flex items-start space-x-4;
+}
+
+.info-step-content {
+  @apply ml-10;
+}
+
+.info-benefit-title {
+  @apply font-medium text-sectionTitle mb-2 flex items-center text-xl;
+}
+
+.info-benefit-text {
+  @apply text-gray-700 text-lg leading-relaxed;
+}
+
+.info-benefit-bullet {
+  @apply w-2 h-2 bg-sectionTitle rounded-full mr-3;
 }

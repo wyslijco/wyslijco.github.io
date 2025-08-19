@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       colors: {
         product: "#FBEEED",
-        background: "#FEFAFA",
-        sectionTitle: "#AA3F2F",
+        background: "#f3eded",
+        sectionTitle: "#c23d20",
         buttonPrimary: "#e55843",
       },
     },
