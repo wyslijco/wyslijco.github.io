@@ -35,12 +35,12 @@
     <link href="../output.css" rel="stylesheet" />
     <title></title>
   </head>
-  <body class="bg-white">
+  <body class="bg-white lg:bg-background">
     {% include "svg_definitions.html" %}
 
     <nav class="bg-white pt-4 pb-4 shadow-sm">
       <div class="flex justify-center">
-        <div class="w-11/12 flex justify-between items-center">
+        <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12 flex justify-between items-center">
         <div class="flex items-center">
           <a href="{{ url_for('index') }}">
             <svg class="h-8" viewBox="0 0 765.89 155.28" xmlns="http://www.w3.org/2000/svg" style="stroke: none; border: none; outline: none; box-shadow: none;">
@@ -49,7 +49,7 @@
           </a>
         </div>
           <div>
-            <a href="#" class="text-black text-xs">Jak to działa?</a>
+            <a href="/info" class="text-black text-lg">Jak to działa?</a>
           </div>
         </div>
       </div>

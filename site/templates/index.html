@@ -1,4 +1,148 @@
 {% extends "base.html" %}
+
 {% block content %}
-    Work in progress...
+<div class="min-h-screen overflow-x-hidden">
+  <div class="flex items-center justify-center px-6 md:px-8 py-8">
+    <div class="text-center max-w-4xl w-full">
+      <!-- Hero Text -->
+      <div class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light mt-6 mb-16 text-center leading-tight text-hero">
+        <div class="text-sectionTitle font-medium">
+          WYŚLIJ.CO<span class="text-gray-500">/FUNDACJI</span>
+        </div>
+      </div>
+
+      <!-- Process Steps -->
+      <div class="process-steps space-y-8 md:space-y-12 mb-6">
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 class="step-title">Wybierz produkt z listy</h3>
+            <p class="step-description">na stronie wybranej przez Ciebie organizacji</p>
+          </div>
+        </div>
+
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 class="step-title">Zakup produkt online</h3>
+            <p class="step-description">w podlinkowanym sklepie internetowym</p>
+          </div>
+        </div>
+
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 class="step-title">Wyślij prosto do organizacji</h3>
+            <p class="step-description">na wskazany adres dostawy</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-12">
+        <a href="/info" class="zobacz-wiecej text-sectionTitle font-medium text-lg hover:underline">DOWIEDZ SIĘ WIĘCEJ</a>
+      </div>
+
+      <!-- Organization Links -->
+      <div class="organization-links text-center mb-12">
+        <div class="text-xl md:text-2xl lg:text-3xl font-light" id="org-links-container">
+          <div class="flex justify-center items-start gap-4">
+            <!-- Left side - WYŚLIJ.CO -->
+            <div class="text-sectionTitle font-medium" style="min-width: 120px; text-align: right;">
+              WYŚLIJ.CO
+            </div>
+
+            <!-- Right side - Organization names -->
+            <div class="text-gray-700 text-left" style="min-width: 250px;">
+              <div class="org-link-line">
+                <span class="text-gray-600">/ </span>
+                <a href="#" class="org-link hover:text-sectionTitle transition-colors" data-org-index="0"></a>
+              </div>
+              <div class="org-link-line">
+                <span class="text-gray-600">/ </span>
+                <a href="#" class="org-link hover:text-sectionTitle transition-colors" data-org-index="1"></a>
+              </div>
+              <div class="org-link-line">
+                <span class="text-gray-600">/ </span>
+                <a href="#" class="org-link hover:text-sectionTitle transition-colors" data-org-index="2"></a>
+              </div>
+              <div class="org-link-line">
+                <span class="text-gray-600">/ </span>
+                <a href="#" class="org-link hover:text-sectionTitle transition-colors" data-org-index="3"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#" class="zobacz-wiecej text-sectionTitle font-medium text-lg hover:underline">ZOBACZ WIĘCEJ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Simple static design - no text rotation needed
+
+// Organization links functionality
+const realOrganizations = {{ organizations | tojson | safe }};
+
+// Fake organizations list for demo
+const fakeOrganizations = [
+  { adres: 'fundacji-dioz', nazwa: 'Fundacja DIOZ' },
+  { adres: 'paczce-nadziei', nazwa: 'Paczka Nadziei' },
+  { adres: 'caritasowi', nazwa: 'Caritas Polska' },
+  { adres: 'avalonowi', nazwa: 'Fundacja Avalon' },
+  { adres: 'unicefowi', nazwa: 'UNICEF Polska' },
+  { adres: 'swiatowemu-funduszowi', nazwa: 'Światowy Fundusz' },
+  { adres: 'czerwonemu-krzyzowi', nazwa: 'Czerwony Krzyż' },
+  { adres: 'pomocy-dzieciom', nazwa: 'Pomoc Dzieciom' },
+  { adres: 'sos-wioskom', nazwa: 'SOS Wioski Dziecięce' },
+  { adres: 'noble-giftowi', nazwa: 'Noble Gift Foundation' }
+];
+
+// Use fake organizations for demo (force fake for now)
+const organizations = fakeOrganizations;
+
+// Select 4 random organizations for display
+let displayOrgs = [...organizations].sort(() => Math.random() - 0.5).slice(0, 4);
+
+function rotateOrgLinks() {
+  const orgLinks = document.querySelectorAll('.org-link');
+  
+  // Fade out
+  orgLinks.forEach(link => {
+    link.style.transition = 'opacity 300ms ease-in-out';
+    link.style.opacity = '0';
+  });
+  
+  // Wait for fade out, then update content and fade in
+  setTimeout(() => {
+    orgLinks.forEach((link, index) => {
+      const org = displayOrgs[index];
+      if (org) {
+        link.textContent = org.adres.toUpperCase();
+        link.href = realOrganizations.length > 0 ? `/${org.adres}` : `#`;
+      }
+    });
+    
+    // Fade in
+    setTimeout(() => {
+      orgLinks.forEach(link => {
+        link.style.opacity = '1';
+      });
+    }, 50);
+    
+  }, 300);
+  
+  // Re-shuffle the displayed organizations for next rotation
+  displayOrgs = [...organizations].sort(() => Math.random() - 0.5).slice(0, 4);
+}
+
+// Initialize organization links rotation
+document.addEventListener('DOMContentLoaded', function() {
+  rotateOrgLinks();
+  setInterval(rotateOrgLinks, 4000);
+});
+</script>
 {% endblock content %}
