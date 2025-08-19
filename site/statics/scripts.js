@@ -7,7 +7,34 @@ function copyText(element) {
   document.execCommand("copy");
   document.body.removeChild(textarea);
 
-  // TODO: inform user that element has been copied
+  showCopyNotification(element);
+}
+
+function showCopyNotification(element) {
+  const svgIcon = element.querySelector('svg');
+  const originalUseHref = svgIcon.querySelector('use').getAttribute('href');
+  
+  // Change icon to checkmark
+  svgIcon.querySelector('use').setAttribute('href', '#icon-check');
+  svgIcon.style.color = '#16a34a'; // green-600
+  
+  // Create and show notification bubble
+  const notification = document.createElement('div');
+  notification.className = 'copy-notification';
+  notification.textContent = 'Skopiowane!';
+  
+  // Position relative to the element
+  element.style.position = 'relative';
+  element.appendChild(notification);
+  
+  // Restore original icon and remove notification after 3 seconds
+  setTimeout(() => {
+    svgIcon.querySelector('use').setAttribute('href', originalUseHref);
+    svgIcon.style.color = '';
+    if (notification.parentNode) {
+      notification.remove();
+    }
+  }, 3000);
 }
 
 function handleCopyKeydown(event, element) {
@@ -51,21 +78,21 @@ function forceExternalBrowser(url) {
 
 function showInAppBrowserBanner() {
   const banner = document.createElement('div');
-  banner.className = 'bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 cursor-pointer hover:bg-amber-100 transition-colors';
+  banner.className = 'in-app-browser-banner';
   banner.innerHTML = `
-    <div class="flex items-center">
-      <div class="flex-shrink-0">
-        <svg class="h-5 w-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+    <div class="banner-content-container">
+      <div class="banner-icon-container">
+        <svg class="banner-warning-icon" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
         </svg>
       </div>
-      <div class="ml-3 flex-1">
-        <p class="text-sm text-amber-700">
+      <div class="banner-text-container">
+        <p class="banner-text">
           <strong>Otwórz w przeglądarce</strong> - Aby uzyskać najlepsze doświadczenie, zalecamy otwarcie tej strony w zewnętrznej przeglądarce.
         </p>
       </div>
-      <div class="flex-shrink-0 ml-4">
-        <svg class="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="banner-button-container">
+        <svg class="banner-external-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
         </svg>
       </div>

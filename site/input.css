@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.copy-notification {
+  @apply absolute -top-10 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-sm px-3 py-1 rounded-md shadow-lg z-10 whitespace-nowrap;
+}
+
+.in-app-browser-banner {
+  @apply bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 cursor-pointer hover:bg-amber-100 transition-colors;
+}
+
+.banner-content-container {
+  @apply flex items-center;
+}
+
+.banner-icon-container {
+  @apply flex-shrink-0;
+}
+
+.banner-warning-icon {
+  @apply h-5 w-5 text-amber-600;
+}
+
+.banner-text-container {
+  @apply ml-3 flex-1;
+}
+
+.banner-text {
+  @apply text-sm text-amber-700;
+}
+
+.banner-button-container {
+  @apply flex-shrink-0 ml-4;
+}
+
+.banner-external-icon {
+  @apply h-5 w-5 text-amber-600;
+}
