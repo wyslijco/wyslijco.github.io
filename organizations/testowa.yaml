@@ -23,3 +23,10 @@ produkty:
     opis: Nie wymaga podawania adresu (sklep wyśle bezpośrednio do organizacji)
   - nazwa: Testowy produkt 3
     link: http://testowy3.pl
+  - nazwa: Rękawiczki lateksowe
+    link: https://allegro.pl/oferta/rekawiczki-nitrylowe-czarne-kingfa-100-szt-l-17475314755
+  - nazwa: Zestaw karmy dla psiaków
+    link: http://testowy2.pl
+    opis: Nie wymaga podawania adresu (sklep wyśle bezpośrednio do organizacji)
+  - nazwa: Testowy produkt 3
+    link: http://testowy3.pl
