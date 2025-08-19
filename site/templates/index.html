@@ -4,16 +4,16 @@
 <div class="flex flex-col overflow-x-hidden" style="height: calc(100vh - 80px);">
   <div class="flex-1 flex items-center justify-center px-6 md:px-8 py-8">
     <div class="text-center max-w-4xl w-full">
-      <!-- Hero Text - Simple single line -->
-      <div class="md:text-6xl lg:text-7xl font-light mt-6 mb-16 text-center leading-tight text-hero">
+      <!-- Hero Text -->
+      <div class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light mt-6 mb-16 text-center leading-tight text-hero">
         <div class="text-sectionTitle font-medium">
-          WYŚLIJ.CO<span class="text-gray-500">/ORGANIZACJI</span>
+          WYŚLIJ.CO<span class="text-gray-500">/FUNDACJI</span>
         </div>
       </div>
 
       <!-- Process Steps -->
       <div class="process-steps space-y-8 md:space-y-12 mb-6">
-        <div class="process-step flex items-start text-left max-w-2xl lg:max-w-md mx-auto">
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
           <div class="step-number">1</div>
           <div class="step-content">
             <h3 class="step-title">Wybierz produkt z listy</h3>
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="process-step flex items-start text-left max-w-2xl lg:max-w-md mx-auto">
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
           <div class="step-number">2</div>
           <div class="step-content">
             <h3 class="step-title">Zakup produkt online</h3>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="process-step flex items-start text-left max-w-2xl lg:max-w-md mx-auto">
+        <div class="process-step flex items-start text-left max-w-xs md:max-w-sm lg:max-w-md mx-auto">
           <div class="step-number">3</div>
           <div class="step-content">
             <h3 class="step-title">Wyślij prosto do organizacji</h3>
@@ -106,7 +106,6 @@ const organizations = fakeOrganizations;
 
 // Select 4 random organizations for display
 let displayOrgs = [...organizations].sort(() => Math.random() - 0.5).slice(0, 4);
-let orgIndex = 0;
 
 function rotateOrgLinks() {
   const orgLinks = document.querySelectorAll('.org-link');
