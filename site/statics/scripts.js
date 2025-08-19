@@ -82,8 +82,8 @@ function showInAppBrowserBanner() {
   banner.innerHTML = `
     <div class="banner-content-container">
       <div class="banner-icon-container">
-        <svg class="banner-warning-icon" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+        <svg class="banner-warning-icon" fill="currentColor">
+          <use href="#icon-warning"></use>
         </svg>
       </div>
       <div class="banner-text-container">
@@ -92,8 +92,8 @@ function showInAppBrowserBanner() {
         </p>
       </div>
       <div class="banner-button-container">
-        <svg class="banner-external-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+        <svg class="banner-external-icon" fill="none" stroke="currentColor" stroke-width="2">
+          <use href="#icon-external-link"></use>
         </svg>
       </div>
     </div>
