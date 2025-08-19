@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen bg-white">
+  <div class="mx-auto w-11/12 py-8">
+
+    <!-- Section 1: Jak zacząć pomagać? -->
+    <section class="mb-16">
+      <h1 class="text-3xl font-medium text-sectionTitle mb-6">JAK ZACZĄĆ POMAGAĆ?</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Wyślij co! -->
+        <div>
+          <h2 class="text-2xl font-medium text-sectionTitle mb-3">Wyślij co!</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Jak bardzo banalnie to nie brzmi. Po prostu wejdź na stronę wybranej przez siebie organizacji, wybierz produkt i zamów go z dostawą pod wskazany adres. Wracaj regularnie, by wspierać cyklicznie.
+          </p>
+          <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+            WYŚLIJ CO TERAZ!
+          </a>
+        </div>
+
+        <!-- Udostępnij linki organizacji -->
+        <div>
+          <h2 class="text-2xl font-medium text-sectionTitle mb-3">Udostępnij linki organizacji</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Wyślij link strony wybranej przez Ciebie organizacji (wyslij.co/organizacji) do swoich znajomych. Niech też co wyślą i pomagają każdego dnia.
+          </p>
+          <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+            WYBIERZ ORGANIZACJĘ
+          </a>
+        </div>
+
+        <!-- Zgłoś organizację -->
+        <div>
+          <h2 class="text-2xl font-medium text-sectionTitle mb-3">Zgłoś organizację</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Jeżeli prowadzisz organizację charytatywną, zapoznaj się z zasadmi dołączenia do wyślij.co. Uczestnictwo w programie jest zupełnie darmowe.
+          </p>
+          <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+            ZOBACZ JAK DOŁĄCZYĆ
+          </a>
+        </div>
+
+        <!-- Pomóż w rozwoju projektu -->
+        <div>
+          <h2 class="text-2xl font-medium text-sectionTitle mb-3">Pomóż w rozwoju projektu</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">
+            Kod Wyślij.co jest otwarty i dostępny publicznie na GitHubie. Możesz pomóc w jego rozwoju na stronie projektu.
+            Jeżeli widzisz coś, co mogłoby zostać poprowione lub usprawnione, zgłoś swoje propozycje lub kod z poprawkami.
+          </p>
+          <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+            IDŹ DO PROJEKTU NA GITHUB.COM
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Jak działa Wyślij.co? -->
+    <section class="mb-16">
+      <h1 class="text-3xl font-medium text-sectionTitle mb-6">JAK DZIAŁA WYŚLIJ.CO?</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div>
+          <div class="flex items-start space-x-4">
+            <div class="w-6 h-6 rounded-full bg-white border-2 border-sectionTitle text-sectionTitle font-medium text-sm flex items-center justify-center flex-shrink-0 mt-1">
+              1
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2 text-xl">Oni rejestrują się u nas</h3>
+            </div>
+          </div>
+          <div class="ml-10">
+            <p class="text-gray-700 text-lg leading-relaxed mb-3">
+              Organizacja pożytku publicznego <span class="font-bold">realizująca działalność charytatywną</span> zgłasza się do programu
+              i przekazuje nam wszystkie niezbędne informacje oraz listę produktów z linkami do nich w sklepach internetowych (np. Allegro).
+            </p>
+            <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+              POZNAJ SZCZEGÓŁY
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div>
+          <div class="flex items-start space-x-4">
+            <div class="w-6 h-6 rounded-full bg-white border-2 border-sectionTitle text-sectionTitle font-medium text-sm flex items-center justify-center flex-shrink-0 mt-1">
+              2
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2 text-xl">My weryfikujemy</h3>
+            </div>
+          </div>
+          <div class="ml-10">
+            <p class="text-gray-700 text-lg leading-relaxed mb-3">
+              Nasz zespół sprawdza poprawność każdego zgłoszenia, dane organizacji, <span class="font-bold">jej działalność oraz codzienne potrzeby</span>.
+              Do programu przyjmujemy organizacje, które prowadzą <span class="font-bold">działalność charytatywną pomagając innym</span> i mają stałe potrzeby na produkty codziennego użytku.
+            </p>
+            <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+              ZOBACZ JAK
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div>
+          <div class="flex items-start space-x-4">
+            <div class="w-6 h-6 rounded-full bg-white border-2 border-sectionTitle text-sectionTitle font-medium text-sm flex items-center justify-center flex-shrink-0 mt-1">
+              3
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2 text-xl">Ty wspierasz i wysyłasz</h3>
+            </div>
+          </div>
+          <div class="ml-10">
+            <p class="text-gray-700 text-lg leading-relaxed mb-3">
+              Na stronie organizacji wybierasz produkty codziennego użytku, które są niezbędne organizacji do realizacji swoich zadań.
+              Wskazane produkty dostępne są w sklepach podanych przez organizację. Możesz je tam <span class="font-bold">zamówić z dostawą bezpośrednio do organizacji</span>.
+            </p>
+            <a href="#" class="inline-block text-sectionTitle font-medium text-lg border-b">
+              WYŚLIJ CO TERAZ!
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Dlaczego warto wysłać? -->
+    <section class="mb-16">
+      <h1 class="text-3xl font-medium text-sectionTitle mb-6">DLACZEGO WARTO WYSŁAĆ?</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Pomoc każdego dnia -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Pomoc każdego dnia
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Każda organizacja charytatywna mierzy się z potrzebami każdego dnia. Wskazując konkretne produkty,
+            których potrzebują do swojego funkcjonowania, lepiej rozumiemy ich działalność i doceniamy pomoc, którą niosą.
+          </p>
+        </div>
+
+        <!-- Konkretne wsparcie -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Konkretne wsparcie
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Choć wpłata pieniędzy daje organizacjom większą swobodę działania, wiemy, że nie każdy chce je wspierać finansowo.
+            Przekazując produkty, których potrzeba organizacjom, masz poczucie, że pomagasz w konkretny sposób. Wiesz też, jak te produkty zostaną  wykorzystane.
+          </p>
+        </div>
+
+        <!-- Proste kroki -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Proste kroki
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Chcemy, żeby wyślij.co było proste w użyciu. Wchodzisz na stronę organizacji i wybierasz produkt. Zamawiasz
+            go ze wskazanego sklepu, a on leci bezpośrednio do wybranej przez Ciebie organizacji. Prosto i wygodnie dla wszystkich.
+          </p>
+        </div>
+
+        <!-- Wygodna dostawa -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Wygodna dostawa
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Kupując produkty codziennej potrzeby w serwisach takich jak Allegro, nie przejmujesz się o jakość i koszty dostawy.
+            Przekazujesz dane dostawy lub automat odbioru wskazany przez organizację. Reszta dzieje się sama.
+          </p>
+        </div>
+
+        <!-- Przejrzyste zasady -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Przejrzyste zasady
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Wyślij.co jest projektem oddolnym. Jesteśmy grupą pasjonatów z branży IT, którzy chcieli wykorzystać swoje
+            umiejętności dla wsparcia organizacji charytatywnych. Dlatego Wyślij.co jest prostą stroną or prostych
+            i transparentnych zasadach działania.
+          </p>
+        </div>
+
+        <!-- Otwarta inicjatywa -->
+        <div>
+          <h3 class="font-medium text-sectionTitle mb-2 flex items-center text-xl">
+            <span class="w-2 h-2 bg-sectionTitle rounded-full mr-3"></span>
+            Otwarta inicjatywa
+          </h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Wyślij.co jest hostowany publicznie na portalu GitHub. Jego kod jest otwarty do wglądu dla każdego.
+            Tworząc naszą stronę przyświecały nam idee otwartego i darmowego oprogramowania, do którego mogą
+            kontrybuować inni zainteresowani.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+{% endblock %}

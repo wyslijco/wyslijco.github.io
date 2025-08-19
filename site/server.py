@@ -88,6 +88,11 @@ def index():
     return render_template("index.html", organizations=org_data)
 
 
+@app.route("/info/", strict_slashes=False)
+def info():
+    return render_template("info.html")
+
+
 @app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
     filename = organizations.get(org_name)
