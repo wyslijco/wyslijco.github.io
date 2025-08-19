@@ -37,3 +37,44 @@
 .banner-external-icon {
   @apply h-5 w-5 text-amber-600;
 }
+
+/* Organization page components */
+.copyable-field {
+  @apply flex justify-between bg-white border-solid border border-gray-400 p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2;
+}
+
+.copyable-field-first {
+  @apply copyable-field rounded-t-lg;
+}
+
+.copyable-field-last {
+  @apply copyable-field rounded-b-lg;
+}
+
+.copyable-field-standalone {
+  @apply copyable-field rounded-lg;
+}
+
+.products-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4;
+}
+
+.product-tile {
+  @apply bg-white border border-gray-300 rounded-lg p-4 hover:shadow-md transition-shadow duration-200 flex flex-col h-full;
+}
+
+.product-title {
+  @apply text-sectionTitle text-lg font-medium mb-1 group-hover:text-amber-600 transition-colors flex-1 pr-2;
+}
+
+.product-icon {
+  @apply size-6 text-sectionTitle group-hover:text-amber-600 transition-colors flex-shrink-0;
+}
+
+.info-field {
+  @apply bg-white border-solid border border-gray-400 rounded-lg p-2 mt-1;
+}
+
+.website-link {
+  @apply flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1;
+}

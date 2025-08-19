@@ -37,107 +37,116 @@
       </div>
 
       <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dane do dostawy</h1>
-      <div class="pb-4">
-        <div
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-t-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
-          role="button"
-          tabindex="0"
-          onclick="copyText(this)"
-          onkeydown="handleCopyKeydown(event, this)"
-        >
-          {{ data.dostawa.ulica }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
+      
+      <!-- Two-column layout on medium screens and up -->
+      <div class="md:grid md:grid-cols-2 md:gap-6">
+        <!-- Left column: Address -->
+        <div class="pb-4">
+          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Adres</h2>
+          <div
+            class="copyable-field-first"
+            role="button"
+            tabindex="0"
+            onclick="copyText(this)"
+            onkeydown="handleCopyKeydown(event, this)"
           >
-            <use href="#icon-copy"></use>
-          </svg>
-        </div>
-        <div
-          class="flex justify-between bg-white border-solid border border-gray-400 p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
-          role="button"
-          tabindex="0"
-          onclick="copyText(this)"
-          onkeydown="handleCopyKeydown(event, this)"
-        >
-          {{ data.dostawa.kod }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
+            {{ data.dostawa.ulica }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <use href="#icon-copy"></use>
+            </svg>
+          </div>
+          <div
+            class="copyable-field"
+            role="button"
+            tabindex="0"
+            onclick="copyText(this)"
+            onkeydown="handleCopyKeydown(event, this)"
           >
-            <use href="#icon-copy"></use>
-          </svg>
-        </div>
-        <div
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-b-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
-          role="button"
-          tabindex="0"
-          onclick="copyText(this)"
-          onkeydown="handleCopyKeydown(event, this)"
-        >
-          {{ data.dostawa.miasto }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
+            {{ data.dostawa.kod }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <use href="#icon-copy"></use>
+            </svg>
+          </div>
+          <div
+            class="copyable-field-last"
+            role="button"
+            tabindex="0"
+            onclick="copyText(this)"
+            onkeydown="handleCopyKeydown(event, this)"
           >
-            <use href="#icon-copy"></use>
-          </svg>
+            {{ data.dostawa.miasto }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <use href="#icon-copy"></use>
+            </svg>
+          </div>
         </div>
-      </div>
 
-      {% if data.dostawa.kod_paczkomatu %}
-      <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Kod paczkomatu</h2>
-        <div
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
-          role="button"
-          tabindex="0"
-          onclick="copyText(this)"
-          onkeydown="handleCopyKeydown(event, this)"
-        >
-          {{ data.dostawa.kod_paczkomatu }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <use href="#icon-copy"></use>
-          </svg>
-        </div>
-      </div>
-      {% endif %}
+        <!-- Right column: Paczkomat and Phone -->
+        <div class="pb-4">
+          {% if data.dostawa.kod_paczkomatu %}
+          <div class="pb-4">
+            <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Kod paczkomatu</h2>
+            <div
+              class="copyable-field-standalone"
+              role="button"
+              tabindex="0"
+              onclick="copyText(this)"
+              onkeydown="handleCopyKeydown(event, this)"
+            >
+              {{ data.dostawa.kod_paczkomatu }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <use href="#icon-copy"></use>
+              </svg>
+            </div>
+          </div>
+          {% endif %}
 
-      <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Telefon dla kuriera</h2>
-        <div
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
-          role="button"
-          tabindex="0"
-          onclick="copyText(this)"
-          onkeydown="handleCopyKeydown(event, this)"
-        >
-          {{ data.dostawa.telefon }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <use href="#icon-copy"></use>
-          </svg>
+          <div>
+            <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Telefon dla kuriera</h2>
+            <div
+              class="copyable-field-standalone"
+              role="button"
+              tabindex="0"
+              onclick="copyText(this)"
+              onkeydown="handleCopyKeydown(event, this)"
+            >
+              {{ data.dostawa.telefon }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <use href="#icon-copy"></use>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -145,7 +154,7 @@
       <div class="pb-4">
         <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Uwagi do dostawy</h2>
         <div 
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1 cursor-pointer transition-all duration-150 ease-in-out active:bg-gray-50 active:shadow-inner active:border-l-2 active:border-r-2"
+          class="copyable-field-standalone"
           role="button"
           tabindex="0"
           onclick="copyText(this)"
@@ -170,59 +179,63 @@
   <div class="flex justify-center">
     <div class="w-11/12">
       <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h1>
-      {% for produkt in data.produkty %}
-      <div class="flex justify-between items-start py-4 p-3 mb-2 border-b border-gray-300">
-        <div class="flex-1">
-          <a href="{{ produkt.link }}" target="_blank" class="block">
-            <h2 class="text-sectionTitle text-lg font-medium mb-1">{{ produkt.nazwa }}</h2>
+      
+      <!-- Progressive grid layout: 1 col mobile, 3 md, 4 lg, 6 xl -->
+      <div class="products-grid">
+        {% for produkt in data.produkty %}
+        <div class="product-tile">
+          <a href="{{ produkt.link }}" target="_blank" class="flex flex-col h-full group">
+            <div class="flex justify-between items-start mb-2">
+              <h2 class="product-title">{{ produkt.nazwa }}</h2>
+              <svg
+                fill="none"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="product-icon"
+              >
+                <use href="#icon-external-link"></use>
+              </svg>
+            </div>
             {% if produkt.opis %}
-            <p class="text-black text-sm leading-relaxed">{{ produkt.opis }}</p>
+            <p class="text-black text-sm leading-relaxed flex-grow">{{ produkt.opis }}</p>
             {% endif %}
           </a>
         </div>
-        <div class="ml-4 flex-shrink-0">
-          <a href="{{ produkt.link }}" target="_blank" class="text-sectionTitle">
-            <svg
-              fill="none"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-7"
-            >
-              <use href="#icon-external-link"></use>
-            </svg>
-          </a>
-        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </div>
 
   <div class="flex justify-center">
     <div class="w-11/12">
       <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h1>
-      <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h2>
-        <div class="bg-white border-solid border border-gray-400 rounded-lg p-2 mt-1">{{ data.krs }}</div>
-      </div>
+      
+      <!-- Two-column layout on medium screens and up -->
+      <div class="md:grid md:grid-cols-2 md:gap-6">
+        <div class="pb-4">
+          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h2>
+          <div class="info-field">{{ data.krs }}</div>
+        </div>
 
-      <div class="pb-4">
-        <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h2>
-        <a
-          class="flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1"
-          href="{{data.strona}}"
-          target="_blank"
-        >
-          {{ data.strona }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 ml-2"
+        <div class="pb-4">
+          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h2>
+          <a
+            class="website-link"
+            href="{{data.strona}}"
+            target="_blank"
           >
-            <use href="#icon-external-link"></use>
-          </svg>
-        </a>
+            {{ data.strona }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 ml-2"
+            >
+              <use href="#icon-external-link"></use>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>

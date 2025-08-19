@@ -23,3 +23,10 @@ produkty:
     opis: Nie wymaga podawania adresu (sklep wyśle bezpośrednio do organizacji)
   - nazwa: Testowy produkt 3
     link: http://testowy3.pl
+  - nazwa: Opatrunki
+    link: http://testowy3.pl
+  - nazwa: Zestaw gryzaków
+    link: http://testowy2.pl
+    opis: Nie wymaga podawania adresu (sklep wyśle bezpośrednio do organizacji)
+  - nazwa: Testowy produkt 5
+    link: http://testowy3.pl
