@@ -78,3 +78,46 @@
 .website-link {
   @apply flex justify-between bg-white border-solid border border-gray-400 rounded-lg p-3 mt-1;
 }
+
+/* Home page styles */
+
+.process-step {
+  @apply gap-6;
+}
+
+.step-number {
+  @apply w-12 h-12 rounded-full border-2 border-sectionTitle text-sectionTitle font-medium text-xl flex items-center justify-center flex-shrink-0 mt-1;
+}
+
+.step-content {
+  @apply flex-1;
+}
+
+.step-title {
+  @apply text-sectionTitle text-xl md:text-2xl font-medium mb-2;
+}
+
+.step-description {
+  @apply text-gray-600 text-lg md:text-xl;
+}
+
+.organization-links {
+  @apply leading-tight;
+}
+
+
+.org-link-line {
+  @apply block;
+}
+
+.org-link {
+  @apply uppercase tracking-wide;
+}
+
+.zobacz-wiecej {
+  @apply transition-all duration-200;
+}
+
+.text-hero {
+  font-size: 1.7rem
+}
