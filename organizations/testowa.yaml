@@ -1,18 +1,18 @@
 ---
-nazwa: Podlaski Inspektorat Ochrony Zwierząt
+nazwa: Testowa
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: testowej
 
 strona: http://testowa.pl
-krs: 0001069960
+krs: 1234567890
 
 dostawa:
   ulica: Testowa 1
   kod: 00-000
   miasto: Warszawa
   kod_paczkomatu: WAW01M
-  telefon: 111 454 00
+  telefon: 000 000 000
   dodatkowe_informacje: Dostawa tylko w godzinach 9:00-17:00, proszę dzwonić przed przyjściem
 
 produkty:

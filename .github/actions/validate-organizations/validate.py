@@ -122,24 +122,29 @@ class OrganizationValidator:
                 errors.append(f"Nieprawidłowy format {self.slug_field}: {slug} (dozwolone tylko małe litery, cyfry i myślniki)")
         
         # Validate dostawa structure
-        if 'dostawa' in data and data['dostawa']:
+        if 'dostawa' in data:
             delivery = data['dostawa']
-            required_delivery_fields = ['ulica', 'kod', 'miasto', 'telefon']
-            for field in required_delivery_fields:
-                if field not in delivery:
-                    errors.append(f"Brakuje wymaganego pola dostawy: dostawa.{field}")
-            
-            # Validate postal code format
-            if 'kod' in delivery:
-                postal_code = str(delivery['kod'])
-                if not re.fullmatch(r"\d{2}-\d{3}", postal_code):
-                    errors.append(f"Nieprawidłowy format kodu pocztowego: {postal_code} (oczekiwany format: 00-000)")
-            
-            # Validate phone number
-            if 'telefon' in delivery:
-                phone = re.sub(r"[\s-]", "", str(delivery['telefon']))
-                if not re.fullmatch(r"(\+?48|0048)?\d{9}", phone):
-                    errors.append(f"Nieprawidłowy format numeru telefonu: {delivery['telefon']}")
+            if not delivery or not isinstance(delivery, dict):
+                errors.append("Pole dostawa musi być obiektem z wymaganymi polami")
+            else:
+                required_delivery_fields = ['ulica', 'kod', 'miasto', 'telefon']
+                for field in required_delivery_fields:
+                    if field not in delivery:
+                        errors.append(f"Brakuje wymaganego pola dostawy: dostawa.{field}")
+                    elif not delivery[field] or not str(delivery[field]).strip():
+                        errors.append(f"Pole dostawa.{field} nie może być puste")
+                
+                # Validate postal code format
+                if 'kod' in delivery:
+                    postal_code = str(delivery['kod'])
+                    if not re.fullmatch(r"\d{2}-\d{3}", postal_code):
+                        errors.append(f"Nieprawidłowy format kodu pocztowego: {postal_code} (oczekiwany format: 00-000)")
+                
+                # Validate phone number
+                if 'telefon' in delivery:
+                    phone = re.sub(r"[\s-]", "", str(delivery['telefon']))
+                    if not re.fullmatch(r"(\+?48|0048)?\d{9}", phone):
+                        errors.append(f"Nieprawidłowy format numeru telefonu: {delivery['telefon']}")
         
         # Validate produkty structure
         if 'produkty' in data and data['produkty']:
@@ -153,8 +158,13 @@ class OrganizationValidator:
                     
                     if 'nazwa' not in product:
                         errors.append(f"produkty[{i}] brakuje wymaganego pola: nazwa")
+                    elif not product['nazwa'] or not str(product['nazwa']).strip():
+                        errors.append(f"produkty[{i}] pole nazwa nie może być puste")
+                    
                     if 'link' not in product:
                         errors.append(f"produkty[{i}] brakuje wymaganego pola: link")
+                    elif not product['link'] or not str(product['link']).strip():
+                        errors.append(f"produkty[{i}] pole link nie może być puste")
         
         return len(errors) == 0, errors
     
@@ -220,6 +230,7 @@ class OrganizationValidator:
         
         if is_valid:
             print("  ✅ Nie znaleziono konfliktów adresów")
+            all_valid = True
         else:
             print("  ❌ Znaleziono konflikty adresów:")
             for error in errors:
