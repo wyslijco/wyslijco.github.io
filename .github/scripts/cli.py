@@ -16,7 +16,7 @@ from labels import Label
 from parsers import GithubIssueFormDataParser
 from pullers import KRSDataPuller
 from utils import has_label
-from validators import OrgIssueValidator
+from .validators import OrgIssueValidator
 from renderers import render_organization_yaml
 
 logging.basicConfig(

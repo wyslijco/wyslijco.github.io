@@ -12,7 +12,7 @@ from utils import has_label
 
 
 @dataclass
-class OrgValidator:
+class OrgIssueValidator:
     data: GithubIssueFormDataParser
     issue: Issue
 
