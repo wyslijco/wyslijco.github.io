@@ -48,6 +48,10 @@ class OrgValidator:
         Checks if any organization with the same slug already exists.
         """
         slug_value = self.data.get(OrgFormSchemaIds.slug)
+        reserved_slugs = {
+            "info",
+            "organizacje",
+        }
 
         for root, _, files in os.walk("../../organizations"):
             for file_name in files:
@@ -58,6 +62,12 @@ class OrgValidator:
                             False,
                             f"organizacja z adresem `/{slug_value}` już istnieje w `wyślij.co`. Proszę zmienić wartość na inną.",
                         )
+
+        if slug_value in reserved_slugs:
+            return (
+                False,
+                f"adres `/{slug_value}` jest zarezerwowany. Proszę zmienić wartość na inną.",
+            )
 
         return True, ""
 
