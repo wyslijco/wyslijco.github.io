@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen">
+  <div class="info-container">
+
+    <!-- Main title -->
+    <div class="text-center mb-8">
+      <h1 class="org-list-title">
+        <span class="text-sectionTitle">WYŚLIJ.CO</span>
+        <span class="text-gray-500"> / FUNDACJI</span>
+      </h1>
+    </div>
+
+    <!-- Subtitle -->
+    <div class="text-center mb-12">
+      <p class="org-list-subtitle">
+        W programie <span class="text-sectionTitle font-medium">Wyślij.co</span> zarejestrowane są już następujące organizacje:
+      </p>
+    </div>
+
+    <!-- Organizations list -->
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {% for organization in organizations %}
+        <div class="org-list-item">
+          <span class="org-list-bullet"></span>
+          <a href="/{{ organization.adres }}" class="org-list-link">
+            {{ organization.nazwa }}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

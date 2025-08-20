@@ -10,17 +10,17 @@
 
 <div class="mx-auto mt-6">
   <!-- ORGANIZATION INFO -->
-  <div class="flex justify-center">
-    <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12 md:pb-12">
+  <div class="flex justify-center pb-8 md:pb-12">
+    <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12">
       <div class="pb-4 flex justify-between items-center">
-        <span class="text-sm font-bold"><span class="text-sectionTitle">wyślij.co/</span><span class="text-black">{{ data.adres }}</span></span>
+        <span class="text-md lg:text-lg font-bold"><span class="text-sectionTitle">wyślij.co/</span><span class="text-black">{{ data.adres }}</span></span>
         <div class="flex items-center gap-3">
           <button onclick="shareCurrentPage()" class="text-sectionTitle hover:text-amber-600 transition-colors">
             <svg
               fill="none"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-5"
+              class="size-7 lg:size-9"
             >
               <use href="#icon-share"></use>
             </svg>
@@ -28,10 +28,10 @@
         </div>
       </div>
       <div class="pb-4">
-        <h1 class="text-black text-3xl">{{ data.nazwa }}</h1>
+        <h1 class="text-black text-3xl lg:text-5xl">{{ data.nazwa }}</h1>
       </div>
 
-      <div class="text-sm pb-2">
+      <div class="text-sm pb-6">
         <span class="font-bold">Pomaganie proste jak nigdy!</span>
         Wybierz produkt z listy poniżej, a podczas realizacji zamówienia kopiuj i wklejaj dane poniżej, żeby wysłać bezpośrednio do organizacji.
       </div>
@@ -176,7 +176,7 @@
   </div>
 
   <!-- PRODUCTS -->
-  <div class="flex justify-center md:pb-12">
+  <div class="flex justify-center pb-8 md:pb-12">
     <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12">
       <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h1>
       
