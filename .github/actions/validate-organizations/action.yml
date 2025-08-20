@@ -1,0 +1,40 @@
+name: 'Validate Organization YAML Files'
+description: 'Validates organization YAML files for conflicts and schema compliance'
+inputs:
+  files:
+    description: 'Space-separated list of organization YAML files to validate'
+    required: true
+  organizations-dir:
+    description: 'Directory containing organization YAML files'
+    required: false
+    default: 'organizations'
+  slug-field:
+    description: 'YAML field name for organization slug'
+    required: false
+    default: 'adres'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      shell: bash
+      run: |
+        pip install -r ${{ github.action_path }}/requirements.txt
+    
+    - name: Validate organizations
+      shell: bash
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Files to check: ${{ inputs.files }}"
+        echo "Organizations dir: ${{ inputs.organizations-dir }}"
+        ls -la organizations/ || echo "organizations directory not found"
+        export PYTHONPATH="${{ github.action_path }}:$PYTHONPATH"
+        python ${{ github.action_path }}/validate.py \
+          --files "${{ inputs.files }}" \
+          --organizations-dir "${{ inputs.organizations-dir }}" \
+          --slug-field "${{ inputs.slug-field }}"

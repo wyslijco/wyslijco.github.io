@@ -2,6 +2,7 @@ import json
 import logging
 import os
 
+import click
 from github import Auth, Github, Issue
 
 from consts import (
@@ -15,7 +16,7 @@ from labels import Label
 from parsers import GithubIssueFormDataParser
 from pullers import KRSDataPuller
 from utils import has_label
-from validators import OrgValidator
+from validators import OrgIssueValidator
 from renderers import render_organization_yaml
 
 logging.basicConfig(
@@ -31,7 +32,23 @@ g = Github(auth=auth)
 repo = g.get_repo(GITHUB_REPOSITORY)
 
 
-def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
+@click.group()
+def cli():
+    """GitHub automation CLI for wyslijco organization management."""
+    pass
+
+
+@cli.command()
+@click.option('--github-form-json', envvar='GITHUB_FORM_JSON', required=True,
+              help='GitHub form JSON data')
+@click.option('--github-issue-number', envvar='GITHUB_ISSUE_NUMBER', type=int, required=True,
+              help='GitHub issue number')
+def process_new_org_issue(github_form_json, github_issue_number):
+    issue: Issue = repo.get_issue(github_issue_number)
+    data = GithubIssueFormDataParser(
+        json.loads(github_form_json), NEW_ORG_FORM_SCHEMA_FILENAME
+    )
+
     validation_warnings = []
 
     org_name = data.get(OrgFormSchemaIds.name)
@@ -39,7 +56,7 @@ def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
     if has_label(issue, Label.AUTO_VERIFIED):
         issue.remove_from_labels(Label.AUTO_VERIFIED)
 
-    validator = OrgValidator(data, issue)
+    validator = OrgIssueValidator(data, issue)
     if not validator.validate():
         logger.error("Validation failed - not continuing")
         return
@@ -80,16 +97,5 @@ def process_new_org_issue(issue: Issue, data: GithubIssueFormDataParser):
         )
 
 
-def main():
-    github_form_json = os.getenv("GITHUB_FORM_JSON")
-    github_issue_number = int(os.getenv("GITHUB_ISSUE_NUMBER"))
-
-    issue = repo.get_issue(github_issue_number)
-    data = GithubIssueFormDataParser(
-        json.loads(github_form_json), NEW_ORG_FORM_SCHEMA_FILENAME
-    )
-    process_new_org_issue(issue, data)
-
-
 if __name__ == "__main__":
-    main()
+    cli()

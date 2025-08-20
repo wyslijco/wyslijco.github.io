@@ -1,9 +1,6 @@
 name: Walidacja zmiany plików organizacji
 
 on:
-  push:
-    paths:
-      - 'organizations/*.yaml'
   pull_request:
     paths:
       - 'organizations/*.yaml'
@@ -14,7 +11,7 @@ permissions:
 jobs:
 
   yaml-linting:
-    name: Walidacja pliku organizacji
+    name: Walidacja składni YAML
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,3 +23,25 @@ jobs:
               line-length: disable
               empty-values: disable
           file_or_dir: organizations/*.yaml
+
+  validate-organizations:
+    name: Walidacja danych organizacji
+    runs-on: ubuntu-latest
+    needs: yaml-linting
+    steps:
+      - name: Pobranie kodu
+        uses: actions/checkout@v4
+      
+      - name: Wykrycie zmienionych plików organizacji
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: organizations/*.yaml
+      
+      - name: Walidacja plików organizacji
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: ./.github/actions/validate-organizations
+        with:
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
+          organizations-dir: organizations
+          slug-field: adres
