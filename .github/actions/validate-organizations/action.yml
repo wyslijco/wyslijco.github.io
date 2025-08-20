@@ -16,23 +16,20 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
       with:
-        python-version: '3.11'
+        version: "0.4.18"
     
-    - name: Cache pip dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('${{ github.action_path }}/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+    - name: Set up Python
+      run: uv python install 3.11
+      shell: bash
     
     - name: Install dependencies
       shell: bash
       run: |
-        pip install -r ${{ github.action_path }}/requirements.txt
+        cd ${{ github.action_path }}
+        uv sync --frozen
     
     - name: Validate organizations
       shell: bash
@@ -41,8 +38,16 @@ runs:
         echo "Files to check: ${{ inputs.files }}"
         echo "Organizations dir: ${{ inputs.organizations-dir }}"
         ls -la organizations/ || echo "organizations directory not found"
-        export PYTHONPATH="${{ github.action_path }}:$PYTHONPATH"
-        python ${{ github.action_path }}/validate.py \
-          --files "${{ inputs.files }}" \
-          --organizations-dir "${{ inputs.organizations-dir }}" \
+        
+        # Convert relative paths to absolute paths from current working directory
+        REPO_ROOT="$(pwd)"
+        FILES_ABSOLUTE=""
+        for file in ${{ inputs.files }}; do
+          FILES_ABSOLUTE="$FILES_ABSOLUTE $REPO_ROOT/$file"
+        done
+        
+        cd ${{ github.action_path }}
+        uv run python validate.py \
+          --files "$FILES_ABSOLUTE" \
+          --organizations-dir "$REPO_ROOT/${{ inputs.organizations-dir }}" \
           --slug-field "${{ inputs.slug-field }}"

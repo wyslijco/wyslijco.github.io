@@ -1,0 +1,15 @@
+nazwa: Reserved Slug Foundation
+adres: info  # Reserved slug!
+strona: https://reserved.org
+krs: 5555555555
+
+dostawa:
+  ulica: Reserved Street 789
+  kod: 11-111
+  miasto: Reserved City
+  telefon: 111222333
+
+produkty:
+  - nazwa: Reserved Product
+    link: https://example.com/reserved
+

@@ -1,0 +1,15 @@
+nazwa: Invalid KRS Foundation
+adres: invalid-krs
+strona: https://invalid-krs.org
+krs: 123  # Invalid - too short
+
+dostawa:
+  ulica: Invalid Street 456
+  kod: 67-890
+  miasto: Invalid City
+  telefon: 987654321
+
+produkty:
+  - nazwa: Invalid Product
+    link: https://example.com/invalid
+

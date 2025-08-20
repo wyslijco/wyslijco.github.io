@@ -32,13 +32,7 @@ g = Github(auth=auth)
 repo = g.get_repo(GITHUB_REPOSITORY)
 
 
-@click.group()
-def cli():
-    """GitHub automation CLI for wyslijco organization management."""
-    pass
-
-
-@cli.command()
+@click.command()
 @click.option('--github-form-json', envvar='GITHUB_FORM_JSON', required=True,
               help='GitHub form JSON data')
 @click.option('--github-issue-number', envvar='GITHUB_ISSUE_NUMBER', type=int, required=True,
@@ -98,4 +92,4 @@ def process_new_org_issue(github_form_json, github_issue_number):
 
 
 if __name__ == "__main__":
-    cli()
+    process_new_org_issue()

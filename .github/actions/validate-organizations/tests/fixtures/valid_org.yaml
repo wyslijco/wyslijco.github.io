@@ -1,0 +1,18 @@
+nazwa: Test Foundation
+adres: test-foundation
+strona: https://test-foundation.org
+krs: 1234567890
+
+dostawa:
+  ulica: Test Street 123
+  kod: 12-345
+  miasto: Test City
+  telefon: 123456789
+
+produkty:
+  - nazwa: Test Product 1
+    link: https://example.com/product1
+  - nazwa: Test Product 2
+    link: https://example.com/product2
+    opis: Test product description
+

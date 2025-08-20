@@ -1,0 +1,11 @@
+nazwa: Empty Delivery Foundation
+adres: empty-delivery
+strona: https://empty-delivery.org
+krs: 9876543210
+
+dostawa: {}  # Empty delivery object
+
+produkty:
+  - nazwa: Some Product
+    link: https://example.com/product
+    

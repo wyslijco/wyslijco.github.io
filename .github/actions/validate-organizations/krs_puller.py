@@ -4,12 +4,12 @@ Adapted from the main CLI KRS validation logic.
 """
 
 import requests
-from typing import Optional, Tuple
+from typing import Optional
 
 
 class KRSDataPuller:
     """Pulls and validates organization data from Polish KRS registry."""
-    
+
     def __init__(self, krs: str):
         self.krs = krs
         self.data = self._pull_data()
@@ -19,9 +19,9 @@ class KRSDataPuller:
         try:
             response = requests.get(
                 f"https://api-krs.ms.gov.pl/api/krs/OdpisAktualny/{self.krs}?rejestr=S&format=json",
-                timeout=10
+                timeout=10,
             )
-            
+
             if response.status_code == 200:
                 try:
                     return response.json()
@@ -35,7 +35,7 @@ class KRSDataPuller:
                     raise
             else:
                 raise requests.HTTPError(f"Failed to fetch data for KRS {self.krs}")
-                
+
         except requests.exceptions.RequestException as e:
             raise requests.HTTPError(f"Network error fetching KRS {self.krs}: {e}")
 
@@ -44,7 +44,7 @@ class KRSDataPuller:
         """Get organization name from KRS data."""
         if not self.data:
             return None
-            
+
         return (
             self.data.get("odpis", {})
             .get("dane", {})
@@ -54,10 +54,10 @@ class KRSDataPuller:
         )
 
     @classmethod
-    def get_organization_data(cls, krs: str) -> Optional['KRSDataPuller']:
+    def get_organization_data(cls, krs: str) -> Optional["KRSDataPuller"]:
         """
         Get organization data from KRS registry.
-        
+
         Returns:
             KRSDataPuller instance if successful, None if failed
         """
@@ -69,4 +69,5 @@ class KRSDataPuller:
 
 class KRSMaintenanceError(Exception):
     """Raised when KRS API is in maintenance mode."""
+
     pass
