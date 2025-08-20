@@ -93,6 +93,24 @@ def info():
     return render_template("info.html")
 
 
+@app.route("/organizacje/", strict_slashes=False)
+def organizations_list():
+    # Load all organization data for the list
+    org_data = []
+    for org_slug, filename in organizations.items():
+        with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
+            data = yaml.safe_load(org)
+            org_data.append({
+                'adres': org_slug,
+                'nazwa': data.get('nazwa')
+            })
+
+    # Sort organizations alphabetically by name
+    org_data.sort(key=lambda x: x['nazwa'])
+
+    return render_template("organizations.html", organizations=org_data)
+
+
 @app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
     filename = organizations.get(org_name)
