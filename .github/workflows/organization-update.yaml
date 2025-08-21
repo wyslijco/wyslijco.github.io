@@ -40,7 +40,7 @@ jobs:
       
       - name: Walidacja plików organizacji
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: ./.github/actions/validate-organizations
+        uses: wyslijco/walidacja-organizacji@v1
         with:
           files: ${{ steps.changed-files.outputs.all_changed_files }}
           organizations-dir: organizations
