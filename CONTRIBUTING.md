@@ -1,14 +1,10 @@
 <img width="119" alt="image" src="https://github.com/wyslijco/wyslijco.github.io/assets/200957/65435e0b-d446-4a5c-b174-27e37c16e783">
 
-# Pomoc w rozwoju wyslij.co
+# Pomoc w rozwoju wyślij.co
 
-Nasza strona powstała z myślą o wspieraniu organizacji charytatywnych w Polsce. 
-Od początku za najwazniejsze założenia przyjęliśmy pełną transparentność, otwartość kodu, 
-użycie rozwiązań darmowych i wykluczenie wszelkich możliwości pozyskiwania jakichkolwiek 
-korzyści za jej tworzenie, prowadzenie i rozwój.
+**wyślij.co** to polska platforma wspierania organizacji charytatywnych, stworzona z myślą o ułatwieniu pomocy potrzebującym. Od początku za najważniejsze założenia przyjęliśmy pełną transparentność, otwartość kodu, użycie rozwiązań darmowych i wykluczenie wszelkich możliwości pozyskiwania jakichkolwiek korzyści za jej tworzenie, prowadzenie i rozwój.
 
-Wyslij.co jest projektem otwartym, dostępnym  na zasadach wolnego oprogramowania. Dzieki temu
-każdy może uczestniczyć w jego rozwoju.
+**wyślij.co** jest projektem otwartym, dostępnym na zasadach wolnego oprogramowania. Dzięki temu każdy może uczestniczyć w jego rozwoju i pomagać polskim organizacjom charytatywnym.
 
 Jeżeli chcesz dołączyć do grona kontrybutorów, przede wszystkim przejrzyj naszą sekcję 
 [Issues](https://github.com/wyslijco/wyslijco.github.io/issues) repozytorium. Szukaj zgłoszeń 
@@ -19,12 +15,13 @@ zespół. Najczęściej takie zadania dla nowych osób będą oznaczone specjaln
 Jeżeli masz pomysł na nowe funkcjonalności lub widzisz błąd - zgłoś je także przez 
 [Issues](https://github.com/wyslijco/wyslijco.github.io/issues). To także ważna forma kontrybucji do projektu!
 
-# Wytyczne dotyczące rozwoju usługi
+# Założenia techniczne projektu
 
-Od początku zależało nam, żeby wyslij.co było usługą jak najtańszą i najłatwiejszą w utrzymaniu.
-Ze względu na jej prostotę zdecydowaliśmy się hostować ją w formie strony na [GitHub Pages](https://pages.github.com/).
-GitHub oferuje cały szereg narzędzi, dzięki którym realizacja naszego zadania okazała się możliwa
-praktycznie bez kosztów finansowych, a jedynie angażując nasz czas pracy.
+Od początku zależało nam, żeby **wyślij.co** było usługą jak najtańszą i najłatwiejszą w utrzymaniu. Ze względu 
+na prostotę projektu zdecydowaliśmy się hostować platformę w formie strony statycznej 
+na [GitHub Pages](https://pages.github.com/). GitHub oferuje cały szereg narzędzi, dzięki którym 
+realizacja naszego zadania okazała się możliwa praktycznie bez kosztów finansowych, angażując 
+jedynie nasz czas pracy.
 
 Zanim zabierzesz się za pracę nad naszym projektem, zapoznaj się z jego założeniami oraz konstrukcją,
 żeby lepiej rozumieć, jak dostarczamy nasze rozwiązanie.
@@ -39,13 +36,22 @@ W lokalnym środowisku możemy wykorzystać Flaska do kodowania rozwiązań. Bud
 w procesie zautomatyzowanym za pomocą [GitHub Actions](https://docs.github.com/en/actions).
 Wygenerowane pliki statyczne są ładowane na serwery GitHuba i tam aktualizowana jest nasza strona. 
 
-## Jaki jest stos technologiczny projektu?
+## Stos technologiczny
 
-Silnikiem do budowania stron jest wspomniany wyżej [Flask](https://flask.palletsprojects.com/en/3.0.x/) 
-wraz z [Frozen Flask](https://pypi.org/project/Frozen-Flask/). Budują one strony z użyciem
-szablonów napisanych z użyciem Jinja2. Rozwiązania te napisane są w języku programowania [Python](https://www.python.org/).
+### Backend
+- **[Flask](https://flask.palletsprojects.com/)** - framework webowy w języku Python
+- **[Frozen Flask](https://pypi.org/project/Frozen-Flask/)** - generowanie statycznych stron HTML
+- **[Jinja2](https://jinja.palletsprojects.com/)** - system szablonów HTML
 
-Część frontendowa napisana jest przede wszystkim z wykorzystaniem frameworka tailwind CSS.
+### Frontend
+- **[Tailwind CSS](https://tailwindcss.com/)** - framework CSS
+- **Vanilla JavaScript** - interakcyjność po stronie klienta
+- **Responsive design** - dostosowanie do wszystkich urządzeń
+
+### Narzędzia deweloperskie
+- **[uv](https://docs.astral.sh/uv/)** - zarządzanie zależnościami Python
+- **[npm](https://www.npmjs.com/)** - zarządzanie zależnościami JavaScript
+- **[GitHub Actions](https://docs.github.com/en/actions)** - CI/CD i automatyczne deploymenty
 
 # Lokalne uruchomienie projektu
 
@@ -108,11 +114,80 @@ staramy się je parametryzować w konfiguracji projektu.
 W opisach Pull Requestów oraz w Issues stosujemy język polski, żeby uprościć komunikację z organizacjami i każdym, kto chciałby z nami
 współpracować nad rozwojem usługi. 
 
-# Tworzenie Pull Requestów
+# Proces rozwoju
 
-Gotowe zmiany należy przedstawić w formie Pull Requestu. Każda zmiana wymaga zatwierdzenia przez przynajmniej jedną osobę z naszego zespołu.
-W opisie Pull Requesta zamieść informacje o wprowadzonych zmianach oraz odniesienie do Issue, którego dotyczą zmiany.
+## Tworzenie Pull Requestów
 
-# Dodatkowe pytania i kontakt
+Gotowe zmiany należy przedstawić w formie Pull Requestu:
 
-W razie wszelkich niejasności, najlepszym kanałem komunikacji z nami jest sekcja Issues. Wystarczy założyć nowe zgłoszenie i opisać zagadnienie. 
+1. **Fork repozytorium** do swojego konta GitHub
+2. **Stwórz branch** z opisową nazwą (np. `feature/nowa-organizacja`, `fix/blad-walidacji`)
+3. **Implementuj zmiany** zgodnie z konwencjami projektu
+4. **Przetestuj lokalnie** - upewnij się, że wszystko działa
+5. **Stwórz Pull Request** z jasnym opisem zmian
+
+### Wymagania dla Pull Requestów
+
+- [ ] Opis zmian w języku polskim
+- [ ] Odniesienie do powiązanego Issue (jeśli dotyczy)
+- [ ] Przetestowane działanie lokalnie
+- [ ] Zachowane konwencje nazewnicze
+
+### Przykład opisu Pull Requesta
+
+```markdown
+## Opis zmian
+Dodanie nowej organizacji "Przykładowa Fundacja" wraz z jej produktami.
+
+## Lista zmian
+- Dodany plik `organizations/przykladowa-fundacja.yaml`
+- Zweryfikowany numer KRS w rejestrze
+- Sprawdzona unikalność adresu organizacji
+
+## Powiązane Issues
+Zamyka #123
+```
+
+## Walidacja i automatyzacja
+
+Projekt wykorzystuje **GitHub Actions** do automatycznej walidacji:
+
+- **Walidacja YAML** - sprawdzenie poprawności składni plików organizacji
+- **Weryfikacja KRS** - automatyczne sprawdzanie numerów w rejestrze
+- **Kontrola konfliktów** - wykrywanie duplikatów adresów organizacji
+- **Build test** - sprawdzenie poprawności generowania stron statycznych
+
+## Bezpieczeństwo
+
+### Zasady bezpieczeństwa
+
+- **Nie publikuj danych wrażliwych** - unikaj commitowania tokenów, haseł, kluczy API
+- **Weryfikuj organizacje** - sprawdzaj wiarygodność dodawanych organizacji
+- **Bezpieczne linki** - wszystkie linki do produktów powinny być bezpieczne (HTTPS)
+- **Walidacja danych** - każda organizacja musi przejść weryfikację KRS
+
+### Zgłaszanie problemów bezpieczeństwa
+
+W przypadku znalezienia luki bezpieczeństwa, prosimy o kontakt przez [GitHub Security Advisories](../../security/advisories) zamiast publicznych Issues.
+
+# Dodatkowe zasoby
+
+## Dokumentacja
+
+- **[README.md](README.md)** - podstawowe informacje o projekcie
+- **[GitHub Wiki](../../wiki)** - szczegółowa dokumentacja
+- **[Przykłady organizacji](organizations/)** - wzorce plików YAML
+
+## Społeczność
+
+- **[Issues](../../issues)** - zgłaszanie błędów i propozycji
+- **[Discussions](../../discussions)** - ogólne dyskusje o projekcie
+- **[Pull Requests](../../pulls)** - przegląd zmian
+
+## Kontakt
+
+W razie wszelkich niejasności najlepszym kanałem komunikacji jest sekcja [Issues](../../issues). Wystarczy założyć nowe zgłoszenie i opisać zagadnienie - zespół postara się odpowiedzieć jak najszybciej.
+
+---
+
+**Dziękujemy za zainteresowanie rozwojem wyślij.co i wspieranie polskich organizacji charytatywnych!** 🎉 
