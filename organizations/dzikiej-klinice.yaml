@@ -2,10 +2,10 @@
 nazwa: Dzika Klinika – Centrum Pomocy dla Dzikich Zwierząt
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
-adres: dzikiej_klinice
+adres: dzikiej-klinice
 
 strona: https://www.dzikaklinika.com/
-krs: 0000454254
+krs: "0000454254"
 
 dostawa:
   ulica: os. Kazimierzowskie 18/156

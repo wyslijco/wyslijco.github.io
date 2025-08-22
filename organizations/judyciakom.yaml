@@ -4,7 +4,7 @@ nazwa: Fundacja dla szczeniąt Judyta
 adres: judyciakom
 
 strona: https://fundacjajudyta.com/
-krs: 0000672078
+krs: "0000672078"
 
 dostawa:
   ulica: Wola Wodzyńska 25
@@ -35,6 +35,6 @@ produkty:
   - nazwa: Rękawiczki lateksowe [S]
     link: https://allegro.pl/oferta/rekawiczki-lateksowe-mercator-santex-pudrowane-100-sztuk-s-17376303109
   - nazwa: Rękawiczki lateksowe [M]
-    linke: https://allegro.pl/oferta/rekawiczki-lateksowe-m-pudrowane-mercator-santex-rekawice-medyczne-100sztuk-17376303137
+    link: https://allegro.pl/oferta/rekawiczki-lateksowe-m-pudrowane-mercator-santex-rekawice-medyczne-100sztuk-17376303137
   - nazwa: Rękawiczki lateksowe [XL]
     link: https://allegro.pl/oferta/rekawice-robocze-lateksowe-xl-rekawiczki-mercator-santex-pudrowane-100-szt-17376303203
