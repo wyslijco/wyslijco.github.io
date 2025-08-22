@@ -11,8 +11,9 @@ dostawa:
   ulica: Testowa 1
   kod: 00-000
   miasto: Warszawa
-  kod_paczkomatu: WAW01M
   telefon: 22 000 00 00
+  email: kontakt@testowa.pl
+  kod_paczkomatu: WAW01M
   dodatkowe_informacje: Dostawa tylko w godzinach 9:00-17:00, proszę dzwonić przed przyjściem
 
 produkty:
