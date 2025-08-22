@@ -118,6 +118,8 @@ def organization_page(org_name):
         abort(404)
     with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
         data = yaml.safe_load(org)
+        if not data["produkty"]:
+            data["produkty"] = []
         return render_template("organization.html", data=data)
 
 

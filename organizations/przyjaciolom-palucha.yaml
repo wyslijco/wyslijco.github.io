@@ -1,0 +1,19 @@
+---
+nazwa: Fundacja Przyjaciele Palucha
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: przyjaciolom-palucha
+
+strona: https://przyjacielepalucha.pl/
+krs: "0000861802"
+
+dostawa:
+  ulica: Poloneza 48 m3
+  kod: 02-826
+  miasto: Warszawa
+  telefon: 789 366 817
+  email: fundacja@przyjacielepalucha.pl
+  kod_paczkomatu: WAW718M
+  dodatkowe_informacje:
+
+produkty:

@@ -1,0 +1,40 @@
+---
+nazwa: La Fauna Fundacja dla zwierząt - Interwencje i adopcje
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: la-faunie
+
+strona: https://zwierzetainterwencje.pl/
+krs: "0000675370"
+
+dostawa:
+  ulica: Balicka 56
+  kod: 30-149
+  miasto: Kraków
+  telefon: 507 414 838
+  email: fundacja@zwierzetainterwencje.pl
+  kod_paczkomatu: KRA24A
+  dodatkowe_informacje: "Zestawy karm dostępne w sklepie Ocalone Łapki nie wymagają podawania adresu wysyłki przy zamawianiu. Wskazane produkty są dostarczane bezpośrednio do Fundacji La Fauna."
+
+produkty:
+  - nazwa: Pakiet karmy VIP (dla psa full-wypas)
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-vip-dla-psa-full-wypas-fundacja-la-fauna/
+  - nazwa: Pakiet Premium (dla kundelków)
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-premium-dla-kundelkow-fundacja-la-fauna/
+  - nazwa: Pakiet podstawowy dla szczeniaków
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-podstawowy-dla-szczeniakow-fundacja-la-fauna/
+  - nazwa: Pakiet Kuweciarz
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-kuweciarz-fundacja-la-fauna/
+  - nazwa: Pakiet Mruczki
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-mruczki-fundacja-la-fauna/
+  - nazwa: Pakiet Kiciuś
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-kicius-fundacja-la-fauna/
+  - nazwa: Inne zestawy karm dla psów i kotów
+    opis: Zestawy karm do wyboru, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/fundacja-la-fauna/

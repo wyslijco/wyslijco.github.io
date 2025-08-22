@@ -1,0 +1,19 @@
+---
+nazwa: Fundacja "Animals"
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: animalsom
+
+strona: http://fundacja-animals.org/
+krs: "0000163908"
+
+dostawa:
+  ulica: Obozowa 70 / 24
+  kod: 01-426
+  miasto: Warszawa
+  telefon: 507 088 105
+  email: kontakt@fundacja-animals.org
+  kod_paczkomatu: WAW10HO
+  dodatkowe_informacje:
+
+produkty:

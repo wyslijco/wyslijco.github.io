@@ -1,0 +1,19 @@
+---
+nazwa: Fundacja Dzika Klinika - Centrum Pomocy dla Dzikich Zwierząt
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: dzikiej-klinice
+
+strona: https://www.dzikaklinika.com/
+krs: "0000454254"
+
+dostawa:
+  ulica: os. Kazimierzowskie 18/156
+  kod: 31-841
+  miasto: Kraków
+  telefon: 790 36 99 36
+  email: dzika.klinika@op.pl
+  kod_paczkomatu: KRA04BM
+  dodatkowe_informacje:
+
+produkty:

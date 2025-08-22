@@ -1,0 +1,44 @@
+---
+nazwa: Fundacja ADA
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: adzie
+
+strona: https://fundacja-ada.org.pl
+krs: "0000313847"
+
+dostawa:
+  ulica: Zamoyskiego 15
+  kod: 37-700
+  miasto: Przemyśl
+  telefon: 500 052 573
+  email: kontakt@fundacja-ada.pl
+  kod_paczkomatu: PRZ09M
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: Brit Mono Protein Rabbit
+    link: https://allegro.pl/oferta/brit-mono-protein-rabbit-puszka-dla-psa-z-krolikiem-400g-15924318183
+    opis: Może być też w smaku jagnięcina, wołowina, królik
+  - nazwa: Mokra karma Dolina Noteci
+    link: https://allegro.pl/listing?string=Dolina%20Noteci%20karma%20mokra
+    opis: Karma w smakach jagnięcina, wołowina, królik
+  - nazwa: Karma mokra i sucha Taste of The Wild
+    link: https://allegro.pl/listing?string=Taste%20of%20The%20Wild%20karma
+  - nazwa: Karma mokra i sucha Wiejska Zagroda Monoprotein
+    link: https://allegro.pl/listing?string=Wiejska%20Zagroda%20Monoprotein%20karma
+  - nazwa: Karma mokra marki Feringa dla dorosłych kotów i dla kociąt
+    link: https://allegro.pl/listing?string=karma%20Feringa
+  - nazwa: Karma mokra marki Grau dla dorosłych kotów i dla kociąt
+    link: https://allegro.pl/listing?string=karma%20Grau
+  - nazwa: Karma mokra marki  dla dorosłych kotów i dla kociąt
+    link: https://allegro.pl/listing?string=karma%20Mac%E2%80%99s
+  - nazwa: Karma sucha marki Grau
+    link: https://allegro.pl/listing?string=karma%20sucha%20Grau
+  - nazwa: Karma sucha marki Mac's
+    link: https://allegro.pl/listing?string=karma%20sucha%20Mac%E2%80%99s
+  - nazwa: Żwirek dla kota
+    link: https://allegro.pl/listing?string=%C5%BBwirek%20bentonitowy
+  - nazwa: Podkłady
+    link: https://allegro.pl/listing?string=podk%C5%82ady%20dla%20zwierz%C4%85
+

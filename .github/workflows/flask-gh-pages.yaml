@@ -37,6 +37,7 @@ jobs:
             rules:
               line-length: disable
               empty-values: disable
+              empty-lines: disable
           file_or_dir: organizations/*.yaml
 
   # Build job
