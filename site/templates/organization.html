@@ -204,7 +204,7 @@
       
       <!-- Progressive grid layout: 1 col mobile, 3 md, 4 lg -->
       <div class="products-grid">
-        {% for produkt in data.produkty %}
+        {% for produkt in s %}
         <div class="product-tile">
           <a href="{{ produkt.link }}" target="_blank" class="flex flex-col h-full group">
             <div class="flex justify-between items-start mb-2">
@@ -225,6 +225,12 @@
         </div>
         {% endfor %}
       </div>
+
+      {% if not data.produkty %}
+      <div class="text-xl">
+        Aktualnie organizacja nie ma określonych produktów do wysłania.
+      </div>
+      {% endif %}
     </div>
   </div>
 
