@@ -1,0 +1,20 @@
+---
+nazwa: DOLNOŚLĄSKI INSPEKTORAT OCHRONY ZWIERZĄT
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: diozowi
+
+strona: https://dioz.pl
+krs: "0000645982"
+
+dostawa:
+  ulica: Pietrzyków 19
+  kod: 58-170
+  miasto: Dobromierz
+  telefon: 661 222 034
+  email: dioz@dioz.pl
+  kod_paczkomatu:
+  dodatkowe_informacje:
+
+produkty:
+
