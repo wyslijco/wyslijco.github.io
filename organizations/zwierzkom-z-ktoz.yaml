@@ -1,0 +1,19 @@
+---
+nazwa: Krakowskie Towarzystwo Opieki nad Zwierzętami
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: zwierzakom-z-ktoz
+
+strona: https://www.schronisko.krakow.pl/
+krs: 0000044704
+
+dostawa:
+  ulica: Rybna 3
+  kod: 30-254
+  miasto: Kraków
+  telefon: 12 429-74-72
+  email: ktoz@ktoz.krakow.pl
+  kod_paczkomatu:
+  dodatkowe_informacje:
+
+produkty:
