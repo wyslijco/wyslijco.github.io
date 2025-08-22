@@ -1,0 +1,40 @@
+---
+nazwa: Fundacja dla szczeniąt Judyta
+
+adres: judyciakom
+
+strona: https://fundacjajudyta.com/
+krs: 0000672078
+
+dostawa:
+  ulica: Wola Wodzyńska 25
+  kod: 06-456
+  miasto: Ojrzeń
+  telefon: 730 116 503
+  email: info@fundacjajudyta.com
+  kod_paczkomatu: OJR01M
+  dodatkowe_informacje: "Wysyłka na adres Azylu dla psów niepełnosprawnych Judytowo"
+
+produkty:
+  - nazwa: Brit Mono Protein Rabbit
+    link: https://allegro.pl/oferta/brit-mono-protein-rabbit-puszka-dla-psa-z-krolikiem-400g-15924318183
+  - nazwa: Royal Canin Gastrointestinal
+    link: https://allegro.pl/oferta/royal-canin-gastrointestinal-dog-200g-17794485747
+  - nazwa: Royal Canin Hypoallergenic
+    link: https://allegro.pl/oferta/royal-canin-hypoallergenic-200-g-puszka-8637804697
+  - nazwa: Royal Canin Starter
+    link: https://allegro.pl/oferta/royal-canin-starter-mousse-mother-babydog-195g-17444073662
+  - nazwa: Ręczniki papierowe
+    link: https://allegro.pl/oferta/recznik-papierowy-slonik-jumbo-celuloza-chlonny-100-2w-184-listki-2-rolki-17558583871
+  - nazwa: Worki na śmieci 120L
+    link: https://allegro.pl/oferta/worki-na-smieci-budowlane-uniwersalne-120l-25-sztuk-grube-mocne-pam-folie-15698861408
+  - nazwa: Płyn do podłóg
+    link: https://allegro.pl/listing?string=P%C5%82yn%20do%20pod%C5%82%C3%B3g
+  - nazwa: Płyn do mycia szyb
+    link: https://allegro.pl/listing?string=P%C5%82yn%20do%20mycia%20szyb
+  - nazwa: Rękawiczki lateksowe [S]
+    link: https://allegro.pl/oferta/rekawiczki-lateksowe-mercator-santex-pudrowane-100-sztuk-s-17376303109
+  - nazwa: Rękawiczki lateksowe [M]
+    linke: https://allegro.pl/oferta/rekawiczki-lateksowe-m-pudrowane-mercator-santex-rekawice-medyczne-100sztuk-17376303137
+  - nazwa: Rękawiczki lateksowe [XL]
+    link: https://allegro.pl/oferta/rekawice-robocze-lateksowe-xl-rekawiczki-mercator-santex-pudrowane-100-szt-17376303203
