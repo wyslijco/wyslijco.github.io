@@ -1,0 +1,40 @@
+---
+nazwa:
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: zwierzakom-z-wioz
+
+strona: https://wioz.pl/
+krs: 0000969215
+
+dostawa:
+  ulica: Słowackiego 55/1
+  kod: 60-521
+  miasto: Poznań
+  telefon: 607 828 678
+  email: biuro.wioz@gmail.com
+  kod_paczkomatu: POZ13H
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: Pakiet karmy VIP (dla psa full-wypas)
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-vip-dla-psa-full-wypas-wioz-wielkopolski-inspektorat/
+  - nazwa: Pakiet Premium (dla kundelków)
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-premium-dla-kundelkow-wioz-wielkopolski-inspektorat/
+  - nazwa: Pakiet podstawowy dla szczeniaków
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-podstawowy-dla-szczeniakow-wioz-wielkopolski-inspektorat/
+  - nazwa: Pakiet Kuweciarz
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-kuweciarz-wioz-wielkopolski-inspektorat/
+  - nazwa: Pakiet Mruczki
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-mruczki-wioz-wielkopolski-inspektorat/
+  - nazwa: Pakiet Kiciuś
+    opis: Zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/produkt/pakiet-kicius-wioz-wielkopolski-inspektorat/
+  - nazwa: Inne zestawy karm dla psów i kotów
+    opis: Zestawy karm do wyboru, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/wioz-wielkopolski-inspektorat/
