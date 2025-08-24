@@ -1,0 +1,21 @@
+---
+nazwa: Czarna Owca
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: Czarnej-Owcy
+
+strona: https://czarnaowca.org/
+krs: "0000325626"
+
+dostawa:
+  ulica: Armii Krajowej 81/53
+  kod: 30-150
+  miasto: Kraków
+  telefon: 123456789
+  email: fundacja@czarnaowca.org
+  kod_paczkomatu: KRA279M
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: Testowy produkt
+    link: http://example.com
