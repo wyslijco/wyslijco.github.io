@@ -1,0 +1,28 @@
+---
+nazwa: Fundacja MEDOR
+
+adres: medorowi
+
+strona: https://medor.org/
+
+krs: 0000226639
+
+dostawa:
+  ulica: ul. Urocza 9
+  kod: 95-100
+  miasto: Zgierz
+  telefon: 506 761 221
+
+produkty:
+  - nazwa: Sucha karma Fitmin For Life Adult All breeds
+    link: https://allegro.pl/listing?string=Fitmin%20For%20Life%20Adult%20All%20breeds
+  - nazwa: Karma dla psów i kotów PURINA PRO PLAN
+    link: https://allegro.pl/listing?string=PURINA%20PRO%20PLAN
+  - nazwa: Mokra karma dla kota kociąt ANIMONDA Carny Kitten
+    link: https://allegro.pl/listing?string=ANIMONDA%20Kitten
+  - nazwa: Karma Royal Canin Digestive Low Fat
+    link: https://allegro.pl/listing?string=Royal%20Canin%20Digestive%20Low%20Fat
+  - nazwa: Karmy dla psów i kotów Josera
+    link: https://allegro.pl/listing?string=josera
+  - nazwa: Karma dla psów Alpha Spirit
+    link: https://allegro.pl/listing?string=Alpha%20Spirit
