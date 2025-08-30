@@ -1,0 +1,27 @@
+---
+nazwa: "Schronisko dla Zwierząt w Olsztynie"
+
+adres: schronisku-dla-zwierzat-w-olsztynie
+
+strona: https://schronisko.olsztyn.eu
+
+krs: 0000226639
+
+dostawa:
+  ulica: ul. Turystyczna 2
+  kod: 10-369
+  miasto: Olsztyn
+  telefon: 89 526-82-15
+  email: biuro@sdz.olsztyn.eu
+
+produkty:
+  - nazwa: Sucha karma dla kociąt
+    link: https://allegro.pl/listing?string=Fitmin%20For%20Life%20Adult%20All%20breeds
+    opis: (lepiej kupić mniej a lepszej jakości)
+  - nazwa: Sucha karma dla szczeniąt
+    link: https://allegro.pl/listing?string=sucha%20karma%20dla%20szczeni%C4%85t
+    opis: (lepiej kupić mniej a lepszej jakości)
+  - nazwa: Specjalistyczna karma weterynaryjna dla psów
+    link: https://allegro.pl/listing?string=specjalistyczna%20karma%20weterynaryjna%20dla%20ps%C3%B3w
+  - nazwa: Specjalistyczna karma weterynaryjna dla kotów
+    link: https://allegro.pl/listing?string=specjalistyczna%20karma%20weterynaryjna%20dla%20kot%C3%B3w
