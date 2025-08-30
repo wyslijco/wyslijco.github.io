@@ -1,0 +1,25 @@
+---
+nazwa: Fundacja Szopowisko
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: szopowisku
+
+strona: https://fundacjaszopowisko.pl
+krs: "0000950656"
+
+dostawa:
+  ulica: Leśna 34
+  kod: 55-050
+  miasto: Kryształowice
+  telefon: 513 255 595
+  email: fundacjaszopowisko@gmail.com
+  kod_paczkomatu: GNC01G
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: Karma dla psow Alpha Spirit
+    link: https://allegro.pl/oferta/alpha-spirit-duck-pelnoporcjowa-sucha-karma-dla-psa-kaczka-kurczak-12kg-16767459838
+    opis: 
+    - nazwa: Sucha karma dla psa PURINA PRO PLAN
+    link: https://allegro.pl/oferta/sucha-karma-dla-psa-purina-pro-plan-adult-light-sterilised-14kg-17353027764
+    opis: 
