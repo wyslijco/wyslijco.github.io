@@ -8,19 +8,20 @@
 
 {% block content %}
 
-<div class="mx-auto mt-6">
+<main class="mx-auto mt-6">
   <!-- ORGANIZATION INFO -->
   <div class="flex justify-center pb-8 md:pb-12">
     <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12">
       <div class="pb-4 flex justify-between items-center">
         <span class="text-md lg:text-lg font-bold"><span class="text-sectionTitle">wyślij.co/</span><span class="text-black">{{ data.adres }}</span></span>
         <div class="flex items-center gap-3">
-          <button onclick="shareCurrentPage()" class="text-sectionTitle hover:text-amber-600 transition-colors">
+          <button onclick="shareCurrentPage()" class="text-sectionTitle hover:text-amber-600 transition-colors" aria-label="Udostępnij stronę organizacji">
             <svg
               fill="none"
               stroke-width="1.5"
               stroke="currentColor"
               class="size-7 lg:size-9"
+              aria-hidden="true"
             >
               <use href="#icon-share"></use>
             </svg>
@@ -36,19 +37,20 @@
         Wybierz produkt z listy poniżej, a podczas realizacji zamówienia kopiuj i wklejaj dane poniżej, żeby wysłać bezpośrednio do organizacji.
       </div>
 
-      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dane do dostawy</h1>
+      <h2 class="text-sectionTitle mb-2 pl-1 text-2xl">Dane do dostawy</h2>
       
       <!-- Two-column layout on medium screens and up -->
       <div class="md:grid md:grid-cols-2 md:gap-6">
         <!-- Left column: Address -->
         <div class="pb-4">
-          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Adres</h2>
+          <h3 class="text-sectionTitle mb-2 pl-1 text-lg">Adres</h3>
           <div
             class="copyable-field-first"
             role="button"
             tabindex="0"
             onclick="copyText(this)"
             onkeydown="handleCopyKeydown(event, this)"
+            aria-label="Kopiuj adres uliczny"
           >
             {{ data.dostawa.ulica }}
             <svg
@@ -57,6 +59,7 @@
               stroke-width="1.5"
               stroke="currentColor"
               class="size-6"
+              aria-hidden="true"
             >
               <use href="#icon-copy"></use>
             </svg>
@@ -67,6 +70,7 @@
             tabindex="0"
             onclick="copyText(this)"
             onkeydown="handleCopyKeydown(event, this)"
+            aria-label="Kopiuj kod pocztowy"
           >
             {{ data.dostawa.kod }}
             <svg
@@ -200,7 +204,7 @@
   <!-- PRODUCTS -->
   <div class="flex justify-center pb-8 md:pb-12">
     <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12">
-      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h1>
+      <h2 class="text-sectionTitle mb-2 pl-1 text-2xl">Potrzebne produkty</h2>
       
       <!-- Progressive grid layout: 1 col mobile, 3 md, 4 lg -->
       <div class="products-grid">
@@ -208,12 +212,13 @@
         <div class="product-tile">
           <a href="{{ produkt.link }}" target="_blank" class="flex flex-col h-full group">
             <div class="flex justify-between items-start mb-2">
-              <h2 class="product-title">{{ produkt.nazwa }}</h2>
+              <h3 class="product-title">{{ produkt.nazwa }}</h3>
               <svg
                 fill="none"
                 stroke-width="1.5"
                 stroke="currentColor"
                 class="product-icon"
+                aria-hidden="true"
               >
                 <use href="#icon-external-link"></use>
               </svg>
@@ -236,17 +241,17 @@
 
   <div class="flex justify-center pb-6">
     <div class="w-11/12 lg:w-11/12 xl:w-8/12 2xl:w-6/12">
-      <h1 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h1>
+      <h2 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h2>
       
       <!-- Two-column layout on medium screens and up -->
       <div class="md:grid md:grid-cols-2 md:gap-6">
         <div class="pb-4">
-          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h2>
+          <h3 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h3>
           <div class="info-field">{{ data.krs }}</div>
         </div>
 
         <div class="pb-4">
-          <h2 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h2>
+          <h3 class="text-sectionTitle mb-2 pl-1 text-lg">Strona internetowa</h3>
           <a
             class="website-link"
             href="{{data.strona}}"
@@ -259,6 +264,7 @@
               stroke-width="1.5"
               stroke="currentColor"
               class="size-6 ml-2"
+              aria-hidden="true"
             >
               <use href="#icon-external-link"></use>
             </svg>
@@ -267,6 +273,6 @@
       </div>
     </div>
   </div>
-</div>
+</main>
 
 {% endblock content %}
