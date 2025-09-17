@@ -1,0 +1,46 @@
+---
+nazwa: House of Cats
+
+adres: house-of-cats
+
+strona: https://www.facebook.com/fundacjahoc/
+krs: "0001082795"
+
+dostawa:
+  ulica: Grunwaldzka 26
+  kod: 31-524
+  miasto: Kraków
+  telefon: 692 457 894
+  email: hocfundacja@gmail.com
+
+produkty:
+  - nazwa: Pakiet Kuweciarz – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/pakiet-kuweciarz-house-of-cats/
+  - nazwa: Pakiet Mruczki – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/pakiet-mruczki-house-of-cats/
+  - nazwa: Pakiet Kiciuś – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/pakiet-kicius-house-of-cats/
+  - nazwa: 10 szt Podkłady Higieniczne Dla Zwierząt – Nauka Sikania XXL 45×60 – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/10-szt-podklady-higieniczne-dla-zwierzat-nauka-sikania-xxl-45x60-house-of-cats/
+  - nazwa: 800g Wołowina i Kurczak ANIMONDA Cat Carny Adult – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/800g-wolowina-i-kurczak-animonda-cat-carny-adult-house-of-cats/
+  - nazwa: 800g Drób z sercami drobiowymi Smilla Puszka – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/800g-drob-z-sercami-drobiowymi-smilla-puszka-house-of-cats/
+  - nazwa: 400g Animonda Carny Kitten Wołowina + Drób puszka – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/400g-animonda-carny-kitten-wolowina-drob-puszka-house-of-cats/
+  - nazwa: 400g Jagnięcina Dolina Noteci Mokra karma dla kota – House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/400g-jagniecina-dolina-noteci-mokra-karma-dla-kota-house-of-cats/
+  - nazwa: 400g RAFI CAT Dolina Noteci Karma kot Kaczka — House of cats
+    opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
+    link: https://ocalonelapki.pl/produkt/400g-rafi-cat-dolina-noteci-karma-kot-kaczka-house-of-cats/
+  - nazwa: Pozostałe zestawy dla kotów
+    opis: Zestawy karm do wyboru, nie trzeba podawać adresu wysyłki przy zamawianiu.
+    link: https://ocalonelapki.pl/house-of-cats/
