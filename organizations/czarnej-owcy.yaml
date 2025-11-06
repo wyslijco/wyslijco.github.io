@@ -1,5 +1,5 @@
 ---
-nazwa: Czarna Owca
+nazwa: Czarna Owca Pana Kota
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: czarnej-owcy
@@ -13,13 +13,71 @@ dostawa:
   miasto: Kraków
   telefon: 882639810
   email: tomek@czarnaowca.org
-  kod_paczkomatu: KRA279M
-  dodatkowe_informacje:
+  kod_paczkomatu: AL532KR1
+  dodatkowe_informacje: W przypadku wysyłki nie do paczkomatu prossimy o wcześniejszy kontakt telefoniczny.
 
-produkty:
-  - nazwa: Ziarno dla gołębi
-    link: https://allegro.pl/oferta/karma-ziarno-pasza-dla-golebi-ptakow-uniwersalna-caloroczna-17257597205
-    opis: Dowolna mieszanka ziaren się nada
-  - nazwa: Karma Mokra dla Kota
-    link: https://allegro.pl/oferta/karma-mokra-dla-kota-puszka-pakiet-mieszany-smakow-zestaw-20-szt-x-400-g-14833857204
-    opis: Inne rodzaje mokrej karmy mile widziane
+produkty:    
+  - nazwa: 'Karma dla ptaków MDM BP, 25 kg'
+    link: 'https://allegro.pl/produkt/karma-dla-golebi-bez-pszenicy-mdm-bp-25-kg-4d38e742-d20b-4e73-a1f4-eaf3c94ed62a?offerId=12268949770'
+    opis: 'Inne mieszanki też się nadadzą'
+  - nazwa: 'Karma dla krótkodziobów K BEST NATURAL, 20 kg'
+    link: 'https://allegro.pl/oferta/karma-dla-golebi-krotkodziobow-mieszanka-k-best-natural-ziarno-20kg-15495747601'
+    opis: 'Krókodzioby wymagają drobniejszej niż standardowa karma'
+  - nazwa: 'Środek do odchowu piskląt Nutribird A21'
+    link: 'https://business.allegro.pl/oferta/versele-laga-nutribird-a21-800g-pokarm-do-odchowu-pisklat-21-bialka-17657090639'
+    opis: 'Jeśli nie wiesz, co wybrać, wybierz Nutribirda'
+  - nazwa: 'Preparat do denzyfekcji powierzchni VELOX SPRAY 6L'
+    link: 'https://allegro.pl/oferta/velox-spray-dezynfekcja-powierzchni-tea-tonic-6l-9210992153'
+    opis: Inne środki dezynfekcyjne także sa mile widziane.
+  - nazwa: 'Preparat do suchej dezynfekcji SANDEZIA 10 kg'
+    link: 'https://allegro.pl/oferta/preparat-do-suchej-dezynfekcji-kurnikow-na-wirusy-pasozyty-sandezia-10kg-11638528451'
+    opis: 'Inne środki dezynfekcyjne także sa mile widziane'
+  - nazwa: 'Czyściwo włókninowe 45m'
+    link: 'https://merida.com.pl/produkt/czysciwo-wlokninowe-drukarskie-niepylace-jednowarstwowe-srednica-26-cm-dlugosc-110-m-biale-opakowanie-1-sztuka-uab701'
+    opis: 'Schodzi tego naprawdę sporo'
+  - nazwa: 'Czyściwo włókninowe 100m'
+    link: 'https://merida.com.pl/produkt/czysciwo-wlokninowe-srednica-18-cm-dlugosc-45-m-jednowarstwowe-biale-zgrzewka-1-szt-uab702'
+    opis: 'A tu mega rolka'
+  - nazwa: 'Preparat do nebulizacji F10 Antiseptic Solution Ready To Use'
+    link: 'https://parrotplanet.pl/pl/p/F10-Antiseptic-Solution-Ready-To-Use-Preparat-do-Nebulizacji-papug-gotowy-do-uzycia-1L/2036'
+    opis: 'Potrafi czynić cuda'
+  - nazwa: 'Środek do problemów skórnych, infekcji, ran itp Ozopet'
+    link: 'https://zoona.pl/ozopet-oil-10ml-olej-z-ozonem/'
+    opis: 'Coraz trudniej go zdobyć...'
+  - nazwa: 'Płyn do dezynfekcji ran Octenisept 1000 ml'
+    link: 'https://allegro.pl/oferta/octenisept-plyn-do-dezynfekcji-ran-1000ml-14685200200'
+    opis: 'To podstawowy środek do dezynfekcji ran. Bardzo potrzebny'
+  - nazwa: 'Płyn do dezynfekcji ran Octenisept 250 ml'
+    link: 'https://allegro.pl/oferta/octenisept-plyn-do-dezynfekcji-ran-250-ml-15224145872'
+    opis: 'Są też mniejsze pojemniki'
+  - nazwa: 'Środek przeciwko pasożytom zewnętrznym Insectin'
+    link: 'https://allegro.pl/produkt/na-pasozyty-biowet-074c6ff8-6a16-4142-bff5-ed26251e96e2?offerId=16919650816'
+    opis: 'Praktycznie wszyscy podoieczni go potrzebują'
+  - nazwa: 'Grit z muszlami i anyżem 5kg'
+    link: 'https://allegro.pl/produkt/marpol-grit-mineralny-z-anyzem-5-kg-2564759c-e6fd-4b16-b801-1175ffd93813?offerId=15198555244'
+    opis: 'Inne rodzaje też mile widziane'
+  - nazwa: 'Zakwaszacz DOLFOCID LIQUID DG 500 ml'
+    link: 'https://allegro.pl/produkt/dolfocid-liquid-dg-500g-e34a11d9-a476-4bbb-8ed5-1522758c79d2?offerId=13978990699'
+    opis: 'Inne zakwaszacze też się nadadzą'
+  - nazwa: 'Multiwitamina DOLFOS Dolvit Standard 1 kg'
+    link: 'https://allegro.pl/produkt/dolfos-dolvit-standard-1-kg-witaminy-dla-golebi-uniwersalne-cbf551bd-067b-4f71-9394-2376679249a7?offerId=8677148804'
+  - nazwa: 'Multiwitamina DOLFOS Dolvit Pierzenie 1 kg'
+    link: 'https://allegro.pl/produkt/dolvit-pierzenie-1kg-dla-golebi-41332e73-50b7-48ee-b7f8-908216c340b0?offerId=9687860507'
+  - nazwa: 'Stymulacja odporności Immunodol DG 250 g'
+    link: 'https://allegro.pl/produkt/dolfos-immunodol-250g-na-odpornosc-dla-golebi-f2403aba-b794-4a7c-9c97-36aa36d3cf28?offerId=15074652540'
+  - nazwa: 'Elektrolity dla ptaków BIOWET Elisol 100 ml'
+    link: 'https://allegro.pl/produkt/elisol-100-ml-elektrolity-dla-golebi-na-loty-15ad3a49-e49e-4594-9970-0945fd8327c1?offerId=13198247676'
+  - nazwa: 'Elektrolity dla ptaków BIOWET Elisol 500 ml'
+    link: 'https://allegro.pl/produkt/elisol-500-ml-mieszanka-paszowa-uzupelniajaca-dla-golebi-i-ptakow-ozdobnych-23439e3e-5ff0-4f8c-9c1c-cb875aea8f47?offerId=15670193293'
+  - nazwa: 'Preparat osłonowy na wątrobę Silivet'
+    link: 'https://allegro.pl/produkt/mieszanka-paszowa-uzupelniajaca-biofaktor-silivet-100-ml-2797a635-3d4e-4600-82f2-76b07b7e3d20?offerId=17907176272'
+  - nazwa: 'Preparat osłonowy na wątrobę Hepatiale Forte Liquid'
+    link: 'https://allegro.pl/produkt/plyn-wspomagajacy-funkcje-watroby-dla-psow-vet-expert-hepatiale-forte-250ml-e92b8d9f-4910-4af3-b798-baade9a293ec?offerId=17963964784'
+  - nazwa: 'Bandaż kohezyjny 2,5 cm '
+    link: 'https://allegro.pl/oferta/bandaz-samoprzylepny-kohezyjny-stabilizujacy-yellowband-2-5cm-fioletowy-16553023340'
+  - nazwa: 'Bandaż kohezyjny 5cm'
+    link: 'https://allegro.pl/oferta/bandaz-samoprzylepny-kohezyjny-stabilizujacy-yellowband-5cm-pomaranczowy-14854975256?fromVariant=17401252259'
+  - nazwa: 'Plaster włókninowy 1,25 cm, 25 szt.'
+    link: 'https://allegro.pl/oferta/plaster-wlokninowy-przylepiec-9m-x1-25cm-24-sztuki-softplast-9289361865'
+  - nazwa: 'Plaster włókninowy 2,5 cm, 12 szt.'
+    link: 'https://allegro.pl/oferta/plaster-wlokninowy-przylepiec-5m-x-2-5cm-12-sztuk-softplast-9250319887'
