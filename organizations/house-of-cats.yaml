@@ -1,19 +1,24 @@
 ---
 nazwa: House of Cats
 
-adres: house-of-cats
+adres: hocowi
 
 strona: https://www.facebook.com/fundacjahoc/
 krs: "0001082795"
 
 dostawa:
-  ulica: Grunwaldzka 26
-  kod: 31-524
+  ulica: Samuela Bogumiła Lindego 1
+  kod: 30-148
   miasto: Kraków
   telefon: 692 457 894
   email: hocfundacja@gmail.com
+  paczkomat: KRA101M
 
 produkty:
+  - nazwa: Żwirek kukurydziany Benek
+    link: https://allegro.pl/listing?string=benek%20%C5%BCwirek%20kukurydziany
+  - nazwa: "Żwirek Cat's best original"
+    link: https://allegro.pl/listing?string=cat%27s%20best%20original%20%C5%BCwirek
   - nazwa: Pakiet Kuweciarz – House of cats
     opis: zestaw karm, nie trzeba podawać adresu wysyłki przy zamawianiu
     link: https://ocalonelapki.pl/produkt/pakiet-kuweciarz-house-of-cats/
