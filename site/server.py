@@ -3,9 +3,10 @@ import sys
 
 import yaml
 from flask import Flask, abort, render_template, send_from_directory, url_for
-from flask_frozen import Freezer  # Added
+from flask_frozen import Freezer, redirect  # Added
 
-from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME
+from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME, ORGANIZATIONS_NAME_FIELD_NAME
+from organizations import get_organization_data, get_organizations, Organization
 
 DEBUG = True
 FREEZER_DESTINATION = "../_site"  # builds to the default desitination for GitHub Pages
@@ -15,33 +16,7 @@ app.config.from_object(__name__)
 freezer = Freezer(app)
 
 
-def trim_strings(data):
-    """Recursively trim trailing/leading spaces from all string values in nested data structures."""
-    if isinstance(data, dict):
-        return {key: trim_strings(value) for key, value in data.items()}
-    elif isinstance(data, list):
-        return [trim_strings(item) for item in data]
-    elif isinstance(data, str):
-        return data.strip()
-    else:
-        return data
-
-
-def get_organizations() -> dict[str, str]:
-    organization_files = filter(
-        lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH)
-    )
-    organizations = dict()
-    for organization_file in organization_files:
-        with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
-            organization = trim_strings(yaml.safe_load(org))
-            organizations[organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)] = (
-                organization_file
-            )
-    return organizations
-
-
-organizations: dict[str, str] = get_organizations()
+organizations, slug_to_organization = get_organizations()
 
 
 def static_file(name: str):
@@ -57,9 +32,9 @@ def get_static_files_list():
     return os.listdir(os.path.join(current_file_directory, "statics"))
 
 
-for filename in get_static_files_list():
-    app.route(f"/{filename}", strict_slashes=False, endpoint=filename)(
-        lambda f=filename: static_file(f)
+for static_filename in get_static_files_list():
+    app.route(f"/{static_filename}", strict_slashes=False, endpoint=static_filename)(
+        lambda f=static_filename: static_file(f)
     )
 
 
@@ -87,16 +62,7 @@ def outputCss():
 
 @app.route("/", strict_slashes=False)
 def index():
-    # Load organization data for the rotating links
-    org_data = []
-    for org_slug, filename in organizations.items():
-        with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-            data = trim_strings(yaml.safe_load(org))
-            org_data.append({
-                'adres': org_slug,
-                'nazwa': data.get('nazwa')
-            })
-
+    org_data = list(organizations.values())
     return render_template("index.html", organizations=org_data)
 
 
@@ -107,46 +73,31 @@ def info():
 
 @app.route("/organizacje/", strict_slashes=False)
 def organizations_list():
-    # Load all organization data for the list
-    org_data = []
-    for org_slug, filename in organizations.items():
-        with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-            data = trim_strings(yaml.safe_load(org))
-            org_data.append({
-                'adres': org_slug,
-                'nazwa': data.get('nazwa')
-            })
-
-    # Sort organizations alphabetically by name
-    org_data.sort(key=lambda x: x['nazwa'])
-
+    org_data = sorted(list(organizations.values()), key=lambda x: x.name)
     return render_template("organizations.html", organizations=org_data)
 
 
 @app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
-    filename = organizations.get(org_name)
+    if org_name not in slug_to_organization:
+        abort(404)
+
+    org: Organization = slug_to_organization[org_name]
+    if org_name != org.slugs[0]:
+        return redirect(url_for("organization_page", org_name=org.slugs[0]))
+
+    filename = org.file
     if not filename:
         abort(404)
-    with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-        data = trim_strings(yaml.safe_load(org))
-        if not data["produkty"]:
-            data["produkty"] = []
-        return render_template("organization.html", data=data)
 
+    return render_template("organization.html", data=get_organization_data(org))
 
 @freezer.register_generator
 def organization_page():
-    organization_files = filter(
-        lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH)
-    )
-    for organization_file in organization_files:
-        with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
-            organization = trim_strings(yaml.safe_load(org))
-            yield {"org_name": organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)}
+    for slug, filename in slug_to_organization.items():
+        yield {"org_name": slug}
 
 
-# Main Function, Runs at http://0.0.0.0:8000
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
