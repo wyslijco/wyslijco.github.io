@@ -23,6 +23,11 @@ jobs:
               line-length: disable
               empty-values: disable
               empty-lines: disable
+              trailing-spaces: disable
+              comments: disable
+              comments-indentation: disable
+              indentation:
+                spaces: consistent
           file_or_dir: organizations/*.yaml
 
   validate-organizations:

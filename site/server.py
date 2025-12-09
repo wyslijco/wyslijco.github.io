@@ -15,6 +15,18 @@ app.config.from_object(__name__)
 freezer = Freezer(app)
 
 
+def trim_strings(data):
+    """Recursively trim trailing/leading spaces from all string values in nested data structures."""
+    if isinstance(data, dict):
+        return {key: trim_strings(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [trim_strings(item) for item in data]
+    elif isinstance(data, str):
+        return data.strip()
+    else:
+        return data
+
+
 def get_organizations() -> dict[str, str]:
     organization_files = filter(
         lambda x: x.endswith(".yaml"), os.listdir(ORGANIZATIONS_DIR_PATH)
@@ -22,7 +34,7 @@ def get_organizations() -> dict[str, str]:
     organizations = dict()
     for organization_file in organization_files:
         with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
-            organization = yaml.safe_load(org)
+            organization = trim_strings(yaml.safe_load(org))
             organizations[organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)] = (
                 organization_file
             )
@@ -79,12 +91,12 @@ def index():
     org_data = []
     for org_slug, filename in organizations.items():
         with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-            data = yaml.safe_load(org)
+            data = trim_strings(yaml.safe_load(org))
             org_data.append({
                 'adres': org_slug,
                 'nazwa': data.get('nazwa')
             })
-    
+
     return render_template("index.html", organizations=org_data)
 
 
@@ -99,7 +111,7 @@ def organizations_list():
     org_data = []
     for org_slug, filename in organizations.items():
         with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-            data = yaml.safe_load(org)
+            data = trim_strings(yaml.safe_load(org))
             org_data.append({
                 'adres': org_slug,
                 'nazwa': data.get('nazwa')
@@ -117,7 +129,7 @@ def organization_page(org_name):
     if not filename:
         abort(404)
     with open(f"{ORGANIZATIONS_DIR_PATH}/{filename}") as org:
-        data = yaml.safe_load(org)
+        data = trim_strings(yaml.safe_load(org))
         if not data["produkty"]:
             data["produkty"] = []
         return render_template("organization.html", data=data)
@@ -130,7 +142,7 @@ def organization_page():
     )
     for organization_file in organization_files:
         with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
-            organization = yaml.safe_load(org)
+            organization = trim_strings(yaml.safe_load(org))
             yield {"org_name": organization.get(ORGANIZATIONS_SLUG_FIELD_NAME)}
 
 
