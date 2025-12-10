@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.9
+    hooks:
+      - id: ruff
+        name: ruff linting
+        description: Run 'ruff check' for extremely fast Python linting
+        args: [--fix]
+      - id: ruff-format
+        name: ruff formatting
+        description: Run 'ruff format' for extremely fast Python formatting
