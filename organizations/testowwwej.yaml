@@ -1,0 +1,19 @@
+---
+nazwa: Testowa form
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: testowwwej
+
+strona: https://form.com
+krs: "0000000000"
+
+dostawa:
+  ulica: Zmyślna 1
+  kod: 01-111
+  miasto: Warszawa
+  telefon: 500500500
+  email: fundacja@zmyslna.co
+  kod_paczkomatu: WA12345
+  dodatkowe_informacje:
+
+produkty:
