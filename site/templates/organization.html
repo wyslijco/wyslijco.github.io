@@ -6,6 +6,10 @@
 
 {% block twitter_title %}/ {{ data.nazwa }}{% endblock %}
 
+{% block extra_headers %}
+  <link rel="canonical" href="https://wyslij.co/{{ data.adres }}" />
+{% endblock %}
+
 {% block content %}
 
 <main class="mx-auto mt-6">

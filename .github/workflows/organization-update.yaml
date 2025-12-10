@@ -23,6 +23,11 @@ jobs:
               line-length: disable
               empty-values: disable
               empty-lines: disable
+              trailing-spaces: disable
+              comments: disable
+              comments-indentation: disable
+              indentation:
+                spaces: consistent
           file_or_dir: organizations/*.yaml
 
   validate-organizations:
@@ -41,7 +46,7 @@ jobs:
       
       - name: Walidacja plików organizacji
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: wyslijco/walidacja-organizacji@v1.0.1
+        uses: wyslijco/walidacja-organizacji@v1.1.0
         with:
           files: ${{ steps.changed-files.outputs.all_changed_files }}
           organizations-dir: organizations

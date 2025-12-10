@@ -1,7 +1,9 @@
 ---
 nazwa: House of Cats
 
-adres: hocowi
+adres: 
+  - hocowi
+  - house-of-cats
 
 strona: https://www.facebook.com/fundacjahoc/
 krs: "0001082795"
@@ -12,7 +14,7 @@ dostawa:
   miasto: Kraków
   telefon: 692 457 894
   email: hocfundacja@gmail.com
-  paczkomat: KRA101M
+  kod_paczkomatu: KRA101M
 
 produkty:
   - nazwa: Żwirek kukurydziany Benek
