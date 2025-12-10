@@ -3,7 +3,11 @@ import os
 
 import yaml
 
-from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME, ORGANIZATIONS_NAME_FIELD_NAME
+from config import (
+    ORGANIZATIONS_DIR_PATH,
+    ORGANIZATIONS_SLUG_FIELD_NAME,
+    ORGANIZATIONS_NAME_FIELD_NAME,
+)
 
 
 def trim_strings(data):
@@ -19,7 +23,7 @@ def trim_strings(data):
 
 
 @dataclass
-class Organization():
+class Organization:
     file: str
     name: str
     slugs: list[str]
@@ -35,17 +39,18 @@ def get_organizations() -> tuple[dict[str, Organization], dict[str, Organization
         with open(f"{ORGANIZATIONS_DIR_PATH}/{organization_file}") as org:
             organization_data = trim_strings(yaml.safe_load(org))
             slug_field_value = organization_data.get(ORGANIZATIONS_SLUG_FIELD_NAME)
-            slugs = slug_field_value if isinstance(slug_field_value, list) else [slug_field_value]
+            slugs = (
+                slug_field_value
+                if isinstance(slug_field_value, list)
+                else [slug_field_value]
+            )
             organization = Organization(
                 file=organization_file,
                 name=organization_data.get(ORGANIZATIONS_NAME_FIELD_NAME),
-                slugs=slugs
+                slugs=slugs,
             )
             organizations[organization_file] = organization
-            slugs_map.update({
-                slug: organization
-                for slug in slugs
-            })
+            slugs_map.update({slug: organization for slug in slugs})
     return organizations, slugs_map
 
 

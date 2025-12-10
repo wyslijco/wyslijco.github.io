@@ -33,10 +33,19 @@ repo = g.get_repo(GITHUB_REPOSITORY)
 
 
 @click.command()
-@click.option('--github-form-json', envvar='GITHUB_FORM_JSON', required=True,
-              help='GitHub form JSON data')
-@click.option('--github-issue-number', envvar='GITHUB_ISSUE_NUMBER', type=int, required=True,
-              help='GitHub issue number')
+@click.option(
+    "--github-form-json",
+    envvar="GITHUB_FORM_JSON",
+    required=True,
+    help="GitHub form JSON data",
+)
+@click.option(
+    "--github-issue-number",
+    envvar="GITHUB_ISSUE_NUMBER",
+    type=int,
+    required=True,
+    help="GitHub issue number",
+)
 def process_new_org_issue(github_form_json, github_issue_number):
     issue: Issue = repo.get_issue(github_issue_number)
     data = GithubIssueFormDataParser(
