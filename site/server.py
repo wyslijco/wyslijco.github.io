@@ -1,11 +1,9 @@
 import os
 import sys
 
-import yaml
 from flask import Flask, abort, render_template, send_from_directory, url_for
 from flask_frozen import Freezer, redirect  # Added
 
-from config import ORGANIZATIONS_DIR_PATH, ORGANIZATIONS_SLUG_FIELD_NAME, ORGANIZATIONS_NAME_FIELD_NAME
 from organizations import get_organization_data, get_organizations, Organization
 
 DEBUG = True
@@ -92,8 +90,9 @@ def organization_page(org_name):
 
     return render_template("organization.html", data=get_organization_data(org))
 
+
 @freezer.register_generator
-def organization_page():
+def organization_page():  # noqa: F811
     for slug, filename in slug_to_organization.items():
         yield {"org_name": slug}
 
@@ -102,4 +101,4 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
-        app.run(host='0.0.0.0', port=8000)
+        app.run(host="0.0.0.0", port=8000)
