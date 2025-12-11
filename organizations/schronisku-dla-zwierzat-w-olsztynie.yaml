@@ -2,8 +2,8 @@
 nazwa: "Schronisko dla Zwierząt w Olsztynie"
 
 adres: 
-- zwierzyncowi-olsztynskiemu
-- schronisku-dla-zwierzat-w-olsztynie
+  - zwierzyncowi-olsztynskiemu
+  - schronisku-dla-zwierzat-w-olsztynie
 
 strona: https://schronisko.olsztyn.eu
 
