@@ -1,11 +1,14 @@
 ---
 nazwa: "Schronisko dla Zwierząt w Olsztynie"
 
-adres: schronisku-dla-zwierzat-w-olsztynie
+adres: 
+  - zwierzyncowi-olsztynskiemu
+  - schronisku-dla-zwierzat-w-olsztynie
 
 strona: https://schronisko.olsztyn.eu
 
 krs: "0000355809"
+nazwa_w_krs: "ZWIERZYNIEC ŚW. FRANCISZKA"
 
 dostawa:
   ulica: ul. Turystyczna 2

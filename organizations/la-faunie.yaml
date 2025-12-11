@@ -1,11 +1,12 @@
 ---
-nazwa: La Fauna Fundacja dla zwierząt - Interwencje i adopcje
+nazwa: "La Fauna Fundacja dla zwierząt"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: la-faunie
 
 strona: https://zwierzetainterwencje.pl/
 krs: "0000675370"
+nazwa_w_krs: "LA FAUNA FUNDACJA DLA ZWIERZĄT - INTERWENCJE I ADOPCJE"
 
 dostawa:
   ulica: Balicka 56

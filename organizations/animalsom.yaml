@@ -1,11 +1,12 @@
 ---
-nazwa: Fundacja "Animals"
+nazwa: "Animals"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: animalsom
 
 strona: http://fundacja-animals.org/
 krs: "0000163908"
+nazwa_w_krs: "FUNDACJA \"ANIMALS\""
 
 dostawa:
   ulica: Obozowa 70 / 24

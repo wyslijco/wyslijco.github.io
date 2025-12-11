@@ -1,4 +1,4 @@
-from typing import Self
+from typing import Any, Self
 
 import requests
 from github import Issue
@@ -33,14 +33,48 @@ class KRSDataPuller:
             raise requests.HTTPError(f"Failed to fetch data for KRS {self.krs}")
 
     @property
-    def name(self):
+    def _org_data1(self) -> dict[str, Any]:
+        return self.data.get("odpis", {}).get("dane", {}).get("dzial1", {})
+
+    @property
+    def name(self) -> str:
+        return self._org_data1.get("danePodmiotu", {}).get("nazwa")
+
+    @property
+    def registered_on(self) -> str:
         return (
             self.data.get("odpis", {})
-            .get("dane", {})
-            .get("dzial1", {})
-            .get("danePodmiotu", {})
-            .get("nazwa")
+            .get("naglowekA", {})
+            .get("dataRejestracjiWKRS", "")
         )
+
+    @property
+    def is_opp(self) -> bool:
+        return self._org_data1.get("danePodmiotu", {}).get("czyPosiadaStatusOPP", False)
+
+    @property
+    def _address_data(self) -> dict[str, Any]:
+        return self.org_data1.get("siedzibaIAdres", {}).get("adres", {})
+
+    @property
+    def street(self) -> str:
+        return self._address_data.get("ulica", "")
+
+    @property
+    def street_number(self) -> str:
+        return self._address_data.get("nrDomu", "")
+
+    @property
+    def postal_code(self) -> str:
+        return self._address_data.get("kodPocztowy", "")
+
+    @property
+    def city(self) -> str:
+        return self._address_data.get("miejscowosc", "")
+
+    @property
+    def address(self) -> str:
+        return f"{self.street} {self.street_number}\n{self.postal_code} {self.city}"
 
     @classmethod
     def get_org_by_krs(cls, issue: Issue, krs: str) -> Self | None:
@@ -69,5 +103,18 @@ class KRSDataPuller:
 
         if has_label(issue, Label.INVALID_KRS):
             issue.remove_from_labels(Label.INVALID_KRS)
+
+        issue.create_comment(
+            f"""Aktualne dane z KRS:
+            
+            **Nazwa**: {org.name}
+
+            **Data rejestracji w KRS**: {org.registered_on}
+            **Ma status OPP**: {"Tak" if org.is_opp else "Nie"}
+            
+            ## Adres
+            {org.address}
+            """
+        )
 
         return org

@@ -5,6 +5,7 @@ class OrgFormSchemaIds(enum.StrEnum):
     name = "name"
     website = "website"
     krs = "krs"
+    krs_name = "krs_name"
     slug = "slug"
     street = "street"
     postal_code = "postal_code"

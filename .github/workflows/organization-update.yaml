@@ -46,7 +46,7 @@ jobs:
       
       - name: Walidacja plików organizacji
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: wyslijco/walidacja-organizacji@v1.1.0
+        uses: wyslijco/walidacja-organizacji@v1.2.0
         with:
           files: ${{ steps.changed-files.outputs.all_changed_files }}
           organizations-dir: organizations

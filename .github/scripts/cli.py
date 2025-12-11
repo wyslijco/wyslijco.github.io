@@ -64,11 +64,15 @@ def process_new_org_issue(github_form_json, github_issue_number):
         logger.error("Validation failed - not continuing")
         return
 
-    if not (org := KRSDataPuller.get_org_by_krs(issue, data.get(OrgFormSchemaIds.krs))):
-        logger.error("KRS db validation failed")
+    if not (
+        krs_org := KRSDataPuller.get_org_by_krs(
+            issue, krs=data.get(OrgFormSchemaIds.krs)
+        )
+    ):
+        logger.error(msg="KRS db validation failed")
         validation_warnings.append("Nie można zweryfikować KRS")
     else:
-        org_name = org.name
+        data[OrgFormSchemaIds.krs_name] = krs_org.name
 
     # Update issue title
     if issue.title == NEW_ORG_ISSUE_DEFAULT_TITLE:
