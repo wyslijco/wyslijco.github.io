@@ -1,19 +1,20 @@
 ---
-nazwa: {{ organization.name }}
+nazwa: "{{ organization.name }}"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
-adres: {{ organization.slug }}
+adres: "{{ organization.slug }}"
 
-strona: {{ organization.website }}
+strona: "{{ organization.website }}"
 krs: "{{ organization.krs }}"
+{% if organization.krs_name %}nazwa_w_krs: "{{ organization.krs_name }}"{% endif %}
 
 dostawa:
-  ulica: {{ organization.street }}
-  kod: {{ organization.postal_code }}
-  miasto: {{ organization.city }}
-  telefon: {{ organization.phone_number }}
-  email: {{ organization.email }}
-  kod_paczkomatu:{% if organization.package_box_code %} {{ organization.package_box_code }}{% endif %}
-  dodatkowe_informacje:{% if organization.additional_info %} {{ organization.additional_info }}{% endif %}
+  ulica: "{{ organization.street }}"
+  kod: "{{ organization.postal_code }}"
+  miasto: "{{ organization.city }}"
+  telefon: "{{ organization.phone_number }}"
+  email: "{{ organization.email }}"
+  kod_paczkomatu:{% if organization.package_box_code %} "{{ organization.package_box_code }}"{% endif %}
+  dodatkowe_informacje:{% if organization.additional_info %} "{{ organization.additional_info }}"{% endif %}
 
 produkty:
