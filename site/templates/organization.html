@@ -248,7 +248,12 @@
       <h2 class="text-sectionTitle mb-2 pl-1 text-2xl">Dodatkowe informacje</h2>
       
       <!-- Two-column layout on medium screens and up -->
-      <div class="md:grid md:grid-cols-2 md:gap-6">
+      <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="pb-4">
+          <h3 class="text-sectionTitle mb-2 pl-1 text-lg">Nazwa organizacji w KRS</h3>
+          <div class="info-field">{{ data.nazwa_w_krs }}</div>
+        </div>
+
         <div class="pb-4">
           <h3 class="text-sectionTitle mb-2 pl-1 text-lg">Numer KRS</h3>
           <div class="info-field">{{ data.krs }}</div>

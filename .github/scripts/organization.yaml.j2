@@ -6,7 +6,7 @@ adres: "{{ organization.slug }}"
 
 strona: "{{ organization.website }}"
 krs: "{{ organization.krs }}"
-{% if organization.krs_name %}nazwa_w_krs: "{{ organization.krs_name }}"{% endif %}
+nazwa_w_krs: "{{ organization.krs_name }}"  # automatycznie ustawiona z KRS
 
 dostawa:
   ulica: "{{ organization.street }}"

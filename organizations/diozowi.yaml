@@ -1,11 +1,12 @@
 ---
-nazwa: DOLNOŚLĄSKI INSPEKTORAT OCHRONY ZWIERZĄT
+nazwa: "DIOZ"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: diozowi
 
 strona: https://dioz.pl
 krs: "0000645982"
+nazwa_w_krs: "DOLNOŚLĄSKI INSPEKTORAT OCHRONY ZWIERZĄT"
 
 dostawa:
   ulica: Pietrzyków 19

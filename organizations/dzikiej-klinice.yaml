@@ -1,11 +1,12 @@
 ---
-nazwa: Fundacja Dzika Klinika - Centrum Pomocy dla Dzikich Zwierząt
+nazwa: "Dzika Klinika"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: dzikiej-klinice
 
 strona: https://www.dzikaklinika.com/
 krs: "0000454254"
+nazwa_w_krs: "FUNDACJA DZIKA KLINIKA - CENTRUM POMOCY DLA DZIKICH ZWIERZĄT"
 
 dostawa:
   ulica: os. Kazimierzowskie 18/156

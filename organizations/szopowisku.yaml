@@ -1,11 +1,12 @@
 ---
-nazwa: Fundacja Szopowisko
+nazwa: Szopowisko
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: szopowisku
 
 strona: https://fundacjaszopowisko.pl
 krs: "0000950656"
+nazwa_w_krs: "FUNDACJA SZOPOWISKO LEK. WET. GRZEGORZ DZIWAK"
 
 dostawa:
   ulica: Leśna 34

@@ -5,7 +5,8 @@ adres: medorowi
 
 strona: https://medor.org/
 
-krs: 0000226639
+krs: "0000226639"
+nazwa_w_krs: "MEDOR"
 
 dostawa:
   ulica: ul. Urocza 9

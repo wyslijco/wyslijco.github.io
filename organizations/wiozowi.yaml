@@ -1,11 +1,12 @@
 ---
-nazwa: FUNDACJA "WIELKOPOLSKI INSPEKTORAT OCHRONY ZWIERZĄT"
+nazwa: "WIELKOPOLSKI INSPEKTORAT OCHRONY ZWIERZĄT"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: wiozowi
 
 strona: https://wioz.pl/
 krs: "0000969215"
+nazwa_w_krs: "FUNDACJA \"WIELKOPOLSKI INSPEKTORAT OCHRONY ZWIERZĄT\""
 
 dostawa:
   ulica: Słowackiego 55/1
