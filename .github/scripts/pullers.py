@@ -91,15 +91,6 @@ class KRSDataPuller:
                 "Proszę sprawdzić, czy podany numer jest poprawny"
             )
             return
-        else:
-            issue.create_comment(
-                "Dziękujemy za przekazanie zgłoszenia. Bardzo poważnie podchodzimy "
-                "do weryfikacji wszystkich zgłoszonych organizacji oraz ich danych. "
-                "W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją "
-                "poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji "
-                "lub w rejestrze KRS. W przypadku pozytywnej weryfikacji, otrzymasz od nas informację "
-                "o dalszych krokach."
-            )
 
         if has_label(issue, Label.INVALID_KRS):
             issue.remove_from_labels(Label.INVALID_KRS)
