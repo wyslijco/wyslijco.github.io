@@ -5,6 +5,7 @@ import os
 import click
 from github import Auth, Github, Issue
 
+from adapters import ProductsAdapter
 from consts import (
     OrgFormSchemaIds,
     NEW_ORG_ISSUE_DEFAULT_TITLE,
@@ -73,6 +74,9 @@ def process_new_org_issue(github_form_json, github_issue_number):
         validation_warnings.append("Nie można zweryfikować KRS")
     else:
         data[OrgFormSchemaIds.krs_name] = krs_org.name
+
+    products_adapter = ProductsAdapter(data.get(OrgFormSchemaIds.products))
+    data[OrgFormSchemaIds.products] = products_adapter.products
 
     # Update issue title
     if issue.title == NEW_ORG_ISSUE_DEFAULT_TITLE:
