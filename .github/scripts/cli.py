@@ -87,8 +87,13 @@ def process_new_org_issue(github_form_json, github_issue_number):
             issue.add_to_labels(Label.WAITING)
             issue.create_comment(
                 f"@{issue.user.login}, dziękujemy za podanie informacji. "
-                f"Przyjęliśmy zgłoszenie dodania nowej organizacji. "
-                f"Wkrótce skontaktujemy się celem weryfikacji zgłoszenia."
+                "Przyjęliśmy zgłoszenie dodania nowej organizacji. \n\n"
+                "Bardzo poważnie podchodzimy do weryfikacji "
+                "wszystkich zgłoszonych organizacji oraz ich danych. \n\n"
+                "W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją "
+                "poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji "
+                "lub w rejestrze KRS. \n\n"
+                "W przypadku pozytywnej weryfikacji, otrzymasz od nas informację o dalszych krokach."
             )
 
     # create organization yaml file and add to the Pull Request
