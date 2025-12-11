@@ -1,0 +1,20 @@
+---
+nazwa: Kocie Pogotowie
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: kociemu-pogotowiu
+
+strona: https://www.facebook.com/KociePogotowie
+krs: "0000270261"
+nazwa_w_krs: "FUNDACJA STUDENCKA \"MŁODZI - MŁODYM\""
+
+dostawa:
+  ulica: Ul. Myślenicka 15
+  kod: 32-420
+  miasto: Gdów
+  telefon: 728276833
+  email: kocie.pogotowie.16802@gmail.com
+  kod_paczkomatu:
+  dodatkowe_informacje:
+
+produkty:
