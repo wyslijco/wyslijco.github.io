@@ -93,7 +93,7 @@ class KRSDataPuller:
             return
         else:
             issue.create_comment(
-                "Dziękujemy za przekazanie zgłoszenia. Bardzo poważnie podchodzimy"
+                "Dziękujemy za przekazanie zgłoszenia. Bardzo poważnie podchodzimy "
                 "do weryfikacji wszystkich zgłoszonych organizacji oraz ich danych. "
                 "W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją "
                 "poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji "
