@@ -95,14 +95,14 @@ class KRSDataPuller:
         if has_label(issue, Label.INVALID_KRS):
             issue.remove_from_labels(Label.INVALID_KRS)
 
-        issue.create_comment(f"""Aktualne dane z KRS:
+        issue.create_comment(f"""## Aktualne dane z KRS
 
 **Nazwa**: {org.name}
 
 **Data rejestracji w KRS**: {org.registered_on}
 **Ma status OPP**: {"Tak" if org.is_opp else "Nie"}
 
-## Adres
+###  Adres
 {org.address}
 """)
 
