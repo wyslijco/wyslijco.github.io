@@ -11,22 +11,8 @@ permissions:
 
 jobs:
 
-  debug:
-    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja')
-    name: Debug Event
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub event
-        run: |
-          echo "Event action: ${{ github.event.action }}"
-          echo "Has changes: ${{ github.event.changes != null }}"
-          echo "Has body changes: ${{ github.event.changes.body != null }}"
-          echo "Body changes truthy: ${{ github.event.changes.body }}"
-          echo "Full event:"
-          cat "$GITHUB_EVENT_PATH"
-
   validate-form:
-    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja') && (github.event.action == 'opened' || github.event.changes.body)
+    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja') && (github.event.action == 'opened' || (github.event.changes.body && github.event.changes.body.from != ''))
     name: Ekstrakcja danych z formularza
     runs-on: ubuntu-latest
     outputs:
