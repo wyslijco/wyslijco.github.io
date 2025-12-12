@@ -18,3 +18,7 @@ dostawa:
   dodatkowe_informacje:{% if organization.additional_info %} "{{ organization.additional_info }}"{% endif %}
 
 produkty:
+  {% for product in organization.products %}
+  - nazwa: "{{ product.name }}"
+    link: "{{ product.link }}"
+  {% endfor %}

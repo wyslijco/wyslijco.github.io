@@ -141,6 +141,33 @@ body:
   - type: markdown
     attributes:
       value: |
+        # Produkty
+
+        Poniżej możesz nam przekazać listę produktów potrzebnych Twojej organizacji. 
+        
+        **Każdy produkt umieść w osobnej linijce.**
+        
+        Jeżeli masz link do potrzebnego produktu, umieść go w tej samej linii, oddzielając 
+        go od nazwy produktu spacją. Nie podawaj więcej niż jednego linku dla produktu
+        
+        Przykład:
+        > Produkt 1
+        > Produkt 2 https://allegro.pl/listing?string=Produkt+2
+        > Produkt 3
+
+        Dla produktów bez linków, wygenerujemy link do wyników wyszukiwania w serwisie Allegro.
+  - type: textarea
+    id: products
+    attributes:
+      label: Lista produktów
+      placeholder: |
+        Produkt 1
+        Produkt 2 https://allegro.pl/listing?string=Produkt+2
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
         # Następne kroki
         Po wypełnieniu formularza, Twój wniosek zostanie zweryfikowany przez nasz zespół. W celu weryfikacji poprawności danych skontaktujemy się z Twoją organizacją poprzez oficjalne dane kontaktowe dostępne na stronie internetowej organizacji lub w rejestrze KRS. W przypadku pozytywnej weryfikacji, otrzymasz od nas informację o dalszych krokach w komentarzu do tego zgłoszenia (zakładka Issues).
 

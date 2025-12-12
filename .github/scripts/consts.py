@@ -14,6 +14,7 @@ class OrgFormSchemaIds(enum.StrEnum):
     email = "email"
     package_box_code = "package_box_code"
     additional_info = "additional_info"
+    products = "products"
 
 
 NEW_ORG_ISSUE_DEFAULT_TITLE = "[Nowa Organizacja]"
