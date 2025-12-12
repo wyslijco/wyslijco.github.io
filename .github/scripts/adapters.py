@@ -23,8 +23,8 @@ class ProductsAdapter:
         return f"https://allegro.pl/listing?string={encoded_product}"
 
     def _line_to_product_dict(self, line: str) -> dict[str, str]:
-        f"""
-        Converts a product line to the dict with the product name 
+        """
+        Converts a product line to the dict with the product name
         and the link to the product.
 
         Example 1: Product with a link
