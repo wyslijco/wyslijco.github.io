@@ -1,0 +1,24 @@
+---
+nazwa: "Dla Braci Mniejszych"
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: "braciom-mniejszym"
+
+strona: "https://www.braciamniejsi.com.pl/"
+krs: "0000324731"
+nazwa_w_krs: "STOWARZYSZENIE HUMANITARNO-EKOLOGICZNE \"DLA BRACI MNIEJSZYCH\""  # automatycznie ustawiona z KRS
+
+dostawa:
+  ulica: "Jodłowa 9"
+  kod: "43-303"
+  miasto: "Bielsko Biała"
+  telefon: "514065017"
+  email: "biuro@braciamniejsi.com.pl"
+  kod_paczkomatu: "BBI15A"
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: "BARRY KING Podkłady higieniczne, 45x60 cm"
+    link: "https://allegro.pl/listing?string=BARRY%20KING%20Podk%C5%82ady%20higieniczne%2C%2045x60%20cm"
+  - nazwa: "Super Benek Żwirek 14L"
+    link: "https://allegro.pl/oferta/super-benek-zwirek-14l-dla-kota-kukurydziany-bryza-morska-17248537512""
