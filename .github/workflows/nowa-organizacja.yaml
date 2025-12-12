@@ -12,7 +12,7 @@ permissions:
 jobs:
 
   validate-form:
-    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja') && github.event.changes.body != null
+    if: contains(github.event.issue.labels.*.name, 'nowa-organizacja') && (github.event.action == 'opened' || github.event.changes.body != null)
     name: Ekstrakcja danych z formularza
     runs-on: ubuntu-latest
     outputs:
