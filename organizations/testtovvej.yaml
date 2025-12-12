@@ -1,0 +1,30 @@
+---
+nazwa: ""Zwierz\u0119ta Krakowa""
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: "testtovvej"
+
+strona: "http://domain.com"
+krs: "0000099438"
+nazwa_w_krs: ""FUNDACJA \"ZWIERZ\u0118TA KRAKOWA\"""  # automatycznie ustawiona z KRS
+
+dostawa:
+  ulica: ""Zmy\u015blona 9""
+  kod: "01-111"
+  miasto: "Warszawa"
+  telefon: "123123123"
+  email: "kontakt@domain.com"
+  kod_paczkomatu: "WAW01M"
+  dodatkowe_informacje:
+
+produkty:
+  - nazwa: ""BRIT GF Veterinary Dog Gastrointestinal""
+    link: "https://allegro.pl/listing?string=BRIT%20GF%20Veterinary%20Dog%20Gastrointestinal"
+  - nazwa: ""BARRY KING Podk\u0142ady higieniczne, 45x60 cm""
+    link: "https://allegro.pl/listing?string=BARRY%20KING%20Podk%C5%82ady%20higieniczne%2C%2045x60%20cm"
+  - nazwa: ""Super Benek \u017bwirek 14L allegro.pl/oferta/super-benek-zwirek-14l-dla-kota-kukurydziany-bryza-morska-17248537512""
+    link: "https://allegro.pl/listing?string=Super%20Benek%20%C5%BBwirek%2014L%20allegro.pl/oferta/super-benek-zwirek-14l-dla-kota-kukurydziany-bryza-morska-17248537512"
+  - nazwa: ""KARMA DLA PTAK\u00d3W allegro.pl/oferta/karma-dla-ptakow-20kg-ptasi-przysmak-drobne-ziarno-idealne-do-karmnika-12701365743""
+    link: "https://allegro.pl/listing?string=KARMA%20DLA%20PTAK%C3%93W%20allegro.pl/oferta/karma-dla-ptakow-20kg-ptasi-przysmak-drobne-ziarno-idealne-do-karmnika-12701365743"
+  - nazwa: ""Legowisko dla psa""
+    link: "https://allegro.pl/listing?string=Legowisko%20dla%20psa"
