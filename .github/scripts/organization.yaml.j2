@@ -17,8 +17,7 @@ dostawa:
   kod_paczkomatu:{% if organization.package_box_code %} "{{ organization.package_box_code }}"{% endif %}
   dodatkowe_informacje:{% if organization.additional_info %} "{{ organization.additional_info }}"{% endif %}
 
-produkty:
-  {% for product in organization.products %}
+produkty:{% for product in organization.products %}
   - nazwa: "{{ product.name }}"
     link: "{{ product.link }}"
-  {% endfor %}
+{% endfor %}
