@@ -54,7 +54,7 @@ class KRSDataPuller:
 
     @property
     def _address_data(self) -> dict[str, Any]:
-        return self.org_data1.get("siedzibaIAdres", {}).get("adres", {})
+        return self._org_data1.get("siedzibaIAdres", {}).get("adres", {})
 
     @property
     def street(self) -> str:
