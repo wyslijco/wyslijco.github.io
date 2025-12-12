@@ -79,7 +79,7 @@ def process_new_org_issue(github_form_json, github_issue_number):
         data.set(OrgFormSchemaIds.krs_name, krs_org.name)
 
     products_adapter = ProductsAdapter(data.get(OrgFormSchemaIds.products))
-    data[OrgFormSchemaIds.products] = products_adapter.products
+    data.set(OrgFormSchemaIds.products, products_adapter.products)
 
     # Update issue title
     if issue.title == NEW_ORG_ISSUE_DEFAULT_TITLE:
