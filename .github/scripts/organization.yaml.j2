@@ -1,15 +1,15 @@
 ---
-nazwa: "{{ organization.name|tojson }}"
+nazwa: "{{ organization.name|replace('"', '\\"') }}"
 
 # wyslij.co/testowej - adres, pod którym będzie dostępna strona
 adres: "{{ organization.slug }}"
 
 strona: "{{ organization.website }}"
 krs: "{{ organization.krs }}"
-nazwa_w_krs: "{{ organization.krs_name|tojson }}"  # automatycznie ustawiona z KRS
+nazwa_w_krs: "{{ organization.krs_name|replace('"', '\\"') }}"  # automatycznie ustawiona z KRS
 
 dostawa:
-  ulica: "{{ organization.street|tojson }}"
+  ulica: "{{ organization.street|replace('"', '\\"') }}"
   kod: "{{ organization.postal_code }}"
   miasto: "{{ organization.city }}"
   telefon: "{{ organization.phone_number }}"
@@ -18,5 +18,5 @@ dostawa:
   dodatkowe_informacje:{% if organization.additional_info %} "{{ organization.additional_info }}"{% endif %}
 
 produkty:{% for product in organization.products %}
-  - nazwa: "{{ product.name|tojson }}"
+  - nazwa: "{{ product.name|replace('"', '\\"') }}"
     link: "{{ product.link }}"{% endfor %}
