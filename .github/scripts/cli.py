@@ -7,6 +7,7 @@ from github import Auth, Github, Issue
 
 from adapters import ProductsAdapter
 from consts import (
+    EXTRA_LABELS_MAP,
     OrgFormSchemaIds,
     NEW_ORG_ISSUE_DEFAULT_TITLE,
     NEW_ORG_FORM_SCHEMA_FILENAME,
@@ -50,7 +51,9 @@ repo = g.get_repo(GITHUB_REPOSITORY)
 def process_new_org_issue(github_form_json, github_issue_number):
     issue: Issue = repo.get_issue(github_issue_number)
     data = GithubIssueFormDataParser(
-        json.loads(github_form_json), NEW_ORG_FORM_SCHEMA_FILENAME
+        json.loads(github_form_json),
+        NEW_ORG_FORM_SCHEMA_FILENAME,
+        extra_labels_map=EXTRA_LABELS_MAP,
     )
 
     validation_warnings = []
@@ -73,7 +76,7 @@ def process_new_org_issue(github_form_json, github_issue_number):
         logger.error(msg="KRS db validation failed")
         validation_warnings.append("Nie można zweryfikować KRS")
     else:
-        data[OrgFormSchemaIds.krs_name] = krs_org.name
+        data.set(OrgFormSchemaIds.krs_name, krs_org.name)
 
     products_adapter = ProductsAdapter(data.get(OrgFormSchemaIds.products))
     data[OrgFormSchemaIds.products] = products_adapter.products
