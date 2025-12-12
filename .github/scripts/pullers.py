@@ -95,8 +95,10 @@ class KRSDataPuller:
         if has_label(issue, Label.INVALID_KRS):
             issue.remove_from_labels(Label.INVALID_KRS)
 
-        issue.create_comment(
-            f"""Aktualne dane z KRS:
+        if has_label(issue, Label.WAITING) and not has_label(
+            issue, Label.AUTO_VERIFIED
+        ):  # FIXME: should be not waiting?
+            issue.create_comment(f"""Aktualne dane z KRS:
 
 **Nazwa**: {org.name}
 
@@ -105,7 +107,6 @@ class KRSDataPuller:
 
 ## Adres
 {org.address}
-"""
-        )
+""")
 
         return org
