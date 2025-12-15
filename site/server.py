@@ -75,6 +75,11 @@ def organizations_list():
     return render_template("organizations.html", organizations=org_data)
 
 
+@app.route("/dodaj/", strict_slashes=False)
+def join():
+    return render_template("join.html")
+
+
 @app.route("/<string:org_name>/", strict_slashes=False)
 def organization_page(org_name):
     if org_name not in slug_to_organization:
