@@ -28,7 +28,6 @@
       <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {% for organization in organizations %}
         <li class="org-list-item">
-          <span class="org-list-bullet" aria-hidden="true"></span>
           <a href="/{{ organization.slugs|first }}" class="org-list-link">
             {{ organization.name }}
           </a>
