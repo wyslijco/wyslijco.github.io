@@ -1,0 +1,38 @@
+---
+nazwa: "Fundacja Gruszętnik"
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: "gruszetnikowi"
+
+strona: "https://gruszetnik.pl/"
+krs: "0000507234"
+nazwa_w_krs: "FUNDACJA FANIMANI"  # automatycznie ustawiona z KRS
+
+dostawa:
+  ulica: "ul. Barlickiego 1/1B"
+  kod: "50-324"
+  miasto: "Wrocław"
+  telefon: "517779239"
+  email: "gruszetnik@gmail.com"
+  kod_paczkomatu: "WRO21A"
+  dodatkowe_informacje: "Wejście od ulicy Pestalozziego"
+
+produkty:
+  - nazwa: "Podkłady higieniczne"
+    link: "https://allegro.pl/oferta/podklady-higieniczne-dla-psow-psa-maty-jednorazowe-60x60-100-szt-18648252571"
+  - nazwa: "wenflony 26G (fioletowe)"
+    link: "https://allegro.pl/oferta/50-x-wenflon-fioletowy-26g-0-62mm-x-19mm-kaniula-dozylna-kd-fix-17409460319"
+  - nazwa: "strzykawki 1 ml, 5 ml, 60 ml"
+    link: "https://allegro.pl/oferta/strzykawki-do-tuberkuliny-1ml-0-5x16mm-100-sztuk-11045946750"
+  - nazwa: "strzykawki 1 ml, 5 ml, 60 ml"
+    link: "https://allegro.pl/oferta/strzykawki-3-czesciowe-5-ml-diconex-luer-zarys-100-sztuk-11974471252"
+  - nazwa: "strzykawki 1 ml, 5 ml, 60 ml"
+    link: "https://allegro.pl/oferta/strzykawka-iniekcyjna-50-60ml-luer-jednorazowa-medyczna-sterylna-25-sztuk-15120412704"
+  - nazwa: "flexy 2,5 cm (bandaże kohezyjne)"
+    link: "https://allegro.pl/oferta/bandaz-kohezyjny-samoprzylepny-elastyczny-mix-kolorow-2-5cm-x-4-5m-24szt-15513998466"
+  - nazwa: "opatrunki hydrożelowe"
+    link: "https://allegro.pl/oferta/opatrunek-hydrozelowy-rany-oparzenia-fi-5cm-aqua-gel-1szt-13532920606"
+  - nazwa: "płyny do płukania ran"
+    link: "https://allegro.pl/oferta/granudacyn-roztwor-do-plukania-ran-250-ml-oczyszcza-nawilza-rany-16765734858"
+  - nazwa: "płyn do dezynfekcji rąk"
+    link: "https://allegro.pl/oferta/plyn-do-higienicznej-i-chirurgicznej-dezynfekcji-rak-velodes-skin-250-ml-18463054926"
