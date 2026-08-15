@@ -1,0 +1,22 @@
+---
+nazwa: "Fundacja Gruszętnik"
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: "gruszetnikowi"
+
+strona: "https://gruszetnik.pl/"
+krs: "0000507234"
+nazwa_w_krs: "FUNDACJA FANIMANI"  # automatycznie ustawiona z KRS
+
+dostawa:
+  ulica: "ul. Barlickiego 1/1B"
+  kod: "50-324"
+  miasto: "Wrocław"
+  telefon: "517779239"
+  email: "gruszetnik@gmail.com"
+  kod_paczkomatu: "WRO21A"
+  dodatkowe_informacje: "Wejście od ulicy Pestalozziego"
+
+produkty:
+  - nazwa: "Podkłady higieniczne"
+    link: "https://allegro.pl/oferta/podklady-higieniczne-dla-psow-psa-maty-jednorazowe-60x60-100-szt-18648252571"
