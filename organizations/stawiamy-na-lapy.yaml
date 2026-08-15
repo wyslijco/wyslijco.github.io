@@ -1,0 +1,42 @@
+---
+nazwa: "Krakowska Fundacja Pomocy Zwierzętom \"Stawiamy na Łapy\""
+
+# wyslij.co/testowej - adres, pod którym będzie dostępna strona
+adres: "stawiamy-na-lapy"
+
+strona: "https://www.stawiamynalapy.pl/"
+krs: "0000491968"
+nazwa_w_krs: "\"KRAKOWSKA FUNDACJA POMOCY ZWIERZĘTOM STAWIAMY NA ŁAPY\""  # automatycznie ustawiona z KRS
+
+dostawa:
+  ulica: "os. Słoneczne 11"
+  kod: "31-957"
+  miasto: "Kraków"
+  telefon: "501494166"
+  email: "kontakt@stawiamynalapy.pl"
+  kod_paczkomatu: "KRA225M"
+  dodatkowe_informacje: "dla paczkomatu numer telefonu: 512929651"
+
+produkty:
+  - nazwa: "JRS Cats Best Eko Plus - Żwirek Drewniany Zbrylający"
+    link: "https://allegro.pl/oferta/jrs-cats-best-eko-plus-zwirek-drewniany-zbrylajacy-40l-17-2kg-16368916832"
+  - nazwa: "Cat's best Smart Pellet"
+    link: "https://allegro.pl/produkt/zwirek-dla-kotow-zbrylajacy-jrs-cat-s-best-smart-pellets-drewniany-10kg-20l-19ad0cae-ddf8-45b9-9db1-8a8f21019b45?offerId=12155234505"
+  - nazwa: "Super Benek Corn Cat Ultra Naturalny"
+    link: "https://allegro.pl/produkt/zwirek-kukurydziany-super-benek-bezzapachowy-drobnoziarnisty-35-l-38192d07-89e7-4cc4-bea2-d393351d68ed?offerId=12041475028"
+  - nazwa: "Mokra karma dla kota - John Dog for Cats - kurczak"
+    link: "https://allegro.pl/produkt/karma-mokra-dla-kota-dorosly-kot-kurczak-john-dog-for-cats-99-menu-6x400-g-97f85538-cc7d-427a-b1dc-9682824b0b26?offerId=16195272884"
+  - nazwa: "Mokra karma dla kota - John Dog for Cats - indyk"
+    link: "https://allegro.pl/produkt/john-dog-for-cats-karma-mokra-99-menu-dla-kota-indyk-6x400-g-eae435b4-076a-41e1-a55f-e009d62527f2?offerId=16196575798"
+  - nazwa: "Mokra karma dla kota - John Dog for Cats - mix smaków"
+    link: "https://allegro.pl/produkt/john-dog-for-cats-99-menu-mix-smakow-8x400g-1b51cb88-7465-4a78-bcd2-3b0457ab479a?offerId=18197479902"
+  - nazwa: "Mokra Karma - Wiejska Zagroda - indyk"
+    link: "https://allegro.pl/produkt/wiejska-zagroda-karma-mokra-indyk-0-4-kg-db6ddbc8-14f4-4c47-a0f6-341c1f7f941b?offerId=15340717810"
+  - nazwa: "Mokra Karma - Wiejska Zagroda - bezzbożowa, mix"
+    link: "https://allegro.pl/produkt/karma-mokra-wiejska-zagroda-bezzbozowa-dla-kociat-mix-smakow-6x400-g-75f60750-5439-4df7-998a-39f38085e23f?offerId=17251999831"
+  - nazwa: "Mokra Karma - Dolina Noteci - mix smaków"
+    link: "https://allegro.pl/produkt/dolina-noteci-premium-mokra-karma-dla-kota-mix-smakow-12x400g-19c1b11d-9649-4d5a-b11b-ac3af6425986?offerId=17215955537"
+  - nazwa: "Mokra Karma - Feringa - mix smaków"
+    link: "https://allegro.pl/produkt/zestaw-6-sztuk-feringa-mokra-karma-dla-kota-adult-mix-smakow-400g-mix-4-8d274da9-f021-4396-b90d-1a6235c5ed1d?offerId=17558401422"
+  - nazwa: "Mokra Karma - MAC's Cat Drób, Wołowina i Żurawina"
+    link: "https://allegro.pl/produkt/mac-s-cat-mokra-karma-dla-kota-drob-zurawina-400g-d587a759-776f-4762-96e5-624a3504d12d?offerId=13287933435"
